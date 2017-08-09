@@ -1,0 +1,92 @@
+version: '2'
+services:
+  platform-web:
+    image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.web
+    container_name: ${WEB_APP_NAME}
+    ports:
+    - "${WEB_HOST_PORT}:${WEB_CONTAINER_PORT}"
+    environment:
+    - SPRING_PROFILES_ACTIVE=${NIMBUS_ENVIRONMENT}
+    - SPRING_APPLICATION_NAME=${WEB_APP_NAME}
+    - SPRING_CLOUD_CONFIG_LABEL=${CLOUD_CONFIG_LABEL}
+    - SERVER_PORT=${WEB_CONTAINER_PORT}
+    - SECURITY_HOST_PORT=${AUTHWEB_HOST_PORT}
+    - LOG_DIR_PATH=${NIMBUS_LOG_DIR}
+    - SPRING_RABBITMQ_PORT=${PDEP_RABBITMQ_PORT}
+    - SPRING_REDIS_PORT=${PDEP_REDIS_PORT}
+    - SPRING_REDIS_HOST=${PDEP_REDIS_HOST}
+    - SPRING_DATA_MONGODB_PORT=${PDEP_MONGODB_PORT}
+    - SPRING_DATA_MONGODB_HOST=${PDEP_MONGODB_HOST}
+    volumes:
+    - $HOME/Documents/nimbuslogs:/logs
+    - $HOME/Documents/clientextensions:/clientextensions
+  edge-apigateway:
+     image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.edgeapigateway
+     container_name: ${EDGEAPI_APP_NAME}
+     ports:
+     - "${EDGESERVER_HOST_PORT}:${EDGESERVER_CONTAINER_PORT}"
+     environment:
+     - SPRING_PROFILES_ACTIVE=${NIMBUS_ENVIRONMENT}
+     - SPRING_APPLICATION_NAME=${EDGEAPI_APP_NAME}
+     - SPRING_CLOUD_CONFIG_LABEL=${CLOUD_CONFIG_LABEL}
+     - SERVER_PORT=${EDGESERVER_CONTAINER_PORT}
+     - SECURITY_HOST_PORT=${AUTHWEB_HOST_PORT}
+     - LOG_DIR_PATH=${NIMBUS_LOG_DIR}
+     - SPRING_RABBITMQ_PORT=${PDEP_RABBITMQ_PORT}
+     - SPRING_REDIS_PORT=${PDEP_REDIS_PORT}
+     - SPRING_REDIS_HOST=${PDEP_REDIS_HOST}
+     volumes:
+     - $HOME/Documents/nimbuslogs:/logs
+#  cmapp:
+#    image: nimbus/cmapp:0.1
+#    container_name: cmapp
+#    ports:
+#    - 3000:3000
+#    - 3004:3004
+  security-oauth:
+    image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.authentication.web
+    container_name: ${SECURITY_APP_NAME}
+    ports:
+    - "${AUTHWEB_HOST_PORT}:${AUTHWEB_CONTAINER_PORT}"
+    environment:
+    - SPRING_APPLICATION_NAME=${SECURITY_APP_NAME}
+    - SPRING_PROFILES_ACTIVE=${NIMBUS_ENVIRONMENT}
+    - SPRING_CLOUD_CONFIG_LABEL=${CLOUD_CONFIG_LABEL}
+    - SERVER_PORT=${AUTHWEB_CONTAINER_PORT}
+    - SECURITY_HOST_PORT=${AUTHWEB_HOST_PORT}
+    - LOG_DIR_PATH=${NIMBUS_LOG_DIR}    
+    - SPRING_RABBITMQ_PORT=${PDEP_RABBITMQ_PORT}
+    - SPRING_REDIS_PORT=${PDEP_REDIS_PORT}
+    - SPRING_REDIS_HOST=${PDEP_REDIS_HOST}
+    volumes:
+    - $HOME/Documents/nimbuslogs:/logs
+  # config-server:
+  #   image: nimbus/com.anthem.nimbus.platform.core.cloud.config
+  # #  container_name: config-server-cm
+  #   ports:
+  #   - "8881:8888"
+  #   environment:
+  #   - SPRING_PROFILES_ACTIVE=${NIMBUS_ENVIRONMENT}
+  #   - LOG_DIR_PATH=${NIMBUS_LOG_DIR}
+#  client-mgmt:
+#     image: nimbus/com.anthem.nimbus.platform.management.client
+#     container_name: client-mgmt
+#     ports:
+#     - "${CLIENTMGMT_HOST_PORT}:${CLIENTMGMT_CONTAINER_PORT}"
+#     environment:
+#     - SPRING_PROFILES_ACTIVE=${NIMBUS_ENVIRONMENT}
+#     - LOG_DIR_PATH=${NIMBUS_LOG_DIR}
+#     volumes:
+#     - $HOME/Documents/nimbuslogs:/logs
+  #lb:
+  #  image: dockercloud/haproxy
+  #  links:
+  #  - platform-core-process
+  #  volumes:
+  #  - /var/run/docker.sock:/var/run/docker.sock
+  #  ports:
+  #  - "8080:80"
+networks:
+    default:
+        external:
+            name: pdep

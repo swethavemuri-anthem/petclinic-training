@@ -1,0 +1,20 @@
+version: '2'
+services:
+    config-server:
+        image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.core.cloud.config
+        container_name: config-server
+        ports:
+        - "8888:8888"
+        environment:
+        - SPRING_PROFILES_ACTIVE=${NIMBUS_ENVIRONMENT}
+        - LOG_DIR_PATH=${NIMBUS_LOG_DIR}
+# In production, since only one git uri will be used the below environment variable will
+# configure the config-server to the given path. Commenting for development use, since 
+# developement version will have multiple profiles and this will overwrite the git uri for all profiles.        
+#        - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=${CONFIG_PATH}
+        - CONFIG_REPO=${CONFIG_PATH} 
+        - RABBITMQ_PORT=${PDEP_RABBITMQ_PORT}
+networks:
+    default:
+        external:
+            name: pdep
