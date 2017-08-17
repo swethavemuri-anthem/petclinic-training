@@ -1,7 +1,7 @@
 version: '2'
 services:
   platform-web:
-    image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.web
+    image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.web:latest
     container_name: ${WEB_APP_NAME}
     ports:
     - "${WEB_HOST_PORT}:${WEB_CONTAINER_PORT}"
@@ -21,7 +21,7 @@ services:
     - $HOME/Documents/nimbuslogs:/logs
     - $HOME/Documents/clientextensions:/clientextensions
   edge-apigateway:
-     image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.edgeapigateway
+     image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.edgeapigateway:latest
      container_name: ${EDGEAPI_APP_NAME}
      ports:
      - "${EDGESERVER_HOST_PORT}:${EDGESERVER_CONTAINER_PORT}"
@@ -44,7 +44,7 @@ services:
 #    - 3000:3000
 #    - 3004:3004
   security-oauth:
-    image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.authentication.web
+    image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.authentication.web:latest
     container_name: ${SECURITY_APP_NAME}
     ports:
     - "${AUTHWEB_HOST_PORT}:${AUTHWEB_CONTAINER_PORT}"

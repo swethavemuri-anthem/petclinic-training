@@ -1,7 +1,7 @@
 version: '2'
 services:
     staticcontent:
-        image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/staticcontent
+        build: ./petclinic-static-content/
         container_name: staticcontent
         ports:
         - "4000:4000"

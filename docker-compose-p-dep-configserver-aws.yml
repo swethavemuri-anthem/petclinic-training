@@ -1,7 +1,7 @@
 version: '2'
 services:
     config-server:
-        image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.core.cloud.config
+        image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.core.cloud.config:latest
         container_name: config-server
         ports:
         - "8888:8888"

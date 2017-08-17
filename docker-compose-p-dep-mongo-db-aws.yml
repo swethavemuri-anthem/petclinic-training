@@ -1,7 +1,7 @@
 version: '2'
 services:
     mongo:
-            image: 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.core.mongo.image
+            build: ./platform.core.mongo.image/
             container_name: mongo
             ports:
             - "27017:27017"
