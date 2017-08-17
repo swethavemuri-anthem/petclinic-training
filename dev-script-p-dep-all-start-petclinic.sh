@@ -40,7 +40,7 @@ docker-compose -f docker-compose-p-dep-configserver-aws.yml up -d
 SLEEP 10
 docker-compose -f docker-compose-p-dep-mongo-db-aws.yml up -d
 SLEEP 15
-docker-compose -f docker-compose-p-dep-mongo-db.yml exec mongo bash -c 'source /platform/load-data.sh'
+docker-compose -f docker-compose-p-dep-mongo-db-aws.yml exec mongo bash -c 'source /platform/load-data.sh'
 SLEEP 5
 docker-compose -f docker-compose-p-dep-mysql-db-aws.yml up -d
 SLEEP 15
