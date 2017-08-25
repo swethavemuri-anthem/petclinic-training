@@ -3,13 +3,13 @@ Petclinic setup instructions
    
 
 ## Steps to follow
-* Pre-requisites: Please follow the link to get all docker images from AWS
+* Pre-requisites: Please follow the link to get all docker images from AWS.
     https://confluence.anthem.com/display/NIM/Connect+to+AWS+CLI+to+pull+nimbus+docker+images
-    Run : sh script-docker-pull-all-aws.yml
+    Run : sh script-docker-pull-all-aws.yml (RUN THIS COMMAND OFF THE VPN)
 * cd into petclinic-training in the terminal
 * Run :: sh dev-script-p-dep-staticcontent-setup-petclinic.sh
 * The above command will clone the petclinic-static-content repo
-* Run :: sh dev-script-p-dep-all-start-petclininc.sh to create and run the dependent docker containers for running the petclinic application.
+* Run :: sh dev-script-p-dep-all-start-petclinic.sh to create and run the dependent docker containers for running the petclinic application.
 
 
 ## To restart the spring boot applications
