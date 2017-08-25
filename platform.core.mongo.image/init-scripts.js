@@ -42,6 +42,20 @@ db.clientuser.insert([
 	        "lastName" : "Training"
 	    },
 	    "roleName" : "Nimbus Trainee"
+    },
+    {
+	    "_class" : "com.anthem.oss.nimbus.core.entity.client.user.ClientUser",
+	    "displayName" : "training",
+	    "loginId" : "helloworld",
+	    "client" : {
+	        "code" : "Training",
+	        "name" : "Training"
+	    },
+	    "name" : {
+	        "firstName" : "Nimbus",
+	        "lastName" : "Training"
+	    },
+	    "roleName" : "Nimbus Trainee"
 	}
  ]);
 
