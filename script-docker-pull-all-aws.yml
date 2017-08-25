@@ -6,4 +6,4 @@ docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbu
 #docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/staticcontent:latest
 docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.core.cloud.config:latest
 #docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.core.mongo.image:latest
-docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.core.consul.image:latest
+#docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.core.consul.image:latest
