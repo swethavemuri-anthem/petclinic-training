@@ -13,5 +13,5 @@ Petclinic setup instructions
 
 
 ## To restart the spring boot applications
-* Run :: sh dev-script-p-core-all-start.sh (Please run this command whenever you make changes to the petclinic configuration project)
+* Run :: sh dev-script-p-core-all-petclinic-start.sh (Please run this command whenever you make changes to the petclinic configuration project)
 * The above command will start 3 spring boot applications (platform.web, security-oauth, edgeapi-gateway)
