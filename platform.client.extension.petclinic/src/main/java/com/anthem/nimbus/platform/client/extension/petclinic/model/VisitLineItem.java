@@ -5,8 +5,6 @@ import java.time.LocalDate;
 import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
 import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
 import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo.DetachedState;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo.LoadState;
 import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
 import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.GridColumn;
 import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
@@ -33,8 +31,8 @@ public class VisitLineItem {
 	@Path
 	private String reasonForVisit;
 	
-	@Path(value="/p/veterinarianview:<!/.m/vetId!>/vpAddEditVeterenarian/vtAddEditVeterinarian/vsAddEditVeterinarian/vfAddEditVeterinarian/fullName/_get", linked=false, detachedState=@DetachedState(loadState=LoadState.AUTO))
-	private String vetName;
+//	@Path(value="/p/veterinarianview:<!/.m/vetId!>/vpAddEditVeterenarian/vtAddEditVeterinarian/vsAddEditVeterinarian/vfAddEditVeterinarian/fullName/_get", linked=false, detachedState=@DetachedState(loadState=LoadState.AUTO))
+//	private String vetName;
 	
 	@Path
 	private String status;
