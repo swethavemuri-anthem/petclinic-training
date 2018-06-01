@@ -3,10 +3,10 @@
  */
 package com.anthem.nimbus.platform.client.extension.petclinic.view.home;
 
-import com.anthem.oss.nimbus.core.domain.definition.Model;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.PageFooter;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.PageFooter.Property;
+import com.antheminc.oss.nimbus.domain.defn.Model;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FooterProperty;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FooterProperty.Property;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,20 +17,32 @@ import lombok.Setter;
  */
 @Model @Getter @Setter
 public class VSHomeFooter {
-
-	@Link(url="#") @PageFooter(Property.VERSION)
+	/*
+	 * Andrew Jo
+	 * Issue: VERSION doesn't exist in ViewConfig.FooterProperty
+	 */
+	@Link(url="#") @FooterPropery(Property.VERSION)
 	private String appVersion;
-	
-	@Link(url="#") @PageFooter(Property.COPYRIGHT)
+	/*
+	 * Andrew Jo
+	 * Issue: COPYRIGHT doesn't exist in ViewConfig.FooterProperty
+	 */
+	@Link(url="#") @FooterPropery(Property.COPYRIGHT)
 	private String appCopyright;
-
-	@Link(url="#") @PageFooter(Property.PRIVACY)
+	/*
+	 * Andrew Jo
+	 * PRIVACY doesn't exist in ViewConfig.FooterProperty
+	 */
+	@Link(url="#") @FooterPropery(Property.PRIVACY)
 	private String appPrivacy;
-	
-	@Link(url="#") @PageFooter(Property.TOU)
+	/*
+	 * Andrew Jo
+	 * Issue: TOU doesn't exist in ViewConfig.FooterProperty
+	 */
+	@Link(url="#") @FooterPropery(Property.TOU)
 	private String appTou;
 	
-	@Link(url="#", imgSrc="verisign.png") @PageFooter(Property.SSLCERT)
+	@Link(url="#", imgSrc="verisign.png") @FooterPropery(Property.SSLCERT)
 	private String appSslCert;
 	
 }

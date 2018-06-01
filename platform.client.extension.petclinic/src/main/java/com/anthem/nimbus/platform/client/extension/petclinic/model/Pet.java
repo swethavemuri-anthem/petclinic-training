@@ -2,17 +2,17 @@ package com.anthem.nimbus.platform.client.extension.petclinic.model;
 
 import java.time.LocalDate;
 
-import com.anthem.nimbus.platform.spec.serializer.CustomLocalDateDeserializer;
-import com.anthem.nimbus.platform.spec.serializer.CustomLocalDateSerializer;
-import com.anthem.oss.nimbus.core.domain.definition.Domain;
-import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
-import com.anthem.oss.nimbus.core.domain.definition.Repo;
-import com.anthem.oss.nimbus.core.domain.definition.Repo.Cache;
-import com.anthem.oss.nimbus.core.domain.definition.Repo.Database;
-import com.anthem.oss.nimbus.core.entity.AbstractEntity.IdString;
+import com.antheminc.oss.nimbus.support.json.CustomLocalDateDeserializer;
+import com.antheminc.oss.nimbus.support.json.CustomLocalDateSerializer;
+import com.antheminc.oss.nimbus.domain.defn.Domain;
+import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
+import com.antheminc.oss.nimbus.domain.defn.Repo;
+import com.antheminc.oss.nimbus.domain.defn.Repo.Cache;
+import com.antheminc.oss.nimbus.domain.defn.Repo.Database;
+import com.antheminc.oss.nimbus.entity.AbstractEntity.IdString;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

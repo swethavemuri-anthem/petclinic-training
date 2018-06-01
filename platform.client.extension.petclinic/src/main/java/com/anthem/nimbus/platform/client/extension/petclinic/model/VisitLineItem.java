@@ -2,12 +2,12 @@ package com.anthem.nimbus.platform.client.extension.petclinic.model;
 
 import java.time.LocalDate;
 
-import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
-import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.GridColumn;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
+import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
+import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
+import com.antheminc.oss.nimbus.domain.defn.MapsTo;
+import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridColumn;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
 
 import lombok.Getter;
 import lombok.Setter;

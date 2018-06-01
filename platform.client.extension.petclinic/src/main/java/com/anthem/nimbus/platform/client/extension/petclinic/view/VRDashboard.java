@@ -3,17 +3,17 @@ package com.anthem.nimbus.platform.client.extension.petclinic.view;
 import java.util.List;
 
 import com.anthem.nimbus.platform.client.extension.petclinic.model.VisitLineItem;
-import com.anthem.oss.nimbus.core.domain.definition.Domain;
-import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
-import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
-import com.anthem.oss.nimbus.core.domain.definition.Model;
-import com.anthem.oss.nimbus.core.domain.definition.Repo;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Grid;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Page;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Tile;
+import com.antheminc.oss.nimbus.domain.defn.Domain;
+import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
+import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
+import com.antheminc.oss.nimbus.domain.defn.MapsTo;
+import com.antheminc.oss.nimbus.domain.defn.Model;
+import com.antheminc.oss.nimbus.domain.defn.Repo;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 
 import lombok.Getter;
 import lombok.Setter;

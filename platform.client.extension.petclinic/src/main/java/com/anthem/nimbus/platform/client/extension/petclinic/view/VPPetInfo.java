@@ -5,17 +5,17 @@ import java.util.List;
 
 import com.anthem.nimbus.platform.client.extension.petclinic.model.Pet;
 import com.anthem.nimbus.platform.client.extension.petclinic.model.VisitLineItem;
-import com.anthem.oss.nimbus.core.domain.definition.Execution.Config;
-import com.anthem.oss.nimbus.core.domain.definition.Executions.Configs;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Type;
-import com.anthem.oss.nimbus.core.domain.definition.Model;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Button;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.CardDetail;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.FieldValue;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Grid;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Section;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Tile;
+import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
+import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
+import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
+import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
+import com.antheminc.oss.nimbus.domain.defn.Model;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetail;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,11 +1,11 @@
 package com.anthem.nimbus.platform.client.extension.petclinic.view;
 
 import com.anthem.nimbus.platform.client.extension.petclinic.model.Visit;
-import com.anthem.oss.nimbus.core.domain.definition.Domain;
-import com.anthem.oss.nimbus.core.domain.definition.Domain.ListenerType;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
-import com.anthem.oss.nimbus.core.domain.definition.Repo;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Page;
+import com.antheminc.oss.nimbus.domain.defn.Domain;
+import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
+import com.antheminc.oss.nimbus.domain.defn.MapsTo;
+import com.antheminc.oss.nimbus.domain.defn.Repo;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 
 import lombok.Getter;
 import lombok.Setter;

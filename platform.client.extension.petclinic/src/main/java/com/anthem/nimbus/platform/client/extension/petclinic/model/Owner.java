@@ -1,6 +1,6 @@
 package com.anthem.nimbus.platform.client.extension.petclinic.model;
 
-import com.anthem.oss.nimbus.core.entity.AbstractEntity.IdString;
+import com.antheminc.oss.nimbus.entity.AbstractEntity.IdString;
 
 public class Owner extends IdString {
 	

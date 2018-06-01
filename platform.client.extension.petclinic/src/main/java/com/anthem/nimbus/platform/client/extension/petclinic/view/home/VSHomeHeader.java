@@ -3,18 +3,18 @@
  */
 package com.anthem.nimbus.platform.client.extension.petclinic.view.home;
 
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo;
-import com.anthem.oss.nimbus.core.domain.definition.MapsTo.Path;
-import com.anthem.oss.nimbus.core.domain.definition.Model;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.FieldValue;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Hints;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Hints.AlignOptions;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Label;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Link;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.Menu;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.PageHeader;
-import com.anthem.oss.nimbus.core.domain.definition.ViewConfig.PageHeader.Property;
-import com.anthem.oss.nimbus.core.entity.client.user.ClientUser;
+import com.antheminc.oss.nimbus.domain.defn.MapsTo;
+import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
+import com.antheminc.oss.nimbus.domain.defn.Model;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Hints;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Hints.AlignOptions;
+/* import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Label; DNE */
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Menu;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader.Property;
+import com.antheminc.oss.nimbus.entity.client.user.ClientUser;
 
 import lombok.Getter;
 import lombok.Setter;
