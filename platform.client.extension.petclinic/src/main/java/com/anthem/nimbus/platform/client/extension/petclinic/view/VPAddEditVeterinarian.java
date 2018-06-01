@@ -24,7 +24,7 @@ import lombok.Setter;
 @Getter @Setter
 public class VPAddEditVeterinarian {
 	
-	@Tile(title="ADD/EDIT VETERINARIAN", imgSrc="resources/icons/autocase.svg#Layer_1", size=Tile.Size.Large) 
+	@Tile(imgSrc="resources/icons/autocase.svg#Layer_1", size=Tile.Size.Large) 
 	private VTAddEditVeterinarian vtAddEditVeterinarian;
 	
 	

@@ -28,7 +28,7 @@ import lombok.Setter;
 @Getter @Setter
 public class VPPetInfo {
 	
-	@Tile(title="PET INFO", imgSrc="resources/icons/careplan.svg#Layer_1", size=Tile.Size.Large)
+	@Tile(imgSrc="resources/icons/careplan.svg#Layer_1", size=Tile.Size.Large)
 	private VTPetInfo vtPetInfo;
 	
 	@Model

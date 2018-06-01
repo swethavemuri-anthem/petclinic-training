@@ -21,28 +21,28 @@ public class VSHomeFooter {
 	 * Andrew Jo
 	 * Issue: VERSION doesn't exist in ViewConfig.FooterProperty
 	 */
-	@Link(url="#") @FooterPropery(Property.VERSION)
+	@Link(url="#")
 	private String appVersion;
 	/*
 	 * Andrew Jo
 	 * Issue: COPYRIGHT doesn't exist in ViewConfig.FooterProperty
 	 */
-	@Link(url="#") @FooterPropery(Property.COPYRIGHT)
+	@Link(url="#")
 	private String appCopyright;
 	/*
 	 * Andrew Jo
 	 * PRIVACY doesn't exist in ViewConfig.FooterProperty
 	 */
-	@Link(url="#") @FooterPropery(Property.PRIVACY)
+	@Link(url="#")
 	private String appPrivacy;
 	/*
 	 * Andrew Jo
 	 * Issue: TOU doesn't exist in ViewConfig.FooterProperty
 	 */
-	@Link(url="#") @FooterPropery(Property.TOU)
+	@Link(url="#")
 	private String appTou;
 	
-	@Link(url="#", imgSrc="verisign.png") @FooterPropery(Property.SSLCERT)
+	@Link(url="#", imgSrc="verisign.png") 
 	private String appSslCert;
 	
 }

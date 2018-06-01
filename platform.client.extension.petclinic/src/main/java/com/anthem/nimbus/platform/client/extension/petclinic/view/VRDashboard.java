@@ -29,14 +29,14 @@ import lombok.Setter;
 @Getter @Setter
 public class VRDashboard {
 
-	@Page(defaultPage=true, layout="home")
+	@Page(defaultPage=true)
 	private VPDashboard vpDashboard;
 
 	@Model
 	@Getter @Setter
 	public static class VPDashboard  {
 
-		@Tile(title = "MY VISITS", imgSrc = "resources/icons/task.svg#Layer_1", size = Tile.Size.Medium)
+		@Tile(imgSrc = "resources/icons/task.svg#Layer_1", size = Tile.Size.Medium)
         private VTMyVisits vtMyVisits;
 		
     }

@@ -31,7 +31,7 @@ import lombok.Setter;
 @Getter @Setter
 public class VPAddEditVisit {
 	
-	@Tile(title="ADD/EDIT VISIT", imgSrc="resources/icons/autocase.svg#Layer_1", size=Tile.Size.Large) 
+	@Tile(imgSrc="resources/icons/autocase.svg#Layer_1", size=Tile.Size.Large) 
 	private VTAddEditVisit vtAddEditVisit;
 
 	@Model

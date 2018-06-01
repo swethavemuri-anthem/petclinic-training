@@ -34,17 +34,17 @@ import lombok.ToString;
 @MapsTo.Type(Veterinarian.class)
 public class VRVeterinarian {
 	
-	@Page(route="veterinarianview", layout="home")
+	@Page(route="veterinarianview")
 	private VPVeterenarians vpVeterenarians;
 	
-	@Page(route="veterinarianview", defaultPage=true, layout="home")
+	@Page(route="veterinarianview", defaultPage=true)
 	private VPAddEditVeterinarian vpAddEditVeterenarian;
 
 	@Model
 	@Getter @Setter
 	public static class VPVeterenarians  {
 
-		@Tile(title = "VETERINARIANS", imgSrc = "resources/icons/task.svg#Layer_1", size = Tile.Size.Medium)
+		@Tile(imgSrc = "resources/icons/task.svg#Layer_1", size = Tile.Size.Medium)
         private VTVeterinarians vtVeterinarians;
 		
     }

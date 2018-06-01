@@ -57,7 +57,7 @@ public class VSHomeHeader {
 	@Link(url="/ui/", imgSrc="anthem-rev.svg") @Hints(AlignOptions.Left) @PageHeader(Property.LOGO)
 	private String linkHomeLogo;
 	
-	@Label @PageHeader(Property.APPTITLE)
+	@PageHeader(Property.APPTITLE)
 	private String linkCaseManagerTitle;
 
 	@Link(value=Link.Type.MENU, imgSrc="alerts.svg") @Hints(AlignOptions.Right)

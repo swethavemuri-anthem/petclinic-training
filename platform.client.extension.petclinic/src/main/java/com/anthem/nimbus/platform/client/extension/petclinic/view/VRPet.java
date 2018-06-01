@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
 
 import com.anthem.nimbus.platform.client.extension.petclinic.model.Pet;
-import com.anthem.nimbus.platform.spec.serializer.CustomLocalDateSerializer;
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
@@ -17,6 +16,7 @@ import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ButtonGroup;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Calendar;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.InputDate;
@@ -24,6 +24,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import lombok.Getter;
@@ -51,7 +52,7 @@ public class VRPet {
 	@Getter @Setter
 	public static class VPAddEditPet {
 		
-		 @Tile(title="Add/Edit PET", size = Tile.Size.Large)
+		 @Tile( size = Tile.Size.Large)
 		 private VTAddEditPet vtAddEditPet;
 	}
 	
@@ -80,8 +81,9 @@ public class VRPet {
 		@Path @TextBox @NotNull 
 		private String name;
 		
-		@Path @InputDate
-		@JsonSerialize(using=CustomLocalDateSerializer.class)
+		@Path 
+		@Calendar
+		@Label("Date of Birth")
 		private LocalDate dob;
 		
 		@ComboBox @MapsTo.Path 
