@@ -25,16 +25,16 @@ public class VisitLineItem {
 	@Path @GridColumn(hidden=true)
 	private String id;
 	
-	@Path
+	@Path @GridColumn
 	private LocalDate appointment;
 	
-	@Path
+	@Path @GridColumn
 	private String reasonForVisit;
 	
 //	@Path(value="/p/veterinarianview:<!/.m/vetId!>/vpAddEditVeterenarian/vtAddEditVeterinarian/vsAddEditVeterinarian/vfAddEditVeterinarian/fullName/_get", linked=false, detachedState=@DetachedState(loadState=LoadState.AUTO))
 //	private String vetName;
 	
-	@Path
+	@Path @GridColumn
 	private String status;
 	
 	@Configs({

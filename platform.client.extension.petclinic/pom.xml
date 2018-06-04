@@ -5,7 +5,7 @@
   <parent>
 		<groupId>com.antheminc.oss</groupId>
 		<artifactId>nimbus-parent</artifactId>
-		<version>1.0.0.M8-SNAPSHOT</version>
+		<version>1.0.0.RC1-SNAPSHOT</version>
 	</parent>
 	
 	<groupId>com.anthem.nimbus.platform</groupId>
