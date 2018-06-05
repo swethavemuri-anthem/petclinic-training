@@ -80,7 +80,9 @@ public class VPOwnerInfo {
         private String addPet;
  
         @Path(linked=false)
-        @Config(url="/vpOwnerInfo/vtOwnerInfo/vsPets/pets.m/_process?fn=_set&url=/p/pet/_search?fn=query&where=pet.ownerId.eq(<!/.d/.m/id!>)")
+       //vpVeterenarians/vtVeterinarians/vsVeterinarians/veterinarians.m/_process?fn=_set&url=/p/veterinarian/_search?fn=example
+//                @Config(url="/vpOwnerInfo/vtOwnerInfo/vsPets/pets.m/_process?fn=_set&url=/p/pet/_search?fn=example")
+        @Config(url="/vpOwnerInfo/vtOwnerInfo/vsPets/pets.m/_process?fn=_set&url=/p/pet/_search?fn=query&where=pet.ownerId.eq(<!/.m/id!>)")
         @Grid(onLoad=true, pageSize = "7")
         private List<PetLineItem> pets;
  

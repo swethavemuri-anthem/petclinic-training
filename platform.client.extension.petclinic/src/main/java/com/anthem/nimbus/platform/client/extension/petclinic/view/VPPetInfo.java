@@ -87,7 +87,7 @@ public class VPPetInfo {
 		
 		@Path(linked=false)
 		@Config(url="/vpPetInfo/vtPetInfo/vsVisits/visits.m/_process?fn=_set&url=/p/visit/_search?fn=query&where=visit.petId.eq('<!/.m/id!>')")
-		@Grid(onLoad=true, isTransient = true, pageSize = "7")
+		@Grid(onLoad=true, pageSize = "7")
 		private List<VisitLineItem> visits;
 	}
 	

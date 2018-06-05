@@ -13,6 +13,7 @@ import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Cache;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ButtonGroup;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Calendar;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.InputDate;
@@ -79,7 +80,7 @@ public class VPAddEditVisit {
 		@TextBox @Path
 		private String visitNote;
 		
-		@InputDate @Path
+		@Calendar @Path
 		private LocalDate appointment;
 		
 		@TextBox @Path

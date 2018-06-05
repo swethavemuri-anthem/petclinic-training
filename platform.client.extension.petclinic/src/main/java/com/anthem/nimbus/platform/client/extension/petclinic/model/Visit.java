@@ -10,6 +10,8 @@ import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Cache;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Database;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Calendar;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.antheminc.oss.nimbus.entity.AbstractEntity;
 import com.antheminc.oss.nimbus.entity.AbstractEntity.IdString;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -35,9 +37,17 @@ public class Visit extends AbstractEntity.IdLong{
 	
 	private String petId; //petId
 	
-	@JsonDeserialize(using = CustomLocalDateDeserializer.class) 
-	@JsonSerialize(using = CustomLocalDateSerializer.class)
+	@Calendar
+	@Label("Appointment")
 	private LocalDate appointment;
+	
+	
+	
+
+//	private String appointment;
+	
+	
+	
 	
 	private String reasonForVisit;
 	
