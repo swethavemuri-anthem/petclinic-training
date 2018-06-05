@@ -138,9 +138,9 @@ stomp:
 domain:
   model:
     basePackages: 
-      - com.anthem.nimbus.platform.client.extension.petclinic.model
-      - com.anthem.nimbus.platform.client.extension.petclinic.view
-      - com.anthem.nimbus.platform.client.extension.petclinic.view.home
+      - com.atlas.client.extension.petclinic.core
+      - com.atlas.client.extension.petclinic.view
+      - com.atlas.client.extension.petclinic.view.home
     typeClassMappings:
       java.lang.String : 
         string
