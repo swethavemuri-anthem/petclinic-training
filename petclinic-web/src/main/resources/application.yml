@@ -64,13 +64,13 @@ process:
      ([A-Za-z0-9_\\-\\*~\\?=\\.\\$]+)
   database:
     driver: 
-      oracle.jdbc.driver.OracleDriver
+      embeddedH2
     url: 
-      jdbc:oracle:thin:@//localhost:1521/xe
+      embeddedH2
     username: 
-      system
+      embeddedH2
     password: 
-      oracle
+      embeddedH2
     taskUpdateQuery:
       update ACT_RU_TASK set TASK_DEF_KEY_ = ?, NAME_ = ? WHERE ID_=?
     executionUpdateQuery:
