@@ -45,7 +45,7 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public void login(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	response.sendRedirect("/ltss/#/h/petclinicdashboard/vpDashboard");
+    	response.sendRedirect("/petclinic/#/h/petclinicdashboard/vpDashboard");
         
     }
     

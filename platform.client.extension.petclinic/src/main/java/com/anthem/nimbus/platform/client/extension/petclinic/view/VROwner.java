@@ -21,6 +21,8 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -30,6 +32,7 @@ import lombok.ToString;
 @MapsTo.Type(Owner.class)
 @Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
 @Getter @Setter @ToString(callSuper=true)
+@ViewRoot(layout = "home")
 public class VROwner {
  
     @Page(defaultPage=true)
@@ -74,15 +77,15 @@ public class VROwner {
         @ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
         private VBGAddOwnerButtonGrp vbgAddOwnerButtonGrp;
  
-        @Path @TextBox @NotNull private String firstName;
+        @Path @TextBox @NotNull @Label("First Name") private String firstName;
  
-        @Path @TextBox @NotNull private String lastName;
+        @Path @TextBox @NotNull @Label("Last Name") private String lastName;
  
-        @Path @TextBox private String address;
+        @Path @TextBox @Label("Address") private String address;
  
-        @Path @TextBox @NotNull private String city;
+        @Path @TextBox @NotNull @Label("City") private String city;
  
-        @Path @TextBox @NotNull private String telephone;
+        @Path @TextBox @NotNull @Label("Telephone") private String telephone;
  
     }
  

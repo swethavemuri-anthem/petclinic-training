@@ -6,6 +6,7 @@ import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ import lombok.Setter;
 @Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
 @MapsTo.Type(Visit.class)
 @Getter @Setter
+@ViewRoot(layout = "home")
 public class VRVisitLanding {
 
 	@Page(route="visitview", defaultPage=true)

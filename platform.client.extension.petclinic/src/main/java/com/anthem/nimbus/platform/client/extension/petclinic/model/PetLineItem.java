@@ -11,6 +11,7 @@ import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridColumn;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.LinkMenu;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -55,13 +56,16 @@ public class PetLineItem {
             @Config(url="/p/petview:<!/../id!>/_get")
         })
         @Link()
+        @Label("Edit Pet")
         private String editPet;
      
         @Configs({
             @Config(url="/p/petview:<!/../id!>/_get"),
             @Config(url="/p/petview:<!../id!>/_nav?pageId=vpPetInfo")
         })
-        @Link() private String viewVisits;
+        @Link() 
+        @Label("View Visits")
+        private String viewVisits;
     	
     }
 	

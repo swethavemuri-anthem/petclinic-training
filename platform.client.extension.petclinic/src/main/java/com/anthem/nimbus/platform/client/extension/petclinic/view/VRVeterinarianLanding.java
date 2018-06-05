@@ -16,6 +16,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -32,6 +33,7 @@ import lombok.ToString;
 @Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
 @Getter @Setter @ToString(callSuper=true)
 @MapsTo.Type(Veterinarian.class)
+@ViewRoot(layout = "home")
 public class VRVeterinarianLanding {
 	
 //	@Page

@@ -15,6 +15,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -59,6 +60,7 @@ public class VRDashboard {
 		@MapsTo.Path(linked=false)
 		@Config(url="/vpDashboard/vtMyVisits/vsMyVisits/myVisits.m/_process?fn=_set&url=/p/visit/_search?fn=example")       
 		@Grid(onLoad=true, isTransient = true, pageSize = "7")
+		@Label("My Visits")
 		private List<VisitLineItem> myVisits;
 		
     }

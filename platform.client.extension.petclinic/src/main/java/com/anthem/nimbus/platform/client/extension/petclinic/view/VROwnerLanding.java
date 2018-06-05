@@ -22,6 +22,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
 import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
@@ -72,8 +73,8 @@ public class VROwnerLanding {
     @Getter @Setter
     public static class VFSearchOwnerCriteria  {
  
-        @Path @TextBox @NotNull private String firstName;
-        @Path @TextBox private String lastName;
+        @Path @TextBox @NotNull @Label("First Name") private String firstName;
+        @Path @TextBox @Label("Last Name") private String lastName;
         @ButtonGroup
         private VBGSearchOwner vbgSearchOwner;
     }
@@ -91,7 +92,8 @@ public class VROwnerLanding {
         @Configs({
              @Config(url="/p/ownerview/_new")
         })
-        @Button(imgSrc = "add.svg", cssClass ="btn btn-icon green")
+        @Button(style=Button.Style.SECONDARY)
+        @Label("Add Owner")
         private String addOwner;
     }
  
@@ -102,6 +104,7 @@ public class VROwnerLanding {
         @MapsTo.Path(linked=false)
         @Config(url="/p/ownerlandingview/vpOwners/vtOwners/vsOwners/owners.m/_process?fn=_set&url=/p/owner/_search?fn=example")
         @Grid(onLoad=true, pageSize = "7")
+        @Label("Owners")
         private List<OwnerLineItem> owners;
     }
 }

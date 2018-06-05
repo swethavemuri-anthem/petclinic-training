@@ -10,11 +10,13 @@ import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
 import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button.Style;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetail;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -58,15 +60,16 @@ public class VPOwnerInfo {
     @Getter @Setter
     public static class VCDBOwner {
  
-        @Path @FieldValue(cols="2") private String firstName;
-        @Path @FieldValue private String lastName;
+        @Path @FieldValue(cols="2") @Label("First Name") private String firstName;
+        @Path @FieldValue @Label("Last Name") private String lastName;
  
         @FieldValue(type=FieldValue.Type.Divider)
+      
         private String divider2;
  
-        @Path @FieldValue private String address;
-        @Path @FieldValue private String city;
-        @Path @FieldValue private String telephone;
+        @Path @FieldValue @Label("Address") private String address;
+        @Path @FieldValue @Label("City") private String city;
+        @Path @FieldValue @Label("Telephone") private String telephone;
     }
  
     @Model
@@ -76,14 +79,14 @@ public class VPOwnerInfo {
         @Configs({
             @Config(url="/p/petview/_new?fn=_initEntity&target=/.m/ownerId&json=<!/.m/id!>")
         })
-        @Button(imgSrc = "add.svg", cssClass ="btn btn-icon green")
+        @Button(style=Style.SECONDARY)
+        @Label("Add Pet")
         private String addPet;
  
         @Path(linked=false)
-       //vpVeterenarians/vtVeterinarians/vsVeterinarians/veterinarians.m/_process?fn=_set&url=/p/veterinarian/_search?fn=example
-//                @Config(url="/vpOwnerInfo/vtOwnerInfo/vsPets/pets.m/_process?fn=_set&url=/p/pet/_search?fn=example")
         @Config(url="/vpOwnerInfo/vtOwnerInfo/vsPets/pets.m/_process?fn=_set&url=/p/pet/_search?fn=query&where=pet.ownerId.eq(<!/.m/id!>)")
         @Grid(onLoad=true, pageSize = "7")
+        @Label("Pets")
         private List<PetLineItem> pets;
  
     }

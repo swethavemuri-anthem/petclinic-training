@@ -24,6 +24,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -40,6 +41,7 @@ import lombok.ToString;
 @MapsTo.Type(Pet.class)
 @Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
 @Getter @Setter @ToString(callSuper=true)
+@ViewRoot(layout = "home")
 public class VRPet {
 	
 	@Page(route="petview",defaultPage=true)
@@ -79,6 +81,7 @@ public class VRPet {
 		private VBGAddPetButtonGrp vbgAddPetButtonGrp;
 		
 		@Path @TextBox @NotNull 
+		@Label("Name")
 		private String name;
 		
 		@Path 

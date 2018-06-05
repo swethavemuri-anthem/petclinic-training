@@ -20,6 +20,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.InputDate;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -61,6 +62,7 @@ public class VPAddEditVisit {
 		
 		//@Path(value="/p/petview:<!/.m/petId!>/vpPetInfo/vtPetInfo/vsPetInfo/vcdPetInfo/vcdbPet/name/_get", cache=Cache.rep_none)
 		@TextBox(readOnly=true) @Path
+		@Label("Pet Id")
 		private String petId;
 
 //		@ComboBox @Path
@@ -72,18 +74,23 @@ public class VPAddEditVisit {
 //		private LocalDateTime appointment;
 		
 		@TextBox @Path
+		@Label("Reason For Visit")
 		private String reasonForVisit;
 		
 		@TextBox @Path
+		@Label("Visit Outcome")
 		private String visitOutcome;
 		
 		@TextBox @Path
+		@Label("Visit Note")
 		private String visitNote;
 		
 		@Calendar @Path
+		@Label("Appointment")
 		private LocalDate appointment;
 		
 		@TextBox @Path
+		@Label("Status")
 		private String status;
 	}
 	

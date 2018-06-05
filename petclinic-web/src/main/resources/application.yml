@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ltss
+    name: petclinic
   h2:
     console:
       enabled: true
@@ -104,7 +104,7 @@ server:
   port: 8082
   session: 
     timeout: 1800
-  context-path: /ltss
+  context-path: /petclinic
 #  context-path: /api
 auth-server: http://localhost:8891
 security:

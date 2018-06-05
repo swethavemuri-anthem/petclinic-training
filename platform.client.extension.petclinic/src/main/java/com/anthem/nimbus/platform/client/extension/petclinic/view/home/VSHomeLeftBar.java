@@ -19,12 +19,15 @@ public class VSHomeLeftBar {
 
 
 	@Link(url="/h/petclinicdashboard/vpDashboard", imgSrc="tasksIcon") 
+	@Label("Home")
 	private String home;
 	
 	@Link(url="/h/veterinarianview/vpVeterenarians", imgSrc="documentsIcon") 
+	@Label("Veterenerians")
 	private String veterenerians;
 	
-	@Link(url="/h/ownerlandingview/vpOwners", imgSrc="caseHistoryIcon") 
+	@Link(url="/h/ownerlandingview/vpOwners", imgSrc="caseHistoryIcon")
+	@Label("Owners")
 	private String owners;
 	
 }

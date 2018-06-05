@@ -67,7 +67,7 @@ public class VSHomeHeader {
 	
 	@PageHeader(Property.APPTITLE)
 	@Paragraph
-	@Label(value = "Pet clinic")
+	@Label(value = "Pet Clinic")
 	private String title;
 //
 //	@Link(value=Link.Type.MENU, imgSrc="alerts.svg") @Hints(AlignOptions.Right)

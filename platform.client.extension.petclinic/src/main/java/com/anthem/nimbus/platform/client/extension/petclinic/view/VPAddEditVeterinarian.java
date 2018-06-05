@@ -12,6 +12,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -54,9 +55,11 @@ public class VPAddEditVeterinarian {
 		private VBGAddEditVeterinarian buttonGroup;
 		
 		@TextBox @MapsTo.Path
+		@Label("First Name")
 		private String firstName;
 		
 		@TextBox @MapsTo.Path
+		@Label("Last Name")
 		private String lastName;
 		
 		@TextBox(hidden=true) @MapsTo.Path
@@ -72,7 +75,7 @@ public class VPAddEditVeterinarian {
 	@Getter @Setter
 	public static class VBGAddEditVeterinarian {
 		
-		@Config(url="/p/veterinarianlandingview/vpVeterenarians/vtVeterinarians/vsVeterinarians/_nav?pageId=vpVeterenarians")
+		@Config(url="/p/veterinarianview/vpVeterenarians/vtVeterinarians/vsVeterinarians/_nav?pageId=vpVeterenarians")
 		@Button
 		private String cancel;
 		

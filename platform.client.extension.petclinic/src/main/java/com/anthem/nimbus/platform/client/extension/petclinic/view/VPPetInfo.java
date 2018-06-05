@@ -11,11 +11,13 @@ import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
 import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button.Style;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetail;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -65,12 +67,15 @@ public class VPPetInfo {
 	public static class VCDBPet {
 		
 		@Path @FieldValue(cols="2") 
+		@Label("Name")
 		private String name;	
 		
 		@Path @FieldValue 
+		@Label("Date Of Birth")
 		private LocalDate dob;
 		
 		@Path @FieldValue 
+		@Label("Type")
 		private String type;
 		
 	}
@@ -82,12 +87,14 @@ public class VPPetInfo {
 		@Configs({
 			@Config(url="/p/visitview/_new?fn=_initEntity&target=/.m/petId&json=\"<!/.m/id!>\"")
 	    })
-	    @Button(imgSrc = "add.svg", cssClass ="btn btn-icon green")
+	    @Button(style=Style.SECONDARY)
+		@Label("Add Visit")
 	    private String addVisit;
 		
 		@Path(linked=false)
 		@Config(url="/vpPetInfo/vtPetInfo/vsVisits/visits.m/_process?fn=_set&url=/p/visit/_search?fn=query&where=visit.petId.eq('<!/.m/id!>')")
 		@Grid(onLoad=true, pageSize = "7")
+		@Label("Visits")
 		private List<VisitLineItem> visits;
 	}
 	

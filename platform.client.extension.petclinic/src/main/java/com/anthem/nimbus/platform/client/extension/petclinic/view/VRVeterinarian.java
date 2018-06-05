@@ -18,6 +18,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -63,21 +64,17 @@ public class VRVeterinarian {
 	@Getter @Setter
 	public static class VSVeterinarians  {
 		
-//		@Configs({
-//	         @Config(url="/vpVeterenarians/vtVeterinarians/vsVeterinarians/_nav?pageId=vpAddEditVeterenarians")
-//	    })
-//	    @Button(imgSrc = "notesIcon", cssClass ="btn btn-icon green")
-//	    private String addConcern;
-		
 		@Configs({
 	         @Config(url="/p/veterinarianlandingview/_new")
 	    })
-	    @Button(imgSrc = "add.svg", cssClass ="btn btn-icon green")
+	    @Button (style = Button.Style.SECONDARY)
+		@Label("Add Veterinarian")
 	    private String addVeterinarian;
 		
 		@MapsTo.Path(linked=false)
 		@Config(url="/vpVeterenarians/vtVeterinarians/vsVeterinarians/veterinarians.m/_process?fn=_set&url=/p/veterinarian/_search?fn=example")       
 		@Grid(onLoad=true,pageSize = "7")
+		@Label("veterinarians")
 		private List<VeterinarianLineItem> veterinarians;
 		
     }

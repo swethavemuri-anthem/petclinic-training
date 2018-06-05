@@ -6,6 +6,7 @@ import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridColumn;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,9 +25,11 @@ public class VeterinarianLineItem {
 	private Long id;
 	
 	@Path @GridColumn
+	@Label("First Name")
 	private String firstName;
 	
 	@Path @GridColumn
+	@Label("Last Name")
 	private String lastName;
 	
 //	@Path
