@@ -17,17 +17,14 @@ import lombok.Setter;
 @Model @Getter @Setter
 public class VSHomeLeftBar {
 
-	@Link(url="/h/cmcaseview/vpMemberDetails", imgSrc="memberOverviewIcon")
-	@Label(value = "Member Overview")
-	private String memberOverview;
 
-	@Link(url="/pc/a/vpDashboard", imgSrc="home.svg") 
+	@Link(url="/h/petclinicdashboard/vpDashboard", imgSrc="tasksIcon") 
 	private String home;
 	
-	@Link(url="/pc/v/", imgSrc="toolbox.svg") 
+	@Link(url="/h/veterinarianview/vpVeterenarians", imgSrc="documentsIcon") 
 	private String veterenerians;
 	
-	@Link(url="/pc/o/", imgSrc="chart.svg") 
+	@Link(url="/h/ownerlandingview/vpOwners", imgSrc="caseHistoryIcon") 
 	private String owners;
 	
 }

@@ -86,9 +86,9 @@ public class VRPet {
 		@Label("Date of Birth")
 		private LocalDate dob;
 		
-		@ComboBox @MapsTo.Path 
-		@Model.Param.Values(url="Anthem/icr/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/vetSpecialty')")
-		private String type;
+//		@ComboBox @MapsTo.Path 
+//		@Model.Param.Values(url="Anthem/icr/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/vetSpecialty')")
+//		private String type;
 		
 	}
 	

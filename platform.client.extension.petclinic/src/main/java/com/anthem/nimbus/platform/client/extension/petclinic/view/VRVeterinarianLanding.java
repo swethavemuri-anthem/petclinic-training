@@ -2,6 +2,7 @@ package com.anthem.nimbus.platform.client.extension.petclinic.view;
 
 import java.util.List;
 
+import com.anthem.nimbus.platform.client.extension.petclinic.model.Veterinarian;
 import com.anthem.nimbus.platform.client.extension.petclinic.model.VeterinarianLineItem;
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
@@ -30,11 +31,14 @@ import lombok.ToString;
 @Domain(value = "veterinarianlandingview", includeListeners = {ListenerType.websocket})
 @Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
 @Getter @Setter @ToString(callSuper=true)
-//@MapsTo.Type(Veterinarian.class)
+@MapsTo.Type(Veterinarian.class)
 public class VRVeterinarianLanding {
 	
+//	@Page
+//	private VPVeterenarians vpVeterenarians;
+	
 	@Page(defaultPage=true)
-	private VPVeterenarians vpVeterenarians;
+	private VPAddEditVeterinarian vpAddEditVeterenarian;
 	
 	@Model
 	@Getter @Setter

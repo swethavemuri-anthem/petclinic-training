@@ -62,10 +62,10 @@ public class VPAddEditVisit {
 		@TextBox(readOnly=true) @Path
 		private String petId;
 
-		@ComboBox @Path
-		@NotNull
-		@Model.Param.Values(url="Anthem/icr/p/veterinarian/_search?fn=lookup&projection.mapsTo=code:id,label:lastName")
-		private String vetId;
+//		@ComboBox @Path
+//		@NotNull
+//		@Model.Param.Values(url="Anthem/icr/p/veterinarian/_search?fn=lookup&projection.mapsTo=code:id,label:lastName")
+//		private String vetId;
 		
 //		@Path
 //		private LocalDateTime appointment;

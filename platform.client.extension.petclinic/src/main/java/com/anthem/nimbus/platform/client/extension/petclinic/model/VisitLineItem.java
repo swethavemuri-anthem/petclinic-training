@@ -23,7 +23,7 @@ import lombok.Setter;
 public class VisitLineItem {
 	
 	@Path @GridColumn(hidden=true)
-	private String id;
+	private Long id;
 	
 	@Path @GridColumn
 	private LocalDate appointment;

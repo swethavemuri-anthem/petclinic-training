@@ -3,6 +3,7 @@ package com.anthem.nimbus.platform.client.extension.petclinic.view;
 import java.util.List;
 
 import com.anthem.nimbus.platform.client.extension.petclinic.model.Veterinarian;
+import com.anthem.nimbus.platform.client.extension.petclinic.model.VeterinarianLineItem;
 import com.anthem.nimbus.platform.client.extension.petclinic.model.VisitLineItem;
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
@@ -16,6 +17,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -32,13 +34,13 @@ import lombok.ToString;
 @Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
 @Getter @Setter @ToString(callSuper=true)
 @MapsTo.Type(Veterinarian.class)
+@ViewRoot(layout = "home")
 public class VRVeterinarian {
 	
-	@Page(route="veterinarianview")
+	@Page(defaultPage=true)
 	private VPVeterenarians vpVeterenarians;
 	
-	@Page(route="veterinarianview", defaultPage=true)
-	private VPAddEditVeterinarian vpAddEditVeterenarian;
+
 
 	@Model
 	@Getter @Setter
@@ -61,16 +63,22 @@ public class VRVeterinarian {
 	@Getter @Setter
 	public static class VSVeterinarians  {
 		
+//		@Configs({
+//	         @Config(url="/vpVeterenarians/vtVeterinarians/vsVeterinarians/_nav?pageId=vpAddEditVeterenarians")
+//	    })
+//	    @Button(imgSrc = "notesIcon", cssClass ="btn btn-icon green")
+//	    private String addConcern;
+		
 		@Configs({
-	         @Config(url="/vpVeterenarians/vtVeterinarians/vsVeterinarians/_nav?pageId=vpAddEditVeterenarians")
+	         @Config(url="/p/veterinarianlandingview/_new")
 	    })
 	    @Button(imgSrc = "add.svg", cssClass ="btn btn-icon green")
-	    private String addConcern;
+	    private String addVeterinarian;
 		
 		@MapsTo.Path(linked=false)
 		@Config(url="/vpVeterenarians/vtVeterinarians/vsVeterinarians/veterinarians.m/_process?fn=_set&url=/p/veterinarian/_search?fn=example")       
-		@Grid(onLoad=true, isTransient = true, pageSize = "7")
-		private List<VisitLineItem> veterinarians;
+		@Grid(onLoad=true,pageSize = "7")
+		private List<VeterinarianLineItem> veterinarians;
 		
     }
 }

@@ -62,9 +62,9 @@ public class VPAddEditVeterinarian {
 		@TextBox(hidden=true) @MapsTo.Path
 		private String fullName;
 		
-		@ComboBox @MapsTo.Path 
-		@Model.Param.Values(url="Anthem/icr/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/vetSpecialty')")
-		private String specialty;
+//		@ComboBox @MapsTo.Path 
+//		@Model.Param.Values(url="Anthem/icr/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/vetSpecialty')")
+//		private String specialty;
 	}
 	
 	
@@ -78,7 +78,7 @@ public class VPAddEditVeterinarian {
 		
 		@Configs({
 			@Config(url="/vpAddEditVeterenarian/vtAddEditVeterinarian/vsAddEditVeterinarian/vfAddEditVeterinarian/_update"),
-			@Config(url="/p/veterinarianlandingview/vpVeterenarians/vtVeterinarians/vsVeterinarians/_nav?pageId=vpVeterenarians")
+			@Config(url="/p/veterinarianview/vpVeterenarians/vtVeterinarians/vsVeterinarians/_nav?pageId=vpVeterenarians")
 		})
 		@Button(style=Button.Style.PRIMARY, type = Button.Type.submit)
 		private String Submit;

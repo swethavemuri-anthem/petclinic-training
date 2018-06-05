@@ -21,16 +21,16 @@ import lombok.Setter;
 public class VeterinarianLineItem {
 	
 	@Path @GridColumn(hidden=true)
-	private String id;
+	private Long id;
 	
-	@Path
+	@Path @GridColumn
 	private String firstName;
 	
-	@Path
+	@Path @GridColumn
 	private String lastName;
 	
-	@Path
-	private String specialty;
+//	@Path
+//	private String specialty;
 	
 	@Configs({
 		@Config(url="/p/veterinarianview:<!/id!>/_get")

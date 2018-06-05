@@ -5,6 +5,7 @@ import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Cache;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Database;
+import com.antheminc.oss.nimbus.entity.AbstractEntity;
 import com.antheminc.oss.nimbus.entity.AbstractEntity.IdString;
 
 import lombok.Getter;
@@ -18,7 +19,7 @@ import lombok.ToString;
 @Domain(value="veterinarian", includeListeners={ListenerType.persistence, ListenerType.update}) 
 @Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
 @Getter @Setter @ToString(callSuper=true)
-public class Veterinarian extends IdString {
+public class Veterinarian extends AbstractEntity.IdLong {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -26,7 +27,7 @@ public class Veterinarian extends IdString {
 	
 	private String lastName;
 	
-	private String specialty;
+//	private String specialty;
 	
 	private String fullName;
 	

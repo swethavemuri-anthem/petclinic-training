@@ -10,6 +10,7 @@ import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Cache;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Database;
+import com.antheminc.oss.nimbus.entity.AbstractEntity;
 import com.antheminc.oss.nimbus.entity.AbstractEntity.IdString;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -26,11 +27,11 @@ import lombok.ToString;
 @Domain(value="visit", includeListeners={ListenerType.persistence, ListenerType.update}) 
 @Repo(value=Database.rep_mongodb, cache=Cache.rep_device)
 @Getter @Setter @ToString(callSuper=true)
-public class Visit extends IdString{
+public class Visit extends AbstractEntity.IdLong{
 
 	private static final long serialVersionUID = 1L;
 	
-	private String vetId; //vetId
+//	private String vetId; //vetId
 	
 	private String petId; //petId
 	

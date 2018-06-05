@@ -33,7 +33,7 @@ import lombok.Setter;
 @Domain(value = "ownerlandingview", includeListeners = {ListenerType.websocket})
 @Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
 @Getter @Setter
-@ViewRoot(layout = "")
+@ViewRoot(layout = "home")
 public class VROwnerLanding {
  
     @Page(defaultPage=true)
