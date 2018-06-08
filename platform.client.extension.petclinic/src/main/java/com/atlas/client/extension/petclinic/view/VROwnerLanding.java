@@ -103,7 +103,7 @@ public class VROwnerLanding {
  
         @MapsTo.Path(linked=false)
         @Config(url="/p/ownerlandingview/vpOwners/vtOwners/vsOwners/owners.m/_process?fn=_set&url=/p/owner/_search?fn=example")
-        @Grid(onLoad=true, pageSize = "7")
+        @Grid(onLoad=true, pageSize = "5",  rowSelection=true)
         @Label("Owners")
         private List<OwnerLineItem> owners;
     }
