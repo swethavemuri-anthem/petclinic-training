@@ -20,6 +20,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.antheminc.oss.nimbus.domain.defn.extension.ParamContext;
 import com.atlas.client.extension.petclinic.core.Visit;
 
 import lombok.Getter;
@@ -73,6 +74,18 @@ public class VPAddEditVisit {
 //		@Path
 //		private LocalDateTime appointment;
 		
+		@TextBox
+		@ParamContext(enabled= false, visible = true)
+		@Path
+		@Label("Owner's name")
+		private String ownerName;
+		
+		@TextBox
+		@ParamContext(enabled= false, visible = true)
+		@Path
+		@Label("Pet's name")
+		private String petName;
+		
 		@TextBox @Path
 		@Label("Reason For Visit")
 		private String reasonForVisit;
@@ -102,8 +115,8 @@ public class VPAddEditVisit {
 		private String back;
 		
 		@Configs({
-			@Config(url="/vPAddEditVisit/vtAddEditVisit/vsAddEditVisit/vfAddEditVisit/_update")
-//			@Config(url="/p/petclinicdashboard/_nav?pageId=vpDashboard")	
+			@Config(url="/vPAddEditVisit/vtAddEditVisit/vsAddEditVisit/vfAddEditVisit/_update"),
+			@Config(url="/p/petclinicdashboard/_nav?pageId=vpDashboard")	
 		})
 		@Button(style=Button.Style.PRIMARY, type = Button.Type.submit)
 		private String Submit;

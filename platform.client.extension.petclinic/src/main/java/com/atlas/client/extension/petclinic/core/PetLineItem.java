@@ -24,13 +24,25 @@ public class PetLineItem {
     private Long id;
  
     @Path @GridColumn
+    @Label("Pet's name")
     private String name;
  
 //    @Path @GridColumn
 //    private LocalDate dob;
  
-    @Path("type") @GridColumn
+    
+    @Path("type") @GridColumn(filter=true)
     private String petType;
+    
+    @Path
+	@GridColumn(filter=true)
+    @Label("Owner's name")
+	private String ownerName;
+    
+    @Path
+    @GridColumn(filter=true)
+    @Label("Date of Birth")
+    private LocalDate dob;
  
 //    @Configs({
 //        @Config(url="/p/petview:<!/id!>/_get")

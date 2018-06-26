@@ -3,13 +3,21 @@ package com.atlas.client.extension.petclinic.core;
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.Model;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetail;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetailsGrid;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridColumn;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridRowBody;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.LinkMenu;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
@@ -21,6 +29,20 @@ public class OwnerLineItem {
     @Path @GridColumn(hidden=true) private Long id;
  
     @Path @GridColumn @Label("First Name") private String firstName;
+    
+    @GridRowBody
+    private ExpandedRowContent expandedRowContent;
+    
+    @Model @Getter @Setter
+    public static class ExpandedRowContent {
+    	
+    	@Path(linked=false)
+		@Config(url="<!#this!>.m/_process?fn=_set&url=/p/pet/_search?fn=query&where=pet.ownerId.eq(<!/../../id!>)")
+        @Grid(onLoad= true)
+//        @Label("Pets")
+        private List<PetLineItemOwnerLanding> pets;
+    }
+    
  
     @Path @GridColumn @Label("Last Name") private String lastName;
  

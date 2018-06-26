@@ -77,7 +77,7 @@ public class VPOwnerInfo {
     public static class VSPets {
     	
         @Configs({
-            @Config(url="/p/petview/_new?fn=_initEntity&target=/.m/ownerId&json=<!/.m/id!>")
+            @Config(url="/p/petview/_new?fn=_initEntity&target=/.m/ownerId&json=\"<!/.m/id!>\"&target=/.m/ownerName&json=\"<!/.m/firstName!> <!/.m/lastName!>\"")
         })
         @Button(style=Style.SECONDARY)
         @Label("Add Pet")

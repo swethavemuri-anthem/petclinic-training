@@ -5,6 +5,7 @@ import java.util.List;
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
+import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
@@ -59,7 +60,7 @@ public class VRDashboard {
 		
 		@MapsTo.Path(linked=false)
 		@Config(url="/vpDashboard/vtMyVisits/vsMyVisits/myVisits.m/_process?fn=_set&url=/p/visit/_search?fn=example")       
-		@Grid(onLoad=true, isTransient = true, pageSize = "7")
+		@Grid(onLoad=true, pageSize = "7")
 		@Label("My Visits")
 		private List<VisitLineItem> myVisits;
 		

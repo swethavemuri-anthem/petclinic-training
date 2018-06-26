@@ -29,18 +29,30 @@ public class VisitLineItem {
 	@Path @GridColumn(hidden=true)
 	private Long id;
 	
-	@Path @GridColumn
-	@Label("Appointment")
+	// Add Pet Name and Owner columns
+	
+	@Path @GridColumn(filter=true)
+	@Label("Appointment Date")
 	private LocalDate appointment;
 	
-	@Path @GridColumn
+	@Path
+	@GridColumn(filter=true)
+	@Label("Owner's name")
+	private String ownerName;
+	
+	@Path
+	@GridColumn(filter=true)
+	@Label("Pet's name")
+	private String petName;
+	
+	@Path @GridColumn(filter=true)
 	@Label("Reason For Visit")
 	private String reasonForVisit;
 	
 //	@Path(value="/p/veterinarianview:<!/.m/vetId!>/vpAddEditVeterenarian/vtAddEditVeterinarian/vsAddEditVeterinarian/vfAddEditVeterinarian/fullName/_get", linked=false, detachedState=@DetachedState(loadState=LoadState.AUTO))
 //	private String vetName;
 	
-	@Path @GridColumn
+	@Path @GridColumn(filter=true)
 	@Label("Status")
 	private String status;
 	

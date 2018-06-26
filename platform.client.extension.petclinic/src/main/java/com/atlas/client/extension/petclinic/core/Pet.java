@@ -34,7 +34,6 @@ public class Pet extends AbstractEntity.IdLong {
 	
 	private String name;
 	
-	
 	@Calendar
 	@Label("Date of Birth")
 	private LocalDate dob;
@@ -42,5 +41,7 @@ public class Pet extends AbstractEntity.IdLong {
 	private String type;
 
 	private Long ownerId;
+	
+	private String ownerName;
 
 }
