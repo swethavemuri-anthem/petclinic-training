@@ -26,7 +26,9 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.atlas.client.extension.petclinic.core.Pet;
+import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.timeSelection;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.atlas.client.extension.petclinic.core.CodeValueTypes.petType;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -81,7 +83,7 @@ public class VRPet {
 		private VBGAddPetButtonGrp vbgAddPetButtonGrp;
 		
 		@Path @TextBox @NotNull 
-		@Label("Name")
+		@Label("Pet's Name")
 		private String name;
 		
 		@Path 
@@ -89,9 +91,10 @@ public class VRPet {
 		@Label("Date of Birth")
 		private LocalDate dob;
 		
-//		@ComboBox @MapsTo.Path 
+		@ComboBox @MapsTo.Path 
 //		@Model.Param.Values(url="Anthem/icr/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/vetSpecialty')")
-//		private String type;
+		@Model.Param.Values(value = petType.class)
+		private String type;
 		
 	}
 	

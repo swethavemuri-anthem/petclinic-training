@@ -66,9 +66,13 @@ public class VPPetInfo {
 	@Getter @Setter
 	public static class VCDBPet {
 		
-		@Path @FieldValue(cols="2") 
-		@Label("Name")
-		private String name;	
+		@Path @FieldValue
+		@Label("Owner's name")
+		private String ownerName;
+		
+		@Path("name") @FieldValue(cols="2") 
+		@Label("Pet's Name")
+		private String petName;	
 		
 		@Path @FieldValue 
 		@Label("Date Of Birth")
@@ -77,7 +81,6 @@ public class VPPetInfo {
 		@Path @FieldValue 
 		@Label("Type")
 		private String type;
-		
 	}
 	
 	@Model
@@ -85,7 +88,9 @@ public class VPPetInfo {
 	public static class VSVisits {
 		
 		@Configs({
-			@Config(url="/p/visitview/_new?fn=_initEntity&target=/.m/petId&json=\"<!/.m/id!>\"")
+			@Config(url="/p/visitview/_new?fn=_initEntity&target=/.m/petId&json=\"<!/.m/id!>\""
+					+ "&target=/.m/petName&json=\"<!/.m/name!>\""
+					+ "&target=/.m/ownerName&json=\"<!/.m/ownerName!>\"")
 	    })
 	    @Button(style=Style.SECONDARY)
 		@Label("Add Visit")

@@ -41,8 +41,9 @@ public class Visit extends AbstractEntity.IdLong{
 	@Label("Appointment")
 	private LocalDate appointment;
 	
+	private String ownerName;
 	
-	
+	private String petName;
 
 //	private String appointment;
 	
