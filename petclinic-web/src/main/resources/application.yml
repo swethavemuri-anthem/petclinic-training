@@ -14,7 +14,7 @@ spring:
   data:
     mongodb:
       host: localhost
-      database: ltss
+      database: petclinic
       port: 27017
   activiti:
     processDefinitionLocationPrefix:  classpath*:process-defs/**.xml
