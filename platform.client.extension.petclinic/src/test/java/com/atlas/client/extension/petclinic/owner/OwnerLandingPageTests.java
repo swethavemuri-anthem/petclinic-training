@@ -60,11 +60,9 @@ public class OwnerLandingPageTests extends AbstractPetclinicSpringTest {
 		assertThat(actual.get(0).getTelephone()).isEqualTo(expected.getTelephone());
 		// TODO Validate pets
 	}
-	
-	// This scenario when run in the application generates a StackOverFlow exception
-	// however the test case fails to render the same exception.
+
 	@Test
-	public void t02_stackOverFlowIssue() {
+	public void t02_ownersGrid_selectFirstAndViewCalls() {
 		
 		// invoke get call on owners to load grid data
 		this.ownerLandingPage.getOwners();

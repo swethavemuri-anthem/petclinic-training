@@ -12,6 +12,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button.Style;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetail;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Hints;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
@@ -20,6 +21,7 @@ import com.antheminc.oss.nimbus.domain.defn.extension.ActivateConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.atlas.client.extension.petclinic.core.Owner;
 import com.atlas.client.extension.petclinic.core.PetLineItem;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -46,15 +48,21 @@ public class VPOwnerInfo {
     }
  
     @Model @Getter @Setter
-    @MapsTo.Type(Owner.class)
     public static class VSHistory {
 
+    	@Form
+    	private VFForm vfForm;
+    }
+    
+    @Model @Getter @Setter
+    public static class VFForm {
+    	
     	@ActivateConditional(when = "state == null || state == 'inactive'", targetPath = {
     		"/../showHistory"
     	})
     	@ActivateConditional(when = "state == 'active'", targetPath = {
     		"/../hideHistory",
-    		"/../calls"
+    		"/../callHistory"
     	})
     	private String gridVisibility;
     	
@@ -70,8 +78,15 @@ public class VPOwnerInfo {
 		@Hints(Hints.AlignOptions.Right)
 		private String hideHistory;
 		
-		@Config(url = "<!#this!>.m/_process?fn=_set&url=/p/owner:<!/.m/id!>/calls/_get?b=$state")
-		@Grid(onLoad = true, isTransient = true)
+		private CallHistory callHistory;
+    }
+
+    @Model @Getter @Setter
+    @MapsTo.Type(Owner.class)
+    public static class CallHistory {
+    	
+    	@Config(url = "<!#this!>.m/_process?fn=_set&url=/p/owner:<!/.m/id!>/calls/_get?b=$state")
+		@Grid(onLoad = true, isTransient = true, pageSize = "5")
 		@Label("Call History")
 		@MapsTo.Path(linked = false)
 		private List<CallLineItem> calls;

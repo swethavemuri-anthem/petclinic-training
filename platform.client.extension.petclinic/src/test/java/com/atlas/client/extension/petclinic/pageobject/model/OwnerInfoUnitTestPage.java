@@ -47,7 +47,7 @@ public class OwnerInfoUnitTestPage extends UnitTestPage {
 	public List<CallLineItem> getCalls() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
 				.addRefId(this.getRefId())
-				.addNested("/vpOwnerInfo/vtOwnerInfo/vsHistory/calls")
+				.addNested("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/callHistory/calls")
 				.addAction(Action._get)
 				.getMock();
 		
@@ -56,21 +56,21 @@ public class OwnerInfoUnitTestPage extends UnitTestPage {
 	}
 	
 	public Param<List<CallLineItem>> getParam_calls() {
-		return this.getParam("/vpOwnerInfo/vtOwnerInfo/vsHistory/calls");
+		return this.getParam("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/callHistory/calls");
 	}
 	
 	public Param<String> getParam_hideCallHistory() {
-		return this.getParam("/vpOwnerInfo/vtOwnerInfo/vsHistory/hideHistory");
+		return this.getParam("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/hideHistory");
 	}
 	
 	public Param<String> getParam_showCallHistory() {
-		return this.getParam("/vpOwnerInfo/vtOwnerInfo/vsHistory/showHistory");
+		return this.getParam("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/showHistory");
 	}
 	
 	public OwnerInfoUnitTestPage clickHideCallHistory() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
 				.addRefId(this.getRefId())
-				.addNested("/vpOwnerInfo/vtOwnerInfo/vsHistory/hideHistory")
+				.addNested("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/hideHistory")
 				.addAction(Action._get)
 				.getMock();
 		
@@ -81,7 +81,7 @@ public class OwnerInfoUnitTestPage extends UnitTestPage {
 	public OwnerInfoUnitTestPage clickShowCallHistory() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
 				.addRefId(this.getRefId())
-				.addNested("/vpOwnerInfo/vtOwnerInfo/vsHistory/showHistory")
+				.addNested("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/showHistory")
 				.addAction(Action._get)
 				.getMock();
 		
