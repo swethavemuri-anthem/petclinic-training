@@ -47,7 +47,7 @@ public class OwnerInfoUnitTestPage extends UnitTestPage {
 	public List<CallLineItem> getCalls() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
 				.addRefId(this.getRefId())
-				.addNested("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/callHistory/calls")
+				.addNested("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/callSection/gridWrapper/calls")
 				.addAction(Action._get)
 				.getMock();
 		
@@ -56,21 +56,21 @@ public class OwnerInfoUnitTestPage extends UnitTestPage {
 	}
 	
 	public Param<List<CallLineItem>> getParam_calls() {
-		return this.getParam("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/callHistory/calls");
+		return this.getParam("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/callSection/gridWrapper/calls");
 	}
 	
 	public Param<String> getParam_hideCallHistory() {
-		return this.getParam("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/hideHistory");
+		return this.getParam("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/callSection/hideHistory");
 	}
 	
 	public Param<String> getParam_showCallHistory() {
-		return this.getParam("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/showHistory");
+		return this.getParam("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/callSection/showHistory");
 	}
 	
 	public OwnerInfoUnitTestPage clickHideCallHistory() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
 				.addRefId(this.getRefId())
-				.addNested("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/hideHistory")
+				.addNested("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/callSection/hideHistory")
 				.addAction(Action._get)
 				.getMock();
 		
@@ -81,7 +81,7 @@ public class OwnerInfoUnitTestPage extends UnitTestPage {
 	public OwnerInfoUnitTestPage clickShowCallHistory() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
 				.addRefId(this.getRefId())
-				.addNested("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/showHistory")
+				.addNested("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/callSection/showHistory")
 				.addAction(Action._get)
 				.getMock();
 		

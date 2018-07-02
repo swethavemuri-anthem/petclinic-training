@@ -15,13 +15,13 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Hints;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Paragraph;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.extension.ActivateConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.atlas.client.extension.petclinic.core.Owner;
 import com.atlas.client.extension.petclinic.core.PetLineItem;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -57,12 +57,20 @@ public class VPOwnerInfo {
     @Model @Getter @Setter
     public static class VFForm {
     	
+    	@Paragraph(cssClass="font-weight-bold")
+    	@Label("Calls")
+    	private CallSection callSection;
+    }
+
+    @Model @Getter @Setter
+    public static class CallSection {
+    	
     	@ActivateConditional(when = "state == null || state == 'inactive'", targetPath = {
     		"/../showHistory"
     	})
     	@ActivateConditional(when = "state == 'active'", targetPath = {
     		"/../hideHistory",
-    		"/../callHistory"
+    		"/../gridWrapper"
     	})
     	private String gridVisibility;
     	
@@ -78,12 +86,12 @@ public class VPOwnerInfo {
 		@Hints(Hints.AlignOptions.Right)
 		private String hideHistory;
 		
-		private CallHistory callHistory;
+		private CallHistoryGridWrapper gridWrapper;
     }
-
+    
     @Model @Getter @Setter
     @MapsTo.Type(Owner.class)
-    public static class CallHistory {
+    public static class CallHistoryGridWrapper {
     	
     	@Config(url = "<!#this!>.m/_process?fn=_set&url=/p/owner:<!/.m/id!>/calls/_get?b=$state")
 		@Grid(onLoad = true, isTransient = true, pageSize = "5")
