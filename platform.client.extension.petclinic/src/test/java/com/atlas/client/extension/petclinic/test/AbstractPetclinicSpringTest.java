@@ -27,39 +27,39 @@ import com.atlas.client.extension.petclinic.core.Owner;
  * @author Tony Lopez
  *
  */
-public class AbstractPetclinicSpringTest extends BaseSpringTest {
-	
-	public final static String CLIENT_ID = "petclinic";
-	public final static String CLIENT_ORG = "org";
-	
-	public static final class CollectionNames {
-		public static final String OWNER = "owner";
-	}
-	
-	@Before
-	public void t0_init() {		
-		Owner owner = new Owner();
-		owner.setId(1L);
-		owner.setFirstName("Jane");
-		owner.setLastName("Doe");
-		owner.setAddress("742 Evergreen Terrace");
-		owner.setCity("Springfield");
-		owner.setTelephone("867-5309");
-		
-//		owner.setCalls(new ArrayList<>());
-//		owner.getCalls().add(new OwnerCall());
-//		owner.getCalls().add(new OwnerCall());
-//		owner.getCalls().get(0).setReceived(true);
-//		owner.getCalls().get(0).setReason("Schedule pet haircut");
-//		owner.getCalls().get(1).setReceived(false);
-//		owner.getCalls().get(1).setReason("N/A");
-		
-		this.mongo.insert(owner, CollectionNames.OWNER);
-	}
-	
-	@After
-	public void t0_teardown() {
-		this.mongo.getDb().dropDatabase();
-		this.sessionProvider.clear();
-	}
-}
+//public class AbstractPetclinicSpringTest extends BaseSpringTest {
+//	
+//	public final static String CLIENT_ID = "petclinic";
+//	public final static String CLIENT_ORG = "org";
+//	
+//	public static final class CollectionNames {
+//		public static final String OWNER = "owner";
+//	}
+//	
+//	@Before
+//	public void t0_init() {		
+//		Owner owner = new Owner();
+//		owner.setId(1L);
+//		owner.setFirstName("Jane");
+//		owner.setLastName("Doe");
+//		owner.setAddress("742 Evergreen Terrace");
+//		owner.setCity("Springfield");
+//		owner.setTelephone("867-5309");
+//		
+////		owner.setCalls(new ArrayList<>());
+////		owner.getCalls().add(new OwnerCall());
+////		owner.getCalls().add(new OwnerCall());
+////		owner.getCalls().get(0).setReceived(true);
+////		owner.getCalls().get(0).setReason("Schedule pet haircut");
+////		owner.getCalls().get(1).setReceived(false);
+////		owner.getCalls().get(1).setReason("N/A");
+//		
+//		this.mongo.insert(owner, CollectionNames.OWNER);
+//	}
+//	
+//	@After
+//	public void t0_teardown() {
+//		this.mongo.getDb().dropDatabase();
+//		this.sessionProvider.clear();
+//	}
+//}
