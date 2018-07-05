@@ -21,7 +21,7 @@ import org.junit.After;
 import org.junit.Before;
 
 import com.atlas.client.extension.petclinic.core.Owner;
-import com.atlas.client.extension.petclinic.core.OwnerCall;
+//import com.atlas.client.extension.petclinic.core.OwnerCall;
 
 /**
  * @author Tony Lopez
@@ -46,13 +46,13 @@ public class AbstractPetclinicSpringTest extends BaseSpringTest {
 		owner.setCity("Springfield");
 		owner.setTelephone("867-5309");
 		
-		owner.setCalls(new ArrayList<>());
-		owner.getCalls().add(new OwnerCall());
-		owner.getCalls().add(new OwnerCall());
-		owner.getCalls().get(0).setReceived(true);
-		owner.getCalls().get(0).setReason("Schedule pet haircut");
-		owner.getCalls().get(1).setReceived(false);
-		owner.getCalls().get(1).setReason("N/A");
+//		owner.setCalls(new ArrayList<>());
+//		owner.getCalls().add(new OwnerCall());
+//		owner.getCalls().add(new OwnerCall());
+//		owner.getCalls().get(0).setReceived(true);
+//		owner.getCalls().get(0).setReason("Schedule pet haircut");
+//		owner.getCalls().get(1).setReceived(false);
+//		owner.getCalls().get(1).setReason("N/A");
 		
 		this.mongo.insert(owner, CollectionNames.OWNER);
 	}
