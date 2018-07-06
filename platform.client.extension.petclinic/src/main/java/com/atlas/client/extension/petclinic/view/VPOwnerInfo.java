@@ -59,6 +59,8 @@ public class VPOwnerInfo {
     	
     	@Paragraph(cssClass="font-weight-bold")
     	@Label("Calls")
+    	private String headerCallSection;
+    	
     	private CallSection callSection;
     }
 

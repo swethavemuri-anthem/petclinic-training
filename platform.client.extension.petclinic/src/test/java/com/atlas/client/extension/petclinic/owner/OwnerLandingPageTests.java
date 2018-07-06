@@ -26,7 +26,6 @@ import org.junit.runners.MethodSorters;
 
 import com.atlas.client.extension.petclinic.core.Owner;
 import com.atlas.client.extension.petclinic.core.OwnerLineItem;
-import com.atlas.client.extension.petclinic.pageobject.model.OwnerInfoUnitTestPage;
 import com.atlas.client.extension.petclinic.pageobject.model.OwnerLandingUnitTestPage;
 import com.atlas.client.extension.petclinic.test.AbstractPetclinicSpringTest;
 
@@ -50,6 +49,7 @@ public class OwnerLandingPageTests extends AbstractPetclinicSpringTest {
 		
 		Owner expected = this.mongo.findById(1L, Owner.class);
 		
+		// Validate owners
 		List<OwnerLineItem> actual = this.ownerLandingPage.getOwners();
 		assertThat(actual).isNotNull();
 		assertThat(actual.size()).isEqualTo(1);
@@ -58,24 +58,5 @@ public class OwnerLandingPageTests extends AbstractPetclinicSpringTest {
 		assertThat(actual.get(0).getLastName()).isEqualTo(expected.getLastName());
 		assertThat(actual.get(0).getOwnerCity()).isEqualTo(expected.getCity());
 		assertThat(actual.get(0).getTelephone()).isEqualTo(expected.getTelephone());
-		// TODO Validate pets
-	}
-
-	@Test
-	public void t02_ownersGrid_selectFirstAndViewCalls() {
-		
-		// invoke get call on owners to load grid data
-		this.ownerLandingPage.getOwners();
-		
-		// Click to navigate to owner info page for first owner
-		OwnerInfoUnitTestPage ownerInfoPage = this.ownerLandingPage.clickOwnerInfo(0);
-		
-		// invoke get call on owner calls to load data into calls grid.
-		ownerInfoPage.getCalls();
-		
-		// Toggle the calls grid
-		ownerInfoPage
-			.clickShowCallHistory()
-			.clickHideCallHistory();
 	}
 }

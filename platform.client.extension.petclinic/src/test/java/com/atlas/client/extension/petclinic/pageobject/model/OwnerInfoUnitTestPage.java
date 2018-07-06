@@ -21,9 +21,9 @@ import org.springframework.mock.web.MockHttpServletRequest;
 
 import com.antheminc.oss.nimbus.context.BeanResolverStrategy;
 import com.antheminc.oss.nimbus.domain.cmd.Action;
-import com.antheminc.oss.nimbus.domain.model.state.EntityState.ListParam;
 import com.antheminc.oss.nimbus.domain.model.state.EntityState.Param;
 import com.antheminc.oss.nimbus.test.domain.support.utils.MockHttpRequestBuilder;
+import com.atlas.client.extension.petclinic.core.PetLineItem;
 import com.atlas.client.extension.petclinic.pageobject.core.UnitTestPage;
 import com.atlas.client.extension.petclinic.view.CallLineItem;
 
@@ -52,6 +52,17 @@ public class OwnerInfoUnitTestPage extends UnitTestPage {
 				.getMock();
 		
 		Param<List<CallLineItem>> response = extractResponse(request, null);
+		return response.getLeafState();
+	}
+	
+	public List<PetLineItem> getPets() {
+		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
+				.addRefId(this.getRefId())
+				.addNested("/vpOwnerInfo/vtOwnerInfo/vsPets/pets")
+				.addAction(Action._get)
+				.getMock();
+		
+		Param<List<PetLineItem>> response = extractResponse(request, null);
 		return response.getLeafState();
 	}
 	

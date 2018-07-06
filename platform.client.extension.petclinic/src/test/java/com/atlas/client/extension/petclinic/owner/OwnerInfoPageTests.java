@@ -17,17 +17,15 @@ package com.atlas.client.extension.petclinic.owner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import com.atlas.client.extension.petclinic.core.Owner;
-import com.atlas.client.extension.petclinic.core.OwnerCall;
+import com.atlas.client.extension.petclinic.core.PetLineItem;
 import com.atlas.client.extension.petclinic.pageobject.model.OwnerInfoUnitTestPage;
 import com.atlas.client.extension.petclinic.test.AbstractPetclinicSpringTest;
 import com.atlas.client.extension.petclinic.view.CallLineItem;
@@ -50,10 +48,23 @@ public class OwnerInfoPageTests extends AbstractPetclinicSpringTest {
 	@Test
 	public void t01_callsGrid_dataValidation() {
 		
-		// Validate the call data is making it to the grid
-		List<CallLineItem> actual = (List<CallLineItem>) this.ownerInfoPage.getCalls();
-		assertThat(actual).isNotNull();
-		assertThat(actual.size()).isEqualTo(2);
+		// Validate pets data
+		List<PetLineItem> pets = this.ownerInfoPage.getPets();
+		assertThat(pets).isNotNull();
+		assertThat(pets.size()).isEqualTo(1);
+		assertThat(pets.get(0).getName()).isEqualTo("Fido");
+		assertThat(pets.get(0).getPetType()).isEqualTo("Dog - Chihuahua");
+		assertThat(pets.get(0).getOwnerName()).isEqualTo("Jane Doe");
+		assertThat(pets.get(0).getDob()).isEqualTo(LocalDate.of(2001, 01, 21));
+		
+		// Validate the call data
+		List<CallLineItem> calls = this.ownerInfoPage.getCalls();
+		assertThat(calls).isNotNull();
+		assertThat(calls.size()).isEqualTo(2);
+		assertThat(calls.get(0).isReceived()).isTrue();
+		assertThat(calls.get(0).getReason()).isEqualTo("Schedule pet haircut");
+		assertThat(calls.get(1).isReceived()).isFalse();
+		assertThat(calls.get(1).getReason()).isEqualTo("N/A");
 	}
 	
 	@Test

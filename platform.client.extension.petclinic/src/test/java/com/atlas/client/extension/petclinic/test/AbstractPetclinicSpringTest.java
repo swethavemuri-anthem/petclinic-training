@@ -15,6 +15,7 @@
  */
 package com.atlas.client.extension.petclinic.test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.junit.After;
@@ -22,6 +23,7 @@ import org.junit.Before;
 
 import com.atlas.client.extension.petclinic.core.Owner;
 import com.atlas.client.extension.petclinic.core.OwnerCall;
+import com.atlas.client.extension.petclinic.core.Pet;
 
 /**
  * @author Tony Lopez
@@ -34,6 +36,7 @@ public class AbstractPetclinicSpringTest extends BaseSpringTest {
 	
 	public static final class CollectionNames {
 		public static final String OWNER = "owner";
+		public static final String PET = "pet";
 	}
 	
 	@Before
@@ -55,6 +58,16 @@ public class AbstractPetclinicSpringTest extends BaseSpringTest {
 		owner.getCalls().get(1).setReason("N/A");
 		
 		this.mongo.insert(owner, CollectionNames.OWNER);
+		
+		Pet pet = new Pet();
+		pet.setId(1L);
+		pet.setOwnerId(1L);
+		pet.setName("Fido");
+		pet.setType("Dog - Chihuahua");
+		pet.setOwnerName("Jane Doe");
+		pet.setDob(LocalDate.of(2001, 01, 21));
+		
+		this.mongo.insert(pet, CollectionNames.PET);
 	}
 	
 	@After
