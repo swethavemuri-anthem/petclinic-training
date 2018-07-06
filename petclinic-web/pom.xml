@@ -5,10 +5,10 @@
  	<parent>
 		<groupId>com.antheminc.oss</groupId>
 		<artifactId>nimbus-parent</artifactId>
-		<version>1.1.1.BUILD-SNAPSHOT</version>
+		<version>1.1.2.BUILD-SNAPSHOT</version>
 	</parent>
   <properties>
-  	<nimbus.version>1.1.1.BUILD-SNAPSHOT</nimbus.version>
+  	<nimbus.version>1.1.2.BUILD-SNAPSHOT</nimbus.version>
   </properties>
   <groupId>com.anthem.petclinic.web</groupId>
   <artifactId>petclinic-web</artifactId>
@@ -36,8 +36,8 @@
 		<scope>test</scope>
 	</dependency>
 	<dependency>
-		<groupId>com.atlas.client.extension</groupId>
-		<artifactId>com.atlas.client.extension.petclinic</artifactId>
+		<groupId>com.anthem.client.extension</groupId>
+		<artifactId>com.anthem.client.extension.petclinic</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 		<exclusions>
 			<exclusion>
