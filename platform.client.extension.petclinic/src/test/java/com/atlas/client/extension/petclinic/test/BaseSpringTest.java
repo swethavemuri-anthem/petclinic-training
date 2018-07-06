@@ -40,7 +40,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest(classes=TestApplication.class)
 @ActiveProfiles("test")
 @Import(BPMEngineConfig.class)
-public class BaseSpringTest {
+public abstract class BaseSpringTest {
 
 	@Autowired
 	protected WebActionController controller;

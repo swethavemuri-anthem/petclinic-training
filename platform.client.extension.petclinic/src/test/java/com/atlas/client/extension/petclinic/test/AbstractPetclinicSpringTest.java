@@ -29,7 +29,7 @@ import com.atlas.client.extension.petclinic.core.Pet;
  * @author Tony Lopez
  *
  */
-public class AbstractPetclinicSpringTest extends BaseSpringTest {
+public abstract class AbstractPetclinicSpringTest extends BaseSpringTest {
 	
 	public final static String CLIENT_ID = "petclinic";
 	public final static String CLIENT_ORG = "org";
