@@ -19,8 +19,8 @@ import org.springframework.mock.web.MockHttpServletRequest;
 
 import com.antheminc.oss.nimbus.context.BeanResolverStrategy;
 import com.antheminc.oss.nimbus.domain.cmd.Action;
+import com.antheminc.oss.nimbus.test.domain.support.pageobject.UnitTestPage;
 import com.antheminc.oss.nimbus.test.domain.support.utils.MockHttpRequestBuilder;
-import com.atlas.client.extension.petclinic.pageobject.core.UnitTestPage;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
