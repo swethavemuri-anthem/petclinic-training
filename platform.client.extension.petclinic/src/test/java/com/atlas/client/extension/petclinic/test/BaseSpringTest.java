@@ -36,32 +36,32 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author Tony Lopez
  *
  */
-//@RunWith(SpringRunner.class)
-//@SpringBootTest(classes=TestApplication.class)
-//@ActiveProfiles("test")
-//@Import(BPMEngineConfig.class)
-//public class BaseSpringTest {
-//
-//	@Autowired
-//	protected WebActionController controller;
-//	
-//	@Autowired
-//	protected MongoTemplate mongo;
-//	
-//	@Autowired
-//	protected ObjectMapper objectMapper;
-//	
-//	@Autowired
-//	public SessionProvider sessionProvider;
-//	
-//	@Autowired
-//	protected RestTemplate restTemplate;
-//	
-//	@Autowired
-//	protected BeanResolverStrategy beanResolver;
-//	
-//	@Before
-//	public void t0_init() {
-//		
-//	}
-//}
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes=TestApplication.class)
+@ActiveProfiles("test")
+@Import(BPMEngineConfig.class)
+public abstract class BaseSpringTest {
+
+	@Autowired
+	protected WebActionController controller;
+	
+	@Autowired
+	protected MongoTemplate mongo;
+	
+	@Autowired
+	protected ObjectMapper objectMapper;
+	
+	@Autowired
+	public SessionProvider sessionProvider;
+	
+	@Autowired
+	protected RestTemplate restTemplate;
+	
+	@Autowired
+	protected BeanResolverStrategy beanResolver;
+	
+	@Before
+	public void t0_init() {
+		
+	}
+}

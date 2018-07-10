@@ -15,51 +15,64 @@
  */
 package com.atlas.client.extension.petclinic.test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
 
 import com.atlas.client.extension.petclinic.core.Owner;
-
+import com.atlas.client.extension.petclinic.core.OwnerCall;
+import com.atlas.client.extension.petclinic.core.Pet;
 
 /**
  * @author Tony Lopez
  *
  */
-//public class AbstractPetclinicSpringTest extends BaseSpringTest {
-//	
-//	public final static String CLIENT_ID = "petclinic";
-//	public final static String CLIENT_ORG = "org";
-//	
-//	public static final class CollectionNames {
-//		public static final String OWNER = "owner";
-//	}
-//	
-//	@Before
-//	public void t0_init() {		
-//		Owner owner = new Owner();
-//		owner.setId(1L);
-//		owner.setFirstName("Jane");
-//		owner.setLastName("Doe");
-//		owner.setAddress("742 Evergreen Terrace");
-//		owner.setCity("Springfield");
-//		owner.setTelephone("867-5309");
-//		
-////		owner.setCalls(new ArrayList<>());
-////		owner.getCalls().add(new OwnerCall());
-////		owner.getCalls().add(new OwnerCall());
-////		owner.getCalls().get(0).setReceived(true);
-////		owner.getCalls().get(0).setReason("Schedule pet haircut");
-////		owner.getCalls().get(1).setReceived(false);
-////		owner.getCalls().get(1).setReason("N/A");
-//		
-//		this.mongo.insert(owner, CollectionNames.OWNER);
-//	}
-//	
-//	@After
-//	public void t0_teardown() {
-//		this.mongo.getDb().dropDatabase();
-//		this.sessionProvider.clear();
-//	}
-//}
+public abstract class AbstractPetclinicSpringTest extends BaseSpringTest {
+	
+	public final static String CLIENT_ID = "petclinic";
+	public final static String CLIENT_ORG = "org";
+	
+	public static final class CollectionNames {
+		public static final String OWNER = "owner";
+		public static final String PET = "pet";
+	}
+	
+	@Before
+	public void t0_init() {		
+		Owner owner = new Owner();
+		owner.setId(1L);
+		owner.setFirstName("Jane");
+		owner.setLastName("Doe");
+		owner.setAddress("742 Evergreen Terrace");
+		owner.setCity("Springfield");
+		owner.setTelephone("867-5309");
+		
+		owner.setCalls(new ArrayList<>());
+		owner.getCalls().add(new OwnerCall());
+		owner.getCalls().add(new OwnerCall());
+		owner.getCalls().get(0).setReceived(true);
+		owner.getCalls().get(0).setReason("Schedule pet haircut");
+		owner.getCalls().get(1).setReceived(false);
+		owner.getCalls().get(1).setReason("N/A");
+		
+		this.mongo.insert(owner, CollectionNames.OWNER);
+		
+		Pet pet = new Pet();
+		pet.setId(1L);
+		pet.setOwnerId(1L);
+		pet.setName("Fido");
+		pet.setType("Dog - Chihuahua");
+		pet.setOwnerName("Jane Doe");
+		pet.setDob(LocalDate.of(2001, 01, 21));
+		
+		this.mongo.insert(pet, CollectionNames.PET);
+	}
+	
+	@After
+	public void t0_teardown() {
+		this.mongo.getDb().dropDatabase();
+		this.sessionProvider.clear();
+	}
+}
