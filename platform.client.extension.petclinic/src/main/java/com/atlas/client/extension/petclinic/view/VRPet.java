@@ -18,17 +18,14 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ButtonGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Calendar;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.InputDate;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
-import com.atlas.client.extension.petclinic.core.Pet;
-import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.timeSelection;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.petType;
+import com.atlas.client.extension.petclinic.core.Pet;
 
 import lombok.Getter;
 import lombok.Setter;

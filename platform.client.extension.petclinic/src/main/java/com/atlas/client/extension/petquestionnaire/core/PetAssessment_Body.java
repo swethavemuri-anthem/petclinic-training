@@ -7,23 +7,24 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
+import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.Model.Param.Values;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Calendar;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CheckBoxGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FileUpload;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Radio;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Signature;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextArea;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.extension.ActivateConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ActivateConditionals;
+import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.antheminc.oss.nimbus.domain.defn.extension.EnableConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional;
-import com.antheminc.oss.nimbus.domain.defn.extension.VisibleConditional;
-import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional.Condition;
+import com.antheminc.oss.nimbus.domain.defn.extension.VisibleConditional;
 import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.AllTest;
 import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.InboundReason;
 import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.InboundType;
@@ -34,8 +35,6 @@ import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.VisitReas
 import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.YNType;
 import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.YesTest;
 import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.timeSelection;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Signature;
-import com.atlas.client.extension.petquestionnaire.core.IgnoreCopy;
 
 import lombok.Data;
 import lombok.Getter;

@@ -2,8 +2,8 @@ package com.atlas.client.extension.petquestionnaire.core;
 
 import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
-import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional.GROUP_1;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional.ValidationScope;
 

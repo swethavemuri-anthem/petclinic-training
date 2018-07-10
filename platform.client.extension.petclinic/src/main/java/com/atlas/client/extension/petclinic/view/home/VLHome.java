@@ -6,13 +6,12 @@ package com.atlas.client.extension.petclinic.view.home;
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Model;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Initialize;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section.Type;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Cache;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Database;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section.Type;
 
 import lombok.Getter;
 import lombok.Setter;
