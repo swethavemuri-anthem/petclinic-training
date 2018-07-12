@@ -11,7 +11,7 @@ import com.antheminc.oss.nimbus.domain.model.config.ParamValue;
  */
 public class CodeValueTypes {
 	
-    public static class petType implements Source {
+	public static class petType implements Source {
     	@Override
 		public List<ParamValue> getValues(String paramPath) {
 			List<ParamValue> values = new ArrayList<>();
@@ -22,6 +22,18 @@ public class CodeValueTypes {
 			values.add(new ParamValue("Turtle", "Turle"));
 			values.add(new ParamValue("Yeti", "Yeti"));
 			values.add(new ParamValue("Other", "Other"));
+			return values;
+		}
+    }
+	
+	public static class OwnerNotificationPreferences implements Source {
+    	@Override
+		public List<ParamValue> getValues(String paramPath) {
+			List<ParamValue> values = new ArrayList<>();
+			values.add(new ParamValue("do_not_send_notifications", "Do Not Send Notifications"));
+			values.add(new ParamValue("email", "Email"));
+			values.add(new ParamValue("phyiscal_mail", "Mail"));
+			values.add(new ParamValue("text", "Text"));
 			return values;
 		}
     }

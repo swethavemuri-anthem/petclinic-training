@@ -27,8 +27,14 @@ public class Owner extends AbstractEntity.IdLong {
     private String address;
  
     private String city;
+    
+    private String state;
+    
+    private String zip;
  
     private String telephone;
+    
+    private String email;
     
 //    private String petName;
  
