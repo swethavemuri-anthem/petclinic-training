@@ -4,7 +4,11 @@
 package com.atlas.client.extension.petclinic.view.home;
 
 import com.antheminc.oss.nimbus.domain.defn.Model;
+import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.MenuLink;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section.Type;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 
 import lombok.Getter;
@@ -18,15 +22,16 @@ import lombok.Setter;
 public class VSHomeLeftBar {
 
 
-	@Link(url="/h/petclinicdashboard/vpDashboard", imgSrc="tasksIcon") 
+	@MenuLink(url="petclinicdashboard/vpDashboard", imgSrc="tasksIcon") 
 	@Label("Home")
 	private String home;
 	
-	@Link(url="/h/veterinarianview/vpVeterenarians", imgSrc="documentsIcon") 
-	@Label("Veterenerians")
-	private String veterenerians;
+	@MenuLink(url="veterinarianview/vpVeterenarians", imgSrc="caseHistoryIcon")
+	@Label("Veterenerians 1")
+	private String vets;
 	
-	@Link(url="/h/ownerlandingview/vpOwners", imgSrc="caseHistoryIcon")
+	
+	@MenuLink(url="ownerlandingview/vpOwners", imgSrc="caseHistoryIcon")
 	@Label("Owners")
 	private String owners;
 	

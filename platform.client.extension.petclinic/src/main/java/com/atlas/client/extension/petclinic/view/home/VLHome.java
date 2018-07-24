@@ -32,7 +32,7 @@ public class VLHome {
 		private VSHomeHeader vsHomeHeader;
 		
 		
-		@Section(Type.LEFTBAR) 
+		@Section(Type.MENUPANEL) 
 		private VSHomeLeftBar vsHomeLeftBar;
 
 	}
