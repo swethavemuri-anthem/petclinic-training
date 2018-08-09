@@ -1,0 +1,99 @@
+spring:
+  application:
+    name: petclinic-auth
+  h2:
+    console:
+      enabled: true
+      path: /console/
+  data:
+    mongodb:
+      host: localhost
+      database: petclinic
+      port: 27017
+  activiti:
+    processDefinitionLocationPrefix:  classpath*:process-defs/**.xml
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+  sqldatasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+logging:
+  file: ${HOME}/Documents/nimbuslogs/${spring.application.name}.log
+  level:
+    reactor.io.net.impl.netty.tcp: DEBUG
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } [%X{SESSIONID:- }] --- [%t] %-40.40logger{39} : %replace(%replace(%m){'\n', ''}){'\r', ''} %n${LOG_EXCEPTION_CONVERSION_WORD: %wEx}"  
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } [%X{SESSIONID:- }] --- [%t] %-40.40logger{39} : %replace(%replace(%m){'\n', ''}){'\r', ''} %n${LOG_EXCEPTION_CONVERSION_WORD: %wEx}"
+  
+#logging.level.org.springframework=DEBUG
+ 
+process:
+  key:
+    regex:
+     ([A-Za-z0-9_\\-\\*~\\?=\\.\\$]+)
+  database:
+    driver: 
+      embeddedH2
+    url: 
+      embeddedH2
+    username: 
+      embeddedH2
+    password: 
+      embeddedH2
+    taskUpdateQuery:
+      update ACT_RU_TASK set TASK_DEF_KEY_ = ?, NAME_ = ? WHERE ID_=?
+    executionUpdateQuery:
+      update ACT_RU_EXECUTION set ACT_ID_ = ?  WHERE ID_=? AND ACT_ID_=?   
+  history:
+    level: 
+      full
+  definitions:
+   - classpath*:process-defs/**.xml
+  rules:
+   - rules/**.drl  
+  customDeployers:
+
+platform:
+  config:
+    cookies:
+      gateway:
+        name: GATEWAYSESSIONID
+        path: /
+    
+      api:
+        name: APISESSIONID
+        path: /
+
+      sticky:
+        name: STICKYSERVERID
+        path: /
+    secure:
+      regex: "^[a-zA-Z0-9<>()\\[\\]@/: &.=?,$#_-]{1,1000}" 
+server:
+  port: 8084
+  session: 
+    timeout: 300000
+#  context-path: /petclinic-auth
+#  context-path: /api
+
+domain:
+  model:
+    basePackages: 
+      - com.antheminc.oss.nimbus.entity
+      - com.atlas.client.extension.petclinic.user
+    typeClassMappings:
+      java.lang.String : 
+        string
+    includeFilter: ['a','b']
+    persistenceStrategy: ATOMIC
+  action: abc
+   
+model:
+  persistence:
+    strategy:
+      mode:
+        ATOMIC
+search:
+  threshold:
+    50
