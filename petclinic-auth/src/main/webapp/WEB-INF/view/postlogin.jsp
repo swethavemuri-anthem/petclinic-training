@@ -47,29 +47,14 @@
 						</c:forEach>
 				</form:select>
 			</div>
-			<%-- <c:set var="selectedorg" value="${selectedorg}"/>
-			selected org : <c:out value="${selectedorg}"/>
-			<div class="formHolder">
-				<form:label path="app">App</form:label> 
-				<c:forEach items="${orgappMap}" var="entry">
-					<c:if test="${selectedorg == entry.key}">
-						<form:select path= "app" name="app" style ="width: 200px">
-							<c:forEach var="apps" items="${entry.value}">
-								<form:option value="">Select</form:option>
-								<form:option value="${apps.key}">${apps.key}</form:option>
-							</c:forEach>
-							
-							<form:option value="LTSS">HRS</form:option>
-							<form:option value="NICU">NICU</form:option>
-						</form:select>
-					</c:if>			
-				</c:forEach> --%>
+			
 			<div class="formHolder">
 				<form:label path="app">App</form:label> 
 				<form:select path= "app" name="app" style ="width: 200px">
 					<form:option value="">Select</form:option>
-					<form:option value="LTSS">HRS</form:option>
-					<form:option value="NICU">NICU</form:option>
+					<form:option value="petzoo">Pet Zoo</form:option>
+					<form:option value="littlepugs">Little Pugs</form:option>
+					<form:option value="petmd">PetMD</form:option>
 				</form:select>
 			</div>
 			
@@ -81,16 +66,5 @@
 	</div>
 </body>
 
-<script type="text/javascript">
-var selectedorg;
-var orgselectedapps;
-
-$(document).ready(function() {
-	$("#org").change( function(){
-		selectedorg = $("#org").value;
-		alert('selected org '+selectedorg);
-	}
-}
-</script>
 
 </html>

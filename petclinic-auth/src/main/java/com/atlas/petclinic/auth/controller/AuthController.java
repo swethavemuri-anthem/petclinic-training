@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,13 +29,13 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.antheminc.oss.nimbus.domain.session.SessionProvider;
 import com.antheminc.oss.nimbus.entity.client.user.ClientUser;
-import com.antheminc.oss.nimbus.entity.client.user.SelectedClientEntity;
 import com.atlas.petclinic.auth.config.ClientUserDetailsImpl;
 import com.atlas.petclinic.auth.config.ClientUserDetailsServiceImpl;
 import com.atlas.petclininc.auth.utils.JWTAuthTokenUtil;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 
 /**
@@ -62,15 +63,15 @@ public class AuthController {
 		return login;
 	}
 	/**
-	 * ANTM
+	 * petsmart
 	 * 	|
-	 * 	-->	GBD	
+	 * 	-->	petshop	
 	 * 			|
-	 * 			--> NICU
-	 * 			--> LTSS
-	 * 	--> COMM
+	 * 			--> petzoo
+	 * 			--> littlepugs
+	 * 	--> petcare
 	 * 			|
-	 * 			--> HRS
+	 * 			--> petmd
 	 * 
 	 * @param model
 	 * @return
@@ -91,20 +92,21 @@ public class AuthController {
 		ModelAndView login = new ModelAndView("postlogin", "selectedcliententity", new SelectedClientEntity());
 		
 		Map<String, List<String>> orgappMap = new HashMap<>();
-		List<String> gbdapp = new ArrayList<>();
-		gbdapp.add("LTSS");
-		gbdapp.add("NICU");
+		List<String> petshopapp = new ArrayList<>();
+		petshopapp.add("petzoo");
+		petshopapp.add("littlepugs");
 		
-		List<String> commapp = new ArrayList<>();
-		commapp.add("HRS");
+		List<String> petcareapp = new ArrayList<>();
+		petcareapp.add("petmd");
 		
-		orgappMap.put("GBD", gbdapp);
-		orgappMap.put("COMM", commapp);
+		orgappMap.put("petshop", petshopapp);
+		orgappMap.put("petcare", petcareapp);
 		
-		model.addAttribute("client", "Anthem");
+		model.addAttribute("client", "petsmart");
 		model.addAttribute("orgs", orgappMap);
 		
 		// In actual implementation - need to get the orgs and apps from the client user hierarchy
+		// command url should follow /{clientcode}/{leaf-org-id}/{appcode}
 		// ClientUserDetails userDetails = userDetailsService.getClientUserDetails();
 		// ClientUser cu = userDetails.getAuthenticatedClientUser();
     		return login;
@@ -170,6 +172,20 @@ public class AuthController {
     public static class LoginUser {
     	private String username;
     	private String password;
+    }
+    
+    @Getter @Setter  @ToString
+    public static class SelectedClientEntity {
+    	
+    	@NotNull
+    	private String client; // /anthem
+    	
+    	@NotNull
+    	private String org; // gbd/fep or /comm/fep
+    	
+    	@NotNull
+    	private String app; // nicu
+    	
     }
     	
 }
