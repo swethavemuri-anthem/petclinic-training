@@ -3,7 +3,6 @@ package com.atlas.client.extension.petclinic.core;
 import java.time.LocalDate;
 
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
-import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.Model;
@@ -19,42 +18,29 @@ import lombok.Setter;
 @Getter @Setter
 public class PetLineItem {
 	
-    @Path @GridColumn(hidden=true)
+    @GridColumn(hidden=true)
+    @Path
     private Long id;
  
-    @Path @GridColumn
-    @Label("Pet's name")
+    @Label("Name")
+    @GridColumn
+    @Path
     private String name;
  
-//    @Path @GridColumn
-//    private LocalDate dob;
- 
-    
-    @Path("type") @GridColumn(filter=true)
+    @Label("Type")
+    @GridColumn(filter=true)
+    @Path("type")
     private String petType;
     
+    @Label("Owner Name")
+    @GridColumn(filter=true)
     @Path
-	@GridColumn(filter=true)
-    @Label("Owner's name")
 	private String ownerName;
     
-    @Path
-    @GridColumn(filter=true)
     @Label("Date of Birth")
-    private LocalDate dob;
- 
-//    @Configs({
-//        @Config(url="/p/petview:<!/id!>/_get")
-//    })
-//    @Link()
-//    private String editPet;
-// 
-//    @Configs({
-//        @Config(url="/p/petview:<!/id!>/_get"),
-//        @Config(url="/p/petview:<!/id!>/_nav?pageId=vpPetInfo")
-//    })
-//    @Link() private String viewVisits;
-    
+    @GridColumn(filter=true)
+    @Path
+    private LocalDate dob;    
     
     @LinkMenu
     private VLMCaseItemLinks vlmCaseItemLinks;
@@ -63,19 +49,15 @@ public class PetLineItem {
     @Getter @Setter
     public static class VLMCaseItemLinks {
     	
-        @Configs({
-            @Config(url="/p/petview:<!/../id!>/_get")
-        })
-        @Link()
-        @Label("Edit Pet")
+    	@Label("Edit Pet")
+        @Link
+        @Config(url="/p/petview:<!/../id!>/_get")
         private String editPet;
      
-        @Configs({
-            @Config(url="/p/petview:<!/../id!>/_get"),
-            @Config(url="/p/petview:<!../id!>/_nav?pageId=vpPetInfo")
-        })
-        @Link() 
-        @Label("View Visits")
+    	@Label("View Visits")
+        @Link
+        @Config(url="/p/petview:<!/../id!>/_get")
+        @Config(url="/p/petview:<!../id!>/_nav?pageId=vpPetInfo")
         private String viewVisits;
     	
     }

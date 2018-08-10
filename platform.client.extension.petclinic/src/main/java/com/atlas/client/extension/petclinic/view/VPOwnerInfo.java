@@ -3,8 +3,6 @@ package com.atlas.client.extension.petclinic.view;
 import java.util.List;
 
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
-import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
-import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
 import com.antheminc.oss.nimbus.domain.defn.Model;
@@ -26,15 +24,13 @@ import com.atlas.client.extension.petclinic.core.PetLineItem;
 import lombok.Getter;
 import lombok.Setter;
 
-@Model
-@Getter @Setter
+@Model @Getter @Setter
 public class VPOwnerInfo {
  
     @Tile(imgSrc="resources/icons/careplan.svg#Layer_1", size=Tile.Size.Large)
     private VTOwnerInfo vtOwnerInfo;
  
-    @Model
-    @Getter @Setter
+    @Model @Getter @Setter
     public static class VTOwnerInfo {
  
         @Section
@@ -57,8 +53,8 @@ public class VPOwnerInfo {
     @Model @Getter @Setter
     public static class VFForm {
     	
-    	@Paragraph(cssClass="font-weight-bold")
     	@Label("Calls")
+    	@Paragraph(cssClass="font-weight-bold")
     	private String headerCallSection;
     	
     	private CallSection callSection;
@@ -76,34 +72,33 @@ public class VPOwnerInfo {
     	})
     	private String gridVisibility;
     	
+    	@Label("Show Call History")
     	@Button(cssClass = "text-sm-right")
-		@Config(url = "<!#this!>/../gridVisibility/_replace?rawPayload=\"active\"")
-		@Label("Show Call History")
 		@Hints(Hints.AlignOptions.Right)
+    	@Config(url = "<!#this!>/../gridVisibility/_replace?rawPayload=\"active\"")
 		private String showHistory;
 
+    	@Label("Hide Call History")
 		@Button(cssClass = "text-sm-right")
-		@Config(url = "<!#this!>/../gridVisibility/_replace?rawPayload=\"inactive\"")
-		@Label("Hide Call History")
 		@Hints(Hints.AlignOptions.Right)
+		@Config(url = "<!#this!>/../gridVisibility/_replace?rawPayload=\"inactive\"")
 		private String hideHistory;
 		
 		private CallHistoryGridWrapper gridWrapper;
     }
     
+    @Type(Owner.class)
     @Model @Getter @Setter
-    @MapsTo.Type(Owner.class)
     public static class CallHistoryGridWrapper {
     	
-    	@Config(url = "<!#this!>.m/_process?fn=_set&url=/p/owner:<!/.m/id!>/calls/_get?b=$state")
+    	@Label("Call History")
 		@Grid(onLoad = true, isTransient = true, pageSize = "5")
-		@Label("Call History")
-		@MapsTo.Path(linked = false)
+		@Path(linked = false)
+    	@Config(url = "<!#this!>.m/_process?fn=_set&url=/p/owner:<!/.m/id!>/calls/_get?b=$state")
 		private List<CallLineItem> calls;
     }
     
-    @Model
-    @Getter @Setter
+    @Model @Getter @Setter
     public static class VSOwnerInfo {
  
         @CardDetail(cssClass="contentBox right-gutter bg-alternate mt-0")
@@ -111,8 +106,7 @@ public class VPOwnerInfo {
  
     }
  
-    @Model
-    @Getter @Setter
+    @Model @Getter @Setter
     public static class VCDOwnerInfo {
  
         @CardDetail.Body
@@ -123,27 +117,42 @@ public class VPOwnerInfo {
     @Getter @Setter
     public static class VCDBOwner {
  
-        @Path @FieldValue(cols="2") @Label("First Name") private String firstName;
-        @Path @FieldValue @Label("Last Name") private String lastName;
+    	@Label("First Name")
+        @FieldValue(cols="2")
+    	@Path
+        private String firstName;
+        
+        @Label("Last Name")
+        @FieldValue
+        @Path
+        private String lastName;
  
         @FieldValue(type=FieldValue.Type.Divider)
-      
         private String divider2;
  
-        @Path @FieldValue @Label("Address") private String address;
-        @Path @FieldValue @Label("City") private String city;
-        @Path @FieldValue @Label("Telephone") private String telephone;
+        @Label("Address")
+        @FieldValue
+        @Path
+        private String address;
+
+        @Label("City")
+        @FieldValue
+        @Path
+        private String city;
+        
+        @Label("Telephone")
+        @FieldValue
+        @Path
+        private String telephone;
     }
  
-    @Model
-    @Getter @Setter
+    @Model @Getter @Setter
     public static class VSPets {
     	
-        @Configs({
-            @Config(url="/p/petview/_new?fn=_initEntity&target=/.m/ownerId&json=\"<!/.m/id!>\"&target=/.m/ownerName&json=\"<!/.m/firstName!> <!/.m/lastName!>\"")
-        })
-        @Button(style=Style.SECONDARY)
-        @Label("Add Pet")
+    	@Label("Add Pet")
+    	@Button(style=Style.SECONDARY)
+        @Config(url="/p/petview/_new?fn=_initEntity&target=/.m/ownerId&json=\"<!/.m/id!>\"&target=/.m/ownerName&json=\"<!/.m/firstName!> <!/.m/lastName!>\"")
+        @Config(url="/p/petview/_nav?pageId=vpAddEditPet")
         private String addPet;
  
         @Path(linked=false)

@@ -6,7 +6,6 @@ import javax.validation.constraints.NotNull;
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
-import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
@@ -38,14 +37,16 @@ import lombok.ToString;
 
 @Domain(value = "ownerview", includeListeners = {ListenerType.websocket})
 @MapsTo.Type(Owner.class)
-@Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
+@Repo(value = Repo.Database.rep_none, cache = Repo.Cache.rep_device)
 @Getter @Setter @ToString(callSuper=true)
 @ViewRoot(layout = "home")
 public class VROwner {
  
+	@Label("Add Owner")
     @Page(defaultPage=true)
     private VPAddEditOwner vpAddEditOwner;
  
+	@Label("Owner Info")
     @Page
     private VPOwnerInfo vpOwnerInfo;
  
@@ -53,12 +54,11 @@ public class VROwner {
     @Getter @Setter
     public static class VPAddEditOwner {
  
-         @Tile(size = Tile.Size.Large)
+         @Tile
          private VTAddEditOwner vtAddEditOwner;
     }
  
-    @Model
-    @Getter @Setter
+    @Model @Getter @Setter
     public static class VTAddEditOwner {
  
         @Header(size=Header.Size.H3)
@@ -71,9 +71,9 @@ public class VROwner {
         private VSAddEditOwner vsAddEditOwner;
     }
  
-    @Model
-    @Getter @Setter
+    @Model @Getter @Setter
     public static class VSAddEditOwner {
+    	
         @Form(cssClass="twoColumn")
         private VFAddEditOwner vfAddEditOwner;
     }
@@ -85,24 +85,7 @@ public class VROwner {
         @ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
         private VBGAddOwnerButtonGrp vbgAddOwnerButtonGrp;
         
-        private NameInfo nameInfo;
-        
-        @Label("Notification Preference")
-        @NotNull
-        @ComboBox(postEventOnChange = true)
-        @Values(OwnerNotificationPreferences.class)
-        @ValidateConditional(when = "state == 'phyiscal_mail'", scope = ValidationScope.CHILDREN, targetPath = "../contactInfo", targetGroup = GROUP_1.class)
-        @ValidateConditional(when = "state == 'email'", 		scope = ValidationScope.CHILDREN, targetPath = "../contactInfo", targetGroup = GROUP_3.class)
-        private String notificationPreference;
-        
-        private ContactInfo contactInfo;
-    }
-    
-    @Type(Owner.class)
-    @Getter @Setter
-    public static class NameInfo {
-    	
-    	@Label("First Name")
+        @Label("First Name")
     	@TextBox
     	@NotNull
     	@Path
@@ -123,13 +106,30 @@ public class VROwner {
         @CheckBox(postEventOnChange = true)
         @ValidateConditional(when = "state == true", scope = ValidationScope.SIBLING, targetGroup = GROUP_1.class)
         private boolean shouldUseNickname;
-    }
-    
-    @Type(Owner.class)
-    @Getter @Setter
-    public static class ContactInfo {
-    	
-    	@Path 
+        
+        @Label("Notification Preference")
+        @NotNull
+        @ComboBox(postEventOnChange = true)
+        @Values(OwnerNotificationPreferences.class)
+        @ValidateConditional(when = "state == 'phyiscal_mail'", scope = ValidationScope.CHILDREN, targetGroup = GROUP_1.class, targetPath = { 
+        		"../address",
+        		"../city",
+        		"../state",
+        		"../zip",
+        		"../telephone",
+        		"../email"
+        })
+        @ValidateConditional(when = "state == 'email'", scope = ValidationScope.CHILDREN, targetGroup = GROUP_3.class, targetPath = {
+        		"../address",
+        		"../city",
+        		"../state",
+        		"../zip",
+        		"../telephone",
+        		"../email"
+        })
+        private String notificationPreference;
+        
+        @Path 
     	@TextBox 
     	@Label("Address")
     	@NotNull(groups = { GROUP_1.class })
@@ -166,26 +166,24 @@ public class VROwner {
         private String email;
     }
  
-    @Model
-    @Getter @Setter
+    @Model @Getter @Setter
     public static class VBGAddOwnerButtonGrp {
  
-        @Configs({
-            @Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_update"),
-            @Config(url="/p/ownerlandingview/_nav?pageId=vpOwners")
-        })
-        @Button(style = Button.Style.PRIMARY,type=Button.Type.submit)
+    	@Label("Submit")
+        @Button(style = Button.Style.PRIMARY, type=Button.Type.submit)
+        @Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_update")
+        @Config(url="/p/ownerlandingview/_nav?pageId=vpOwners")
         private String submit;
  
-        @Configs({
-            @Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_update"),
-            @Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_nav?pageId=vpOwnerInfo")
-        })
-        @Button(style = Button.Style.PRIMARY,type=Button.Type.submit)
+    	@Label("Update")
+        @Button(style = Button.Style.PRIMARY, type=Button.Type.submit)
+        @Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_update")
+        @Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_nav?pageId=vpOwnerInfo")
         private String update;
  
+    	@Label("Cancel")
+        @Button(style = Button.Style.PLAIN, type = Button.Type.reset) 
         @Config(url="/p/ownerlandingview/_nav?pageId=vpOwners")
-        @Button(style = Button.Style.PLAIN,type = Button.Type.reset)
         private String cancel;
     }
  

@@ -4,6 +4,7 @@
 package com.atlas.client.extension.petclinic.view.home;
 
 import com.antheminc.oss.nimbus.domain.defn.Model;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Breadcrumb;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Hints;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Hints.AlignOptions;
 /* import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Label; DNE */
@@ -33,6 +34,5 @@ public class VSHomeHeader {
 	@Paragraph
 	@Label(value = "Pet Clinic")
 	private String title;
-
 	
 }

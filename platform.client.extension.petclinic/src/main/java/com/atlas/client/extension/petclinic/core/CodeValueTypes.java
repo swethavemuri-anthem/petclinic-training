@@ -38,4 +38,14 @@ public class CodeValueTypes {
 		}
     }
 
+	public static class NoteTypes implements Source {
+    	@Override
+		public List<ParamValue> getValues(String paramPath) {
+			List<ParamValue> values = new ArrayList<>();
+			values.add(new ParamValue("general", "General Note"));
+			values.add(new ParamValue("owner", "Note about Owner"));
+			values.add(new ParamValue("visit", "Note about Visit"));
+			return values;
+		}
+    }
 }

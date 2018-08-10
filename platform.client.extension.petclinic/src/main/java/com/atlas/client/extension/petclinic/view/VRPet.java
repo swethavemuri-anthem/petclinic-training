@@ -7,11 +7,11 @@ import javax.validation.constraints.NotNull;
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
-import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
 import com.antheminc.oss.nimbus.domain.defn.Model;
+import com.antheminc.oss.nimbus.domain.defn.Model.Param.Values;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ButtonGroup;
@@ -35,17 +35,22 @@ import lombok.ToString;
  * @author Swetha Vemuri
  *
  */
-
-@Domain(value = "petview", includeListeners = {ListenerType.websocket})
+@Domain(value = "petview", includeListeners = { ListenerType.websocket })
 @MapsTo.Type(Pet.class)
-@Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
-@Getter @Setter @ToString(callSuper=true)
+@Repo(value=Repo.Database.rep_none, cache=Repo.Cache.rep_device)
+@Getter @Setter @ToString(callSuper = true)
 @ViewRoot(layout = "home")
 public class VRPet {
 	
-	@Page(route="petview",defaultPage=true)
+	@Label("Pets")
+	@Page(route="petview")
+	private VPAllPets vpAllPets;
+	
+	@Label("Add/Edit Pet")
+	@Page(route="petview")
 	private VPAddEditPet vpAddEditPet;
 	
+	@Label("Pet Info")
 	@Page(route="petview")
 	private VPPetInfo vpPetInfo;
 	
@@ -53,21 +58,20 @@ public class VRPet {
 	@Getter @Setter
 	public static class VPAddEditPet {
 		
-		 @Tile( size = Tile.Size.Large)
+		 @Tile(size = Tile.Size.Large)
 		 private VTAddEditPet vtAddEditPet;
 	}
 	
-	@Model
-	@Getter @Setter
+	@Model @Getter @Setter
 	public static class VTAddEditPet {
     	
         @Section
         private VSAddEditPet vsAddEditPet;
 	}
 	
-	@Model
-	@Getter @Setter
+	@Model @Getter @Setter
 	public static class VSAddEditPet {
+		
 		@Form(cssClass="twoColumn")
 		private VFAddEditPet vfAddEditPet;
 	}
@@ -79,36 +83,35 @@ public class VRPet {
 		@ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
 		private VBGAddPetButtonGrp vbgAddPetButtonGrp;
 		
-		@Path @TextBox @NotNull 
 		@Label("Pet's Name")
+		@TextBox
+		@NotNull
+		@Path
 		private String name;
 		
-		@Path 
-		@Calendar
 		@Label("Date of Birth")
+		@Calendar
+		@Path 
 		private LocalDate dob;
 		
-		@ComboBox @MapsTo.Path 
-//		@Model.Param.Values(url="Anthem/icr/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/vetSpecialty')")
-		@Model.Param.Values(value = petType.class)
+		@ComboBox 
+//		@Values(url="Anthem/icr/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/vetSpecialty')")
+		@Values(value = petType.class)
+		@Path
 		private String type;
 		
 	}
 	
-	@Model
-	@Getter @Setter
+	@Model @Getter @Setter
 	public static class VBGAddPetButtonGrp {
 		
-		@Configs({
-			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update"),
-			@Config(url="/p/ownerview:<!/.m/ownerId!>/_get"),
-			@Config(url="/p/ownerview:<!/.m/ownerId!>/_nav?pageId=vpOwnerInfo")
-		})
-		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit)
+		@Label("Submit")
+		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit, browserBack = true)
+		@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
 		private String submit;
 	
-		@Config(url="/p/ownerview:<!/.m/ownerId!>/_nav?pageId=vpOwnerInfo")
-		@Button(style = Button.Style.PLAIN,type = Button.Type.reset)
+		@Label("Cancel")
+		@Button(style = Button.Style.PLAIN, type = Button.Type.reset, browserBack = true)
 		private String cancel;
 	}
 	

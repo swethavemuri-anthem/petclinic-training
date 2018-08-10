@@ -25,17 +25,16 @@ import lombok.Setter;
 @Getter @Setter
 public class VLHome {
 
+	@Page
+	private VPHome vpHome;
+	
 	@Model @Getter @Setter
 	public static class VPHome {
 		
 		@Section(Type.HEADER) 
 		private VSHomeHeader vsHomeHeader;
 		
-		
 		@Section(Type.MENUPANEL) 
 		private VSHomeLeftBar vsHomeLeftBar;
-
 	}
-	
-	@Page private VPHome vpHome;
 }

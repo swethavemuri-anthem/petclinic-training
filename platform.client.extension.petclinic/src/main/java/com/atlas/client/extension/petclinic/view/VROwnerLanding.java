@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
-import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.Model;
@@ -30,24 +29,23 @@ import lombok.Setter;
  
  
 @Domain(value = "ownerlandingview", includeListeners = {ListenerType.websocket})
-@Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
+@Repo(value = Repo.Database.rep_none, cache=Repo.Cache.rep_device)
 @Getter @Setter
 @ViewRoot(layout = "home")
 public class VROwnerLanding {
  
-    @Page(defaultPage=true)
+	@Label("Owners")
+	@Page(defaultPage=true)
     private VPOwners vpOwners;
  
-    @Model
-    @Getter @Setter
+    @Model @Getter @Setter
     public static class VPOwners  {
  
-        @Tile(imgSrc = "resources/icons/task.svg#Layer_1", size = Tile.Size.Medium)
+        @Tile(imgSrc = "resources/icons/task.svg#Layer_1")
         private VTOwners vtOwners;
     }
  
-    @Model
-    @Getter @Setter
+    @Model @Getter @Setter
     public static class VTOwners  {
  
         @Section
@@ -71,38 +69,43 @@ public class VROwnerLanding {
     @Getter @Setter
     public static class VFSearchOwnerCriteria  {
  
-        @Path @TextBox @NotNull @Label("First Name") private String firstName;
-        @Path @TextBox @Label("Last Name") private String lastName;
+    	@Label("First Name")
+    	@NotNull
+        @TextBox
+        @Path
+        private String firstName;
+        
+        @Label("Last Name")
+        @TextBox
+        @Path
+        private String lastName;
+        
         @ButtonGroup
         private VBGSearchOwner vbgSearchOwner;
     }
  
-    @Model
-    @Getter @Setter
+    @Model @Getter @Setter
     public static class VBGSearchOwner {
-        @Configs({
-            @Config(url="/vpOwners/vtOwners/vsSearchOwnerCriteria/vfSearchOwnerCriteria/_update"),
-            @Config(url="/vpOwners/vtOwners/vsOwners/owners.m/_process?fn=_set&url=/p/owner/_search?fn=example")
-        })
-        @Button(style=Button.Style.PRIMARY,type=Button.Type.submit)
+
+    	@Label("Search")
+        @Button(style = Button.Style.PRIMARY, type = Button.Type.submit)
+        @Config(url = "/vpOwners/vtOwners/vsSearchOwnerCriteria/vfSearchOwnerCriteria/_update")
+        @Config(url = "/vpOwners/vtOwners/vsOwners/owners.m/_process?fn=_set&url=/p/owner/_search?fn=example")
         private String search;
  
-        @Configs({
-             @Config(url="/p/ownerview/_new")
-        })
-        @Button(style=Button.Style.SECONDARY)
         @Label("Add Owner")
+        @Button(style = Button.Style.SECONDARY)
+        @Config(url = "/p/ownerview/_new")
         private String addOwner;
     }
  
-    @Model
-    @Getter @Setter
+    @Model @Getter @Setter
     public static class VSOwners  {
  
-        @MapsTo.Path(linked=false)
-        @Config(url="<!#this!>/.m/_process?fn=_set&url=/p/owner/_search?fn=example")
-        @Grid(onLoad=true, pageSize = "5",  rowSelection=false, expandableRows = true)
-        @Label("Owners")
+    	@Label("Owners")
+        @Grid(onLoad = true, pageSize = "5",  rowSelection = false, expandableRows = true)
+    	@Path(linked = false)
+    	@Config(url="<!#this!>/.m/_process?fn=_set&url=/p/owner/_search?fn=example")
         private List<OwnerLineItem> owners;
     }
 }
