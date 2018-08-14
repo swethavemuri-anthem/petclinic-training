@@ -52,6 +52,7 @@ public class PetLineItem {
     	@Label("Edit Pet")
         @Link
         @Config(url="/p/petview:<!/../id!>/_get")
+    	@Config(url="/p/petview:<!../id!>/_nav?pageId=vpAddEditPet")
         private String editPet;
      
     	@Label("View Visits")

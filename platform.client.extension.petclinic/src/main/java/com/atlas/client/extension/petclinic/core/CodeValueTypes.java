@@ -26,6 +26,26 @@ public class CodeValueTypes {
 		}
     }
 	
+	public static class DogCategory implements Source {
+    	@Override
+		public List<ParamValue> getValues(String paramPath) {
+			List<ParamValue> values = new ArrayList<>();
+			values.add(new ParamValue("Sporting", "Sporting Group"));
+            values.add(new ParamValue("Hound", "Hound Group"));
+			return values;
+		}
+    }
+	
+	public static class CatCategory implements Source {
+    	@Override
+		public List<ParamValue> getValues(String paramPath) {
+			List<ParamValue> values = new ArrayList<>();
+			values.add(new ParamValue("Bobtail", "American Bobtail"));
+            values.add(new ParamValue("Curl", "American Curl"));
+			return values;
+		}
+    }
+	
 	public static class OwnerNotificationPreferences implements Source {
     	@Override
 		public List<ParamValue> getValues(String paramPath) {

@@ -19,11 +19,16 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Calendar;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PickList;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional;
+import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional.Condition;
+import com.atlas.client.extension.petclinic.core.CodeValueTypes.CatCategory;
+import com.atlas.client.extension.petclinic.core.CodeValueTypes.DogCategory;
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.petType;
 import com.atlas.client.extension.petclinic.core.Pet;
 
@@ -94,11 +99,20 @@ public class VRPet {
 		@Path 
 		private LocalDate dob;
 		
-		@ComboBox 
-//		@Values(url="Anthem/icr/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/vetSpecialty')")
+		@ComboBox(postEventOnChange=true)
 		@Values(value = petType.class)
+		@ValuesConditional(target="../category", condition= {
+				@Condition(when="state== 'Dog'", then = @Values(value=DogCategory.class)),
+				@Condition(when="state == 'Cat'", then = @Values(value=CatCategory.class))
+		})
 		@Path
+		@Label("Type")
 		private String type;
+		
+		@PickList(postEventOnChange=true,sourceHeader="Available Category", targetHeader="Selected Category",showTargetControls=true)
+		@Path
+		@Label("Category")
+		private String[] category;
 		
 	}
 	
