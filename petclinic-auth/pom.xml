@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>com.antheminc.oss</groupId>
 		<artifactId>nimbus-parent</artifactId>
-		<version>1.1.5.BUILD-SNAPSHOT</version>
+		<version>1.1.0.M1-SNAPSHOT</version>
 	</parent>
 	
 	<groupId>com.atlas.client.authentication.petclinic</groupId>
@@ -25,7 +25,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<nimbus.version>1.1.5.BUILD-SNAPSHOT</nimbus.version>
+		<nimbus.version>1.1.0.M1-SNAPSHOT</nimbus.version>
 	</properties>
 
 	<dependencies>
