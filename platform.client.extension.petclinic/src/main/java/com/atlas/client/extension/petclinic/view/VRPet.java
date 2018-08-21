@@ -30,6 +30,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.antheminc.oss.nimbus.domain.defn.extension.EnableConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional.Condition;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditionals;
@@ -101,7 +102,7 @@ public class VRPet {
 			private String available;
 			
 			@Values(value=AllCategory.class)
-			//@Path("category")
+			@Path("category")
 			@PickListSelected
 			private String[] selected;
 		} 
@@ -141,12 +142,13 @@ public class VRPet {
 		@ComboBox(postEventOnChange=true)
 		@Values(value = petType.class)
 		@ValuesConditionals(value= {
-				@ValuesConditional(target="../../category/available", condition= {
+				@ValuesConditional(target="../../category", condition= {
 						@Condition(when="state== 'Dog'", then = @Values(value=DogCategory.class)),
 						@Condition(when="state == 'Cat'", then = @Values(value=CatCategory.class))
 				})
 		})
-		@VisibleConditional(targetPath = { "../../category" }, when = "state == 'Horse'")
+		@VisibleConditional(targetPath = { "../../category" }, when = "state != 'Horse'")
+		@EnableConditional(targetPath = { "../../category" }, when = "state != 'Parrot'")
 		@Path
 		@Label("Type")
 		private String type;
@@ -185,7 +187,7 @@ public class VRPet {
 		@Label("Submit 2")
 		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit, browserBack = true)
 		@Configs({
-			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/.m/category/_replace&rawPayload=<!json(../../category/selected)!>"),
+			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/.m/category/_replace?rawPayload=<!json(../../category/selected)!>"),
 			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
 		})	
 		private String submit;

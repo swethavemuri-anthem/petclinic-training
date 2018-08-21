@@ -32,6 +32,7 @@ public class CodeValueTypes {
 			List<ParamValue> values = new ArrayList<>();
 			values.add(new ParamValue("Sporting", "Sporting Group"));
             values.add(new ParamValue("Hound", "Hound Group"));
+            values.add(new ParamValue("Service", "Service Group"));
 			return values;
 		}
     }
@@ -42,6 +43,7 @@ public class CodeValueTypes {
 			List<ParamValue> values = new ArrayList<>();
 			values.add(new ParamValue("Bobtail", "American Bobtail"));
             values.add(new ParamValue("Curl", "American Curl"));
+            values.add(new ParamValue("White", "American SnowWhite"));
 			return values;
 		}
     }
@@ -52,8 +54,10 @@ public class CodeValueTypes {
 			List<ParamValue> values = new ArrayList<>();
 			values.add(new ParamValue("Bobtail", "American Bobtail"));
             values.add(new ParamValue("Curl", "American Curl"));
+            values.add(new ParamValue("White", "American SnowWhite"));
             values.add(new ParamValue("Sporting", "Sporting Group"));
-            values.add(new ParamValue("Hound1", "Hound Group"));
+            values.add(new ParamValue("Hound", "Hound Group"));
+            values.add(new ParamValue("Service", "Service Group"));
             values.add(new ParamValue("Hound2", "Hound Group"));
             values.add(new ParamValue("Hound3", "Hound Group"));
             values.add(new ParamValue("Hound4", "Hound Group"));
