@@ -9,6 +9,7 @@ import com.antheminc.oss.nimbus.domain.defn.Repo.Cache;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Database;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Calendar;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.antheminc.oss.nimbus.domain.model.config.ParamValue;
 import com.antheminc.oss.nimbus.entity.AbstractEntity;
 
 import lombok.Getter;
@@ -39,5 +40,13 @@ public class Pet extends AbstractEntity.IdLong {
 	private String ownerName;
 	
 	private String[] category;
+	
+	private String[] category2;
+	
+	@Getter @Setter
+	public static class PicklistCV {
+		private String code;
+		private String label;
+	}
 
 }
