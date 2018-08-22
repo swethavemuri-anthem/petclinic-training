@@ -22,7 +22,6 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PickList;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PickListAvailable;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PickListSelected;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextArea;
@@ -90,27 +89,23 @@ public class VRPet {
 		@Form(cssClass="twoColumn")
 		private VFAddEditPet vfAddEditPet;
 		
-		@PickList(postEventOnChange=true,sourceHeader="Available Category", targetHeader="Selected Category")
+		/*@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
 		@Label("Category")
-		//@Values(value=DogCategory.class)
 		private PicklistType category; 
 		
 	
 		@Model @Getter @Setter @Type(Pet.class)
 		public static class PicklistType {
-			@PickListAvailable
-			private String available;
 			
 			@Values(value=AllCategory.class)
 			@Path("category")
-			@PickListSelected
+			@PickListSelected(postEventOnChange=true)
 			private String[] selected;
-		} 
+		} */
 		
 		@Label("submit picklist")
 		@Button(style = Button.Style.PLAIN,type=Button.Type.submit)
-		@Configs({
-			
+		@Configs({			
 			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/.m/category/_replace&rawPayload=<!json(../category/selected)!>")
 		})	
 		private String submit;
@@ -125,7 +120,7 @@ public class VRPet {
 		private VBGAddPetButtonGrp vbgAddPetButtonGrp;
 		
 		@Label("Pet's Name")
-		@TextBox
+		@TextBox(postEventOnChange=true)
 		@NotNull
 		@Path
 		private String name;
@@ -135,20 +130,20 @@ public class VRPet {
 		private String textarea;
 		
 		@Label("Date of Birth")
-		@Calendar
+		@Calendar(postEventOnChange=true)
 		@Path 
 		private LocalDate dob;
 		
 		@ComboBox(postEventOnChange=true)
 		@Values(value = petType.class)
 		@ValuesConditionals(value= {
-				@ValuesConditional(target="../../category", condition= {
+				@ValuesConditional(target="../category", condition= {
 						@Condition(when="state== 'Dog'", then = @Values(value=DogCategory.class)),
 						@Condition(when="state == 'Cat'", then = @Values(value=CatCategory.class))
 				})
 		})
-		@VisibleConditional(targetPath = { "../../category" }, when = "state != 'Horse'")
-		@EnableConditional(targetPath = { "../../category" }, when = "state != 'Parrot'")
+		@VisibleConditional(targetPath = { "../category" }, when = "state != 'Horse'")
+		@EnableConditional(targetPath = { "../category" }, when = "state != 'Parrot'")
 		@Path
 		@Label("Type")
 		private String type;
@@ -159,7 +154,7 @@ public class VRPet {
 //		private String[] category; 
 		
 		
-	/*	@PickList(postEventOnChange=true,sourceHeader="Available Category", targetHeader="Selected Category")
+		@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
 		@Label("Category")
 		//@Values(value=DogCategory.class)
 		private PicklistType category; 
@@ -167,14 +162,13 @@ public class VRPet {
 	
 		@Model @Getter @Setter @Type(Pet.class)
 		public static class PicklistType {
-			@PickListAvailable
-			private String available;
+			
 			
 			@Values(value=AllCategory.class)
 			@Path("category")
-			@PickListSelected
+			@PickListSelected(postEventOnChange=true)
 			private String[] selected;
-		} */
+		} 
 		
 		
 		
@@ -187,8 +181,8 @@ public class VRPet {
 		@Label("Submit 2")
 		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit, browserBack = true)
 		@Configs({
-			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/.m/category/_replace?rawPayload=<!json(../../category/selected)!>"),
-			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
+			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/.m/category/_replace?rawPayload=<!json(../category/selected)!>"),
+		//	@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
 		})	
 		private String submit;
 	
