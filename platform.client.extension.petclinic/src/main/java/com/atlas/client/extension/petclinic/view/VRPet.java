@@ -89,27 +89,6 @@ public class VRPet {
 		@Form(cssClass="twoColumn")
 		private VFAddEditPet vfAddEditPet;
 		
-		/*@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
-		@Label("Category")
-		private PicklistType category; 
-		
-	
-		@Model @Getter @Setter @Type(Pet.class)
-		public static class PicklistType {
-			
-			@Values(value=AllCategory.class)
-			@Path("category")
-			@PickListSelected(postEventOnChange=true)
-			private String[] selected;
-		} */
-		
-		@Label("submit picklist")
-		@Button(style = Button.Style.PLAIN,type=Button.Type.submit)
-		@Configs({			
-			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/.m/category/_replace&rawPayload=<!json(../category/selected)!>")
-		})	
-		private String submit;
-		
 	}
 	
 	@Type(Pet.class)
@@ -124,10 +103,6 @@ public class VRPet {
 		@NotNull
 		@Path
 		private String name;
-		
-		@TextArea
-		@Max(value=500)
-		private String textarea;
 		
 		@Label("Date of Birth")
 		@Calendar(postEventOnChange=true)
@@ -148,25 +123,23 @@ public class VRPet {
 		@Label("Type")
 		private String type;
 		
-//		@PickList(postEventOnChange=true,sourceHeader="Available Category", targetHeader="Selected Category")
-//		@Label("Category")
-//		//@Values(value=DogCategory.class)
-//		private String[] category; 
-		
-		
 		@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
 		@Label("Category")
-		//@Values(value=DogCategory.class)
+		@NotNull
 		private PicklistType category; 
+		
+		@TextArea
+		@Max(value=500)
+		private String notes;
 		
 	
 		@Model @Getter @Setter @Type(Pet.class)
-		public static class PicklistType {
-			
+		public static class PicklistType {		
 			
 			@Values(value=AllCategory.class)
 			@Path("category")
 			@PickListSelected(postEventOnChange=true)
+			@NotNull
 			private String[] selected;
 		} 
 		
@@ -178,11 +151,11 @@ public class VRPet {
 	@Model @Getter @Setter
 	public static class VBGAddPetButtonGrp {
 		
-		@Label("Submit 2")
+		@Label("Submit")
 		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit, browserBack = true)
 		@Configs({
 			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/.m/category/_replace?rawPayload=<!json(../category/selected)!>"),
-		//	@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
+			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
 		})	
 		private String submit;
 	
