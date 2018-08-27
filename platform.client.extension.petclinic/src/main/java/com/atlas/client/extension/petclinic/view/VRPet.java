@@ -125,8 +125,16 @@ public class VRPet {
 		
 		@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
 		@Label("Category")
-		@NotNull
 		private PicklistType category; 
+		
+		private Name owner;
+		
+		@Type(Pet.class) @Getter @Setter
+		public static class Name {
+			@TextBox
+			@Path
+			private String ownerId;
+		}
 		
 		@TextArea
 		@Max(value=500)
@@ -142,10 +150,6 @@ public class VRPet {
 			@NotNull
 			private String[] selected;
 		} 
-		
-		
-		
-		
 	}
 	
 	@Model @Getter @Setter
@@ -154,7 +158,6 @@ public class VRPet {
 		@Label("Submit")
 		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit, browserBack = true)
 		@Configs({
-			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/.m/category/_replace?rawPayload=<!json(../category/selected)!>"),
 			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
 		})	
 		private String submit;
