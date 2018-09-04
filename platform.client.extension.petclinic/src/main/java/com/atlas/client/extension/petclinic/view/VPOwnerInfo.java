@@ -53,7 +53,7 @@ public class VPOwnerInfo {
     @Model @Getter @Setter
     public static class VFForm {
     	
-    	@Label("Calls")
+    	@Label("Hello <!/.d/.m/firstName!> <!/.d/.m/lastName!> !! Welcome to <!#env.petclinic.clinicname!>. Below is your call history.")
     	@Paragraph(cssClass="font-weight-bold")
     	private String headerCallSection;
     	
