@@ -30,6 +30,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.antheminc.oss.nimbus.domain.defn.extension.EnableConditional;
+import com.antheminc.oss.nimbus.domain.defn.extension.LabelConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional.Condition;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditionals;
@@ -109,18 +110,21 @@ public class VRPet {
 		@Path 
 		private LocalDate dob;
 		
+		@Label("Type")
 		@ComboBox(postEventOnChange=true)
+		@Path
 		@Values(value = petType.class)
 		@ValuesConditionals(value= {
-				@ValuesConditional(target="../category", condition= {
-						@Condition(when="state== 'Dog'", then = @Values(value=DogCategory.class)),
+				@ValuesConditional(targetPath="../category", condition= {
+						@Condition(when="state == 'Dog'", then = @Values(value=DogCategory.class)),
 						@Condition(when="state == 'Cat'", then = @Values(value=CatCategory.class))
 				})
 		})
 		@VisibleConditional(targetPath = { "../category" }, when = "state != 'Horse'")
 		@EnableConditional(targetPath = { "../category" }, when = "state != 'Parrot'")
-		@Path
-		@Label("Type")
+		@LabelConditional(targetPath = "/../name", condition = {
+			@LabelConditional.Condition(when = "state != null", then = @Label("<!/!>'s Name"))
+		})
 		private String type;
 		
 		@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
