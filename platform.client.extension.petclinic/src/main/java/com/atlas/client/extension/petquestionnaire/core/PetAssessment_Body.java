@@ -36,7 +36,6 @@ import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.VisitReas
 import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.YNType;
 import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.YesTest;
 import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.timeSelection;
-import com.atlas.client.extension.petquestionnaire.core.PetAssessment_Name.PetAssessment_Name_Tab;
 
 import lombok.Data;
 import lombok.Getter;
@@ -269,7 +268,7 @@ public class PetAssessment_Body {
 		public static class Q10 {
 			
 			@TextBox(postEventOnChange = true)
-			@ValuesConditional(target = "/../q10_b", condition = {
+			@ValuesConditional(targetPath = "/../q10_b", condition = {
 				@Condition(when = "state == 'Yes'", then = @Values(YesTest.class)),
 				@Condition(when = "state == 'No'", then = @Values(NoTest.class)),
 				@Condition(when = "state == 'No'", then = @Values(NoTest.class)),
@@ -290,8 +289,6 @@ public class PetAssessment_Body {
 		@Model.Param.Values(value = VisitReason.class)
 		@Label(value="11. CheckBoxGroup test (minimum of three):")
 		private String[] q11;
-		
-		
 		
 		// TextArea (with max Characters limitation)
 		@TextArea(postEventOnChange = true)
