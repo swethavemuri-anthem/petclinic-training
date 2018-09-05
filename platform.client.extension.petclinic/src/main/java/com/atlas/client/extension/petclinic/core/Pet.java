@@ -37,5 +37,9 @@ public class Pet extends AbstractEntity.IdLong {
 	private Long ownerId;
 	
 	private String ownerName;
+	
+	private String[] category;
+	
+	private String notes;
 
 }

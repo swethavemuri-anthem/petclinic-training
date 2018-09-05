@@ -32,9 +32,9 @@ public class OwnerLineItem {
     public static class ExpandedRowContent {
     	
     	@Path(linked=false)
-		@Config(url="<!#this!>.m/_process?fn=_set&url=/p/pet/_search?fn=query&where=pet.ownerId.eq(<!/../../id!>)")
+		@Config(url="<!#this!>.m/_process?fn=_set&url=/p/pet/_search?fn=example")
         @Grid(onLoad= true)
-//        @Label("Pets")
+        @Label("Pets")
         private List<PetLineItemOwnerLanding> pets;
     }
     

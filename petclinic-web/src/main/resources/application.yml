@@ -44,6 +44,9 @@ application:
 serviceUserName: integration_service
 servicePassword: HashedPwd1234!!!!!!!!!!!!!****
 
+## Petclinic Env properties
+petclinic:
+  clinicname: PugsAndPaws
 logging:
   file: ${HOME}/Documents/nimbuslogs/${spring.application.name}.log
   level:

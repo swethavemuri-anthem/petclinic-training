@@ -2,11 +2,13 @@ package com.atlas.client.extension.petclinic.view;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
+import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
@@ -19,11 +21,22 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Calendar;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PickList;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PickListSelected;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextArea;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.antheminc.oss.nimbus.domain.defn.extension.EnableConditional;
+import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional;
+import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional.Condition;
+import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditionals;
+import com.antheminc.oss.nimbus.domain.defn.extension.VisibleConditional;
+import com.atlas.client.extension.petclinic.core.CodeValueTypes.AllCategory;
+import com.atlas.client.extension.petclinic.core.CodeValueTypes.CatCategory;
+import com.atlas.client.extension.petclinic.core.CodeValueTypes.DogCategory;
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.petType;
 import com.atlas.client.extension.petclinic.core.Pet;
 
@@ -67,6 +80,7 @@ public class VRPet {
     	
         @Section
         private VSAddEditPet vsAddEditPet;
+      
 	}
 	
 	@Model @Getter @Setter
@@ -74,6 +88,7 @@ public class VRPet {
 		
 		@Form(cssClass="twoColumn")
 		private VFAddEditPet vfAddEditPet;
+		
 	}
 	
 	@Type(Pet.class)
@@ -84,22 +99,57 @@ public class VRPet {
 		private VBGAddPetButtonGrp vbgAddPetButtonGrp;
 		
 		@Label("Pet's Name")
-		@TextBox
+		@TextBox(postEventOnChange=true)
 		@NotNull
 		@Path
 		private String name;
 		
 		@Label("Date of Birth")
-		@Calendar
+		@Calendar(postEventOnChange=true)
 		@Path 
 		private LocalDate dob;
 		
-		@ComboBox 
-//		@Values(url="Anthem/icr/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/vetSpecialty')")
+		@ComboBox(postEventOnChange=true)
 		@Values(value = petType.class)
+		@ValuesConditionals(value= {
+				@ValuesConditional(target="../category", condition= {
+						@Condition(when="state== 'Dog'", then = @Values(value=DogCategory.class)),
+						@Condition(when="state == 'Cat'", then = @Values(value=CatCategory.class))
+				})
+		})
+		@VisibleConditional(targetPath = { "../category" }, when = "state != 'Horse'")
+		@EnableConditional(targetPath = { "../category" }, when = "state != 'Parrot'")
 		@Path
+		@Label("Type")
 		private String type;
 		
+		@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
+		@Label("Category")
+		private PicklistType category; 
+		
+		private Name owner;
+		
+		@Type(Pet.class) @Getter @Setter
+		public static class Name {
+			@TextBox
+			@Path
+			private String ownerId;
+		}
+		
+		@TextArea
+		@Max(value=500)
+		private String notes;
+		
+	
+		@Model @Getter @Setter @Type(Pet.class)
+		public static class PicklistType {		
+			
+			@Values(value=AllCategory.class)
+			@Path("category")
+			@PickListSelected(postEventOnChange=true)
+			@NotNull
+			private String[] selected;
+		} 
 	}
 	
 	@Model @Getter @Setter
@@ -107,7 +157,9 @@ public class VRPet {
 		
 		@Label("Submit")
 		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit, browserBack = true)
-		@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
+		@Configs({
+			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
+		})	
 		private String submit;
 	
 		@Label("Cancel")

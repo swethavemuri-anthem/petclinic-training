@@ -5,10 +5,10 @@
  	<parent>
 		<groupId>com.antheminc.oss</groupId>
 		<artifactId>nimbus-parent</artifactId>
-		<version>1.1.5.BUILD-SNAPSHOT</version>
+		<version>1.1.0.M2-SNAPSHOT</version>
 	</parent>
   <properties>
-  	<nimbus.version>1.1.5.BUILD-SNAPSHOT</nimbus.version>
+  	<nimbus.version>1.1.0.M2-SNAPSHOT</nimbus.version>
   </properties>
   <groupId>com.anthem.petclinic.web</groupId>
   <artifactId>petclinic-web</artifactId>
@@ -133,4 +133,10 @@
     </resources>
 
   </build>
+  <repositories>
+  	<repository>		
+        <id>nexus-repo</id>
+        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+  	</repository>
+  </repositories>
 </project>
