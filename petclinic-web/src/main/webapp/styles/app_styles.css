@@ -1,0 +1,24 @@
+
+.Active {
+	color:green;
+}
+.Inactive {
+	color:red;
+}
+.Text:before {
+    content: "\f10b";
+    font-family: FontAwesome;
+}
+.Email:before {
+    content: "\f1fa";
+    font-family: FontAwesome;
+}
+.Physical_mail:before {
+    content: "\f003";
+    font-family: FontAwesome;
+}
+.Text .fieldValue,
+.Email .fieldValue, 
+.Physical_mail .fieldValue {
+	opacity: 0;
+}

@@ -25,25 +25,7 @@ public class OwnerLineItem {
     @Path
     private Long id;
  
-    @Label("First Name")
-    @GridColumn
-    @Path
-    private String firstName;
- 
-    @Label("Last Name")
-    @GridColumn
-    @Path
-    private String lastName;
- 
-    @Label("Owner City")
-    @GridColumn
-    @Path("city")
-    private String ownerCity;
- 
-    @Label("Telephone")
-    @GridColumn
-    @Path
-    private String telephone;   
+    @Path @Label("First Name") private String firstName;
     
     @LinkMenu
     private VLMCaseItemLinks vlmCaseItemLinks;
@@ -61,7 +43,39 @@ public class OwnerLineItem {
         private List<PetLineItemOwnerLanding> pets;
     }
     
-    @Model @Getter @Setter
+    @Path 
+    @GridColumn(hidden=true) 
+    private boolean shouldUseNickname;
+    
+    @Path 
+    @GridColumn @Label("Last Name") 
+    private String lastName;
+    
+    @Path 
+    @GridColumn(applyValueStyles = true) 
+    @Label("Status") private String status;
+    
+    @Path 
+    @GridColumn(applyValueStyles = true) 
+    @Label("Notification Preference") 
+    private String notificationPreference;
+ 
+    @Path("city") 
+    @GridColumn  
+    @Label("Owner City") 
+    private String ownerCity;
+ 
+    @Path 
+    @GridColumn 
+    @Label("Telephone") 
+    private String telephone;
+    
+    
+    @LinkMenu
+    private VLMCaseItemLinks vlmCaseItemLinks;
+   
+    @Model
+    @Getter @Setter
     public static class VLMCaseItemLinks {
         
     	@Label("Edit")
