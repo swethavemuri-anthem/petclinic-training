@@ -19,6 +19,7 @@ public class Note extends AbstractEntity.IdLong {
 	private static final long serialVersionUID = 1L;
 	
 	private String noteType;
+	
 	private String noteDescription;
 	
 }

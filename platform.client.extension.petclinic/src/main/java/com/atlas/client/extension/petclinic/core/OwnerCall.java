@@ -31,6 +31,8 @@ import lombok.ToString;
 public class OwnerCall {
 
 	private LocalDateTime date;
+	
 	private boolean received;
+	
 	private String reason;
 }

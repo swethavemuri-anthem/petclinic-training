@@ -27,8 +27,6 @@ public class Visit extends AbstractEntity.IdLong{
 
 	private static final long serialVersionUID = 1L;
 	
-//	private String vetId; //vetId
-	
 	private String petId; //petId
 	
 	@Calendar
@@ -38,11 +36,6 @@ public class Visit extends AbstractEntity.IdLong{
 	private String ownerName;
 	
 	private String petName;
-
-//	private String appointment;
-	
-	
-	
 	
 	private String reasonForVisit;
 	

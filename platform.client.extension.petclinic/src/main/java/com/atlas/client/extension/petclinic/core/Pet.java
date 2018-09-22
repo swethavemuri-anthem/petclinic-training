@@ -28,8 +28,6 @@ public class Pet extends AbstractEntity.IdLong {
 	
 	private String name;
 	
-	@Calendar
-	@Label("Date of Birth")
 	private LocalDate dob;
 	
 	private String type;

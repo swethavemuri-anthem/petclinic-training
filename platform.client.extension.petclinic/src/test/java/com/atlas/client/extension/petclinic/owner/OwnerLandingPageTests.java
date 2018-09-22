@@ -25,9 +25,9 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import com.atlas.client.extension.petclinic.core.Owner;
-import com.atlas.client.extension.petclinic.core.OwnerLineItem;
 import com.atlas.client.extension.petclinic.pageobject.model.OwnerLandingUnitTestPage;
 import com.atlas.client.extension.petclinic.test.AbstractPetclinicSpringTest;
+import com.atlas.client.extension.petclinic.view.OwnerLineItem;
 
 /**
  * @author Tony Lopez

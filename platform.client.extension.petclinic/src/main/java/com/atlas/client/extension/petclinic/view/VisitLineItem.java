@@ -1,4 +1,4 @@
-package com.atlas.client.extension.petclinic.core;
+package com.atlas.client.extension.petclinic.view;
 
 import java.time.LocalDate;
 
@@ -10,6 +10,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridColumn;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.LinkMenu;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.atlas.client.extension.petclinic.core.Visit;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,45 +25,46 @@ import lombok.Setter;
 @Getter @Setter
 public class VisitLineItem {
 	
-	@Path @GridColumn(hidden=true)
+	@Path @GridColumn(hidden = true)
 	private Long id;
 	
 	// Add Pet Name and Owner columns
 	
-	@Path @GridColumn(filter=true)
 	@Label("Appointment Date")
+	@GridColumn(filter=true)
+	@Path 
 	private LocalDate appointment;
 	
-	@Path
-	@GridColumn(filter=true)
 	@Label("Owner's name")
+	@GridColumn(filter=true)
+	@Path
 	private String ownerName;
 	
-	@Path
-	@GridColumn(filter=true)
 	@Label("Pet's name")
+	@GridColumn(filter=true)
+	@Path
 	private String petName;
 	
-	@Path @GridColumn(filter=true)
 	@Label("Reason For Visit")
+	@GridColumn(filter=true)
+	@Path 
 	private String reasonForVisit;
 	
-//	@Path(value="/p/veterinarianview:<!/.m/vetId!>/vpAddEditVeterenarian/vtAddEditVeterinarian/vsAddEditVeterinarian/vfAddEditVeterinarian/fullName/_get", linked=false, detachedState=@DetachedState(loadState=LoadState.AUTO))
-//	private String vetName;
-	
-	@Path @GridColumn(filter=true)
 	@Label("Status")
+	@GridColumn(filter=true)
+	@Path
 	private String status;
 	
     @LinkMenu
     private VLMVisitItemLinks vlmVisitItemLinks;
    
-    @Model
-    @Getter @Setter
+    @Model @Getter @Setter
     public static class VLMVisitItemLinks {
-        @Config(url="/p/petassessmentview/_new")
-        @Link(imgSrc="edit.png") @Label("Pet Questionnaire") private String petQuestionnaire;
         
+    	@Label("Pet Questionnaire")
+        @Link(imgSrc="edit.png")
+        @Config(url="/p/petassessmentview/_new")
+        private String petQuestionnaire;
     }
 
 }

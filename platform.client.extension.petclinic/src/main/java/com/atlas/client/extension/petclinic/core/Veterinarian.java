@@ -26,8 +26,6 @@ public class Veterinarian extends AbstractEntity.IdLong {
 	
 	private String lastName;
 	
-//	private String specialty;
-	
 	private String fullName;
 	
 	public String getFullName() {

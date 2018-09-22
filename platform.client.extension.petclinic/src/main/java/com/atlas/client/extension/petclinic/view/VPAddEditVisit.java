@@ -56,18 +56,9 @@ public class VPAddEditVisit {
 		@ButtonGroup
 		private VBGAddEditVisit buttonGroup;
 		
-		//@Path(value="/p/petview:<!/.m/petId!>/vpPetInfo/vtPetInfo/vsPetInfo/vcdPetInfo/vcdbPet/name/_get", cache=Cache.rep_none)
 		@TextBox(readOnly=true) @Path
 		@Label("Pet Id")
 		private String petId;
-
-//		@ComboBox @Path
-//		@NotNull
-//		@Model.Param.Values(url="Anthem/icr/p/veterinarian/_search?fn=lookup&projection.mapsTo=code:id,label:lastName")
-//		private String vetId;
-		
-//		@Path
-//		private LocalDateTime appointment;
 		
 		@TextBox
 		@ParamContext(enabled= false, visible = true)

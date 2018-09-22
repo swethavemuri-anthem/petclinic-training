@@ -5,7 +5,6 @@ import java.util.List;
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
-import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
@@ -17,7 +16,6 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.atlas.client.extension.petclinic.core.Veterinarian;
-import com.atlas.client.extension.petclinic.core.VeterinarianLineItem;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -62,9 +60,7 @@ public class VRVeterinarianLanding {
 	@Getter @Setter
 	public static class VSVeterinarians  {
 		
-		@Configs({
-	         @Config(url="/p/veterinarianview/_new")
-	    })
+		@Config(url="/p/veterinarianview/_new")
 	    @Button(imgSrc = "add.svg", cssClass ="btn btn-icon green")
 	    private String addVeterinarian;
 		

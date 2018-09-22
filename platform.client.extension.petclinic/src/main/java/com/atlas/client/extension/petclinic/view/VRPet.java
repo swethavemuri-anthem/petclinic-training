@@ -114,11 +114,9 @@ public class VRPet {
 		@ComboBox(postEventOnChange=true)
 		@Path
 		@Values(value = petType.class)
-		@ValuesConditionals(value= {
-				@ValuesConditional(targetPath="../category", condition= {
-						@Condition(when="state == 'Dog'", then = @Values(value=DogCategory.class)),
-						@Condition(when="state == 'Cat'", then = @Values(value=CatCategory.class))
-				})
+		@ValuesConditional(targetPath="../category", condition= {
+			@ValuesConditional.Condition(when="state == 'Dog'", then = @Values(value=DogCategory.class)),
+			@ValuesConditional.Condition(when="state == 'Cat'", then = @Values(value=CatCategory.class))
 		})
 		@VisibleConditional(targetPath = { "../category" }, when = "state != 'Horse'")
 		@EnableConditional(targetPath = { "../category" }, when = "state != 'Parrot'")

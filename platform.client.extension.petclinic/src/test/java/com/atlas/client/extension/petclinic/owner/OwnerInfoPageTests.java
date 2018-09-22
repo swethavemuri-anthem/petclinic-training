@@ -25,10 +25,10 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import com.atlas.client.extension.petclinic.core.PetLineItem;
 import com.atlas.client.extension.petclinic.pageobject.model.OwnerInfoUnitTestPage;
 import com.atlas.client.extension.petclinic.test.AbstractPetclinicSpringTest;
 import com.atlas.client.extension.petclinic.view.CallLineItem;
+import com.atlas.client.extension.petclinic.view.PetLineItem;
 
 /**
  * @author Tony Lopez

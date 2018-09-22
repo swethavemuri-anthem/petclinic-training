@@ -1,9 +1,8 @@
-package com.atlas.client.extension.petclinic.core;
+package com.atlas.client.extension.petclinic.view;
 
 import java.util.List;
 
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
-import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.Model;
@@ -13,6 +12,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridRowBody;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.LinkMenu;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.atlas.client.extension.petclinic.core.Owner;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -21,9 +21,14 @@ import lombok.Setter;
 @Getter @Setter
 public class OwnerLineItem {
  
-    @Path @GridColumn(hidden=true) private Long id;
+	@GridColumn(hidden=true)
+    @Path 
+    private Long id;
  
-    @Path @GridColumn @Label("First Name") private String firstName;
+    @Label("First Name")
+    @GridColumn
+    @Path
+    private String firstName;
     
     @GridRowBody
     private ExpandedRowContent expandedRowContent;
@@ -31,33 +36,43 @@ public class OwnerLineItem {
     @Model @Getter @Setter
     public static class ExpandedRowContent {
     	
-    	@Path(linked=false)
+    	@Label("Pets")
+    	@Grid(onLoad = true)
+    	@Path(linked = false)
 		@Config(url="<!#this!>.m/_process?fn=_set&url=/p/pet/_search?fn=example")
-        @Grid(onLoad= true)
-        @Label("Pets")
         private List<PetLineItemOwnerLanding> pets;
     }
-    
  
-    @Path @GridColumn @Label("Last Name") private String lastName;
+    @Label("Last Name")
+    @GridColumn
+    @Path
+    private String lastName;
  
-    @Path("city") @GridColumn  @Label("Owner City") private String ownerCity;
+    @Label("Owner City")
+    @GridColumn
+    @Path("city")
+    private String ownerCity;
  
-    @Path @GridColumn @Label("Telephone") private String telephone;   
+    @Label("Telephone")
+    @GridColumn
+    @Path
+    private String telephone;   
     
     @LinkMenu
     private VLMCaseItemLinks vlmCaseItemLinks;
    
-    @Model
-    @Getter @Setter
+    @Model @Getter @Setter
     public static class VLMCaseItemLinks {
-        @Config(url="/p/ownerview:<!/../id!>/_get")
-        @Link(imgSrc="edit.png") @Label("Edit") private String edit;
+        
+    	@Label("Edit")
+        @Link(imgSrc="edit.png")
+    	@Config(url="/p/ownerview:<!/../id!>/_get")
+    	private String edit;
      
-        @Configs({
-            @Config(url="/p/ownerview:<!/../id!>/_get"),
-            @Config(url="/p/ownerview:<!/../id!>/_nav?pageId=vpOwnerInfo")
-        })
-        @Link(imgSrc="task.svg") @Label("Owner Info") private String ownerInfo;
+    	@Label("Owner Info")
+        @Link(imgSrc="task.svg")
+    	@Config(url="/p/ownerview:<!/../id!>/_get")
+        @Config(url="/p/ownerview:<!/../id!>/_nav?pageId=vpOwnerInfo")
+        private String ownerInfo;
     }
 }

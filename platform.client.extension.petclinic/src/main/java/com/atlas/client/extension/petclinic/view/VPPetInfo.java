@@ -17,7 +17,6 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.atlas.client.extension.petclinic.core.Pet;
-import com.atlas.client.extension.petclinic.core.VisitLineItem;
 
 import lombok.Getter;
 import lombok.Setter;

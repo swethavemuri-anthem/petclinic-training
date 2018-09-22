@@ -35,8 +35,6 @@ public class Owner extends AbstractEntity.IdLong {
     private String telephone;
     
     private String email;
-    
-//    private String petName;
  
     List<OwnerCall> calls;
 }

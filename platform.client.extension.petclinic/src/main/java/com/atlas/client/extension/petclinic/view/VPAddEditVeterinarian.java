@@ -63,10 +63,6 @@ public class VPAddEditVeterinarian {
 		
 		@TextBox(hidden=true) @MapsTo.Path
 		private String fullName;
-		
-//		@ComboBox @MapsTo.Path 
-//		@Model.Param.Values(url="Anthem/icr/p/staticCodeValue/_search?fn=lookup&where=staticCodeValue.paramCode.eq('/vetSpecialty')")
-//		private String specialty;
 	}
 	
 	
