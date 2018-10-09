@@ -50,9 +50,9 @@ import lombok.Setter;
 @MapsTo.Type(Owner.class)
 @Getter @Setter
 public class VPAddEditOwner {
-
-     @Tile
-     private VTAddEditOwner vtAddEditOwner;
+	
+	@Tile
+    private VTAddEditOwner vtAddEditOwner;
 
 	@Model @Getter @Setter
 	public static class VTAddEditOwner {
@@ -81,6 +81,13 @@ public class VPAddEditOwner {
 	    @ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
 	    private VBGAddOwnerButtonGrp vbgAddOwnerButtonGrp;
 	    
+	    // TODO id is not sent with UI payload using @ParamContext(enabled = false, visible = true)
+	    // Should we offer a way of supporting this in favor of deprecating readOnly?
+	    @Label("Owner ID")
+	    @TextBox(readOnly = true)
+	    @Path
+	    private Long id;
+	    
 	    @Label("First Name")
 		@TextBox
 		@NotNull
@@ -107,7 +114,7 @@ public class VPAddEditOwner {
 	    @NotNull
 	    @ComboBox(postEventOnChange = true)
 	    @Values(OwnerNotificationPreferences.class)
-	    @ValidateConditional(when = "state == 'phyiscal_mail'", scope = ValidationScope.CHILDREN, targetGroup = GROUP_1.class, targetPath = { 
+	    @ValidateConditional(when = "state == 'physical_mail'", scope = ValidationScope.CHILDREN, targetGroup = GROUP_1.class, targetPath = { 
 	    		"../address",
 	    		"../city",
 	    		"../state",
@@ -166,20 +173,14 @@ public class VPAddEditOwner {
 	public static class VBGAddOwnerButtonGrp {
 	
 		@Label("Submit")
-	    @Button(style = Button.Style.PRIMARY, type=Button.Type.submit)
-	    @Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_update")
-	    @Config(url="/p/ownerlandingview/_nav?pageId=vpOwners")
+	    @Button(style = Button.Style.PRIMARY, type = Button.Type.submit)
+	    @Config(url = "/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_update")
+	    @Config(url = "/p/ownerlandingview/_nav?pageId=vpOwners")
 	    private String submit;
 	
-		@Label("Update")
-	    @Button(style = Button.Style.PRIMARY, type=Button.Type.submit)
-	    @Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_update")
-	    @Config(url="/vpAddEditOwner/vtAddEditOwner/vsAddEditOwner/vfAddEditOwner/_nav?pageId=vpOwnerInfo")
-	    private String update;
-	
 		@Label("Cancel")
-	    @Button(style = Button.Style.PLAIN, type = Button.Type.reset) 
-	    @Config(url="/p/ownerlandingview/_nav?pageId=vpOwners")
+	    @Button(style = Button.Style.PLAIN, type = Button.Type.reset)
+	    @Config(url = "/p/ownerlandingview/_nav?pageId=vpOwners")
 	    private String cancel;
 	}
 }

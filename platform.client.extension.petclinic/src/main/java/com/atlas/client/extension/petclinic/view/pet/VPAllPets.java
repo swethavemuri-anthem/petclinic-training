@@ -50,12 +50,6 @@ public class VPAllPets {
 	@Model @Getter @Setter
 	public static class VSMain {
 		
-		@Label("Add Pet")
-    	@Button(style=Style.SECONDARY)
-        @Config(url="/p/petview/_new")
-        @Config(url="/p/petview/_nav?pageId=vpAddEditPet")
-        private String addPet;
-		
 		@Label("All Pets")
         @Grid(onLoad=true, pageSize = "7")
 		@Path(linked=false)

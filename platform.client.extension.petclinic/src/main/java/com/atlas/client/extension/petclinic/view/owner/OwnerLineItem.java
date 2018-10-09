@@ -21,27 +21,14 @@ import lombok.Setter;
 @Getter @Setter
 public class OwnerLineItem {
  
-	@GridColumn(hidden=true)
-    @Path 
+	@GridColumn(hidden = true)
+    @Path
     private Long id;
  
     @Label("First Name")
     @GridColumn
     @Path
     private String firstName;
-    
-    @GridRowBody
-    private ExpandedRowContent expandedRowContent;
-    
-    @Model @Getter @Setter
-    public static class ExpandedRowContent {
-    	
-    	@Label("Pets")
-    	@Grid(onLoad = true)
-    	@Path(linked = false)
-		@Config(url="<!#this!>.m/_process?fn=_set&url=/p/pet/_search?fn=example")
-        private List<PetLineItemOwnerLanding> pets;
-    }
  
     @Label("Last Name")
     @GridColumn
@@ -61,18 +48,31 @@ public class OwnerLineItem {
     @LinkMenu
     private VLMCaseItemLinks vlmCaseItemLinks;
    
+    @GridRowBody
+    private ExpandedRowContent expandedRowContent;
+    
+    @Model @Getter @Setter
+    public static class ExpandedRowContent {
+    	
+    	@Label("Pets")
+    	@Grid(onLoad = true)
+    	@Path(linked = false)
+		@Config(url="<!#this!>.m/_process?fn=_set&url=/p/pet/_search?fn=query&where=pet.ownerId.eq(<!/../.m/id!>)")
+        private List<PetLineItemOwnerLanding> pets;
+    }
+    
     @Model @Getter @Setter
     public static class VLMCaseItemLinks {
         
     	@Label("Edit")
-        @Link(imgSrc="edit.png")
-    	@Config(url="/p/ownerview:<!/../id!>/_get")
+        @Link(imgSrc = "edit.png")
+    	@Config(url = "/p/ownerview:<!/../id!>/_get")
     	private String edit;
      
     	@Label("Owner Info")
-        @Link(imgSrc="task.svg")
-    	@Config(url="/p/ownerview:<!/../id!>/_get")
-        @Config(url="/p/ownerview:<!/../id!>/_nav?pageId=vpOwnerInfo")
+        @Link(imgSrc = "task.svg")
+    	@Config(url = "/p/ownerview:<!/../id!>/_get")
+        @Config(url = "/p/ownerview:<!/../id!>/_nav?pageId=vpOwnerInfo")
         private String ownerInfo;
     }
 }

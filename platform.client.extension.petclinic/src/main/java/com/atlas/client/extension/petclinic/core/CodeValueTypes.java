@@ -104,7 +104,7 @@ public class CodeValueTypes {
 			List<ParamValue> values = new ArrayList<>();
 			values.add(new ParamValue("do_not_send_notifications", "Do Not Send Notifications"));
 			values.add(new ParamValue("email", "Email"));
-			values.add(new ParamValue("phyiscal_mail", "Mail"));
+			values.add(new ParamValue("physical_mail", "Mail"));
 			values.add(new ParamValue("text", "Text"));
 			return values;
 		}

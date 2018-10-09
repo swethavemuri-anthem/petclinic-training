@@ -93,8 +93,7 @@ public class VPOwnerInfo {
     	
     	@Label("Call History")
 		@Grid(onLoad = true, isTransient = true, pageSize = "5")
-		@Path(linked = false)
-    	@Config(url = "<!#this!>.m/_process?fn=_set&url=/p/owner:<!/.m/id!>/calls/_get?b=$state")
+		@Path
 		private List<CallLineItem> calls;
     }
     
@@ -155,10 +154,10 @@ public class VPOwnerInfo {
         @Config(url="/p/petview/_nav?pageId=vpAddEditPet")
         private String addPet;
  
-        @Path(linked=false)
-        @Config(url="/vpOwnerInfo/vtOwnerInfo/vsPets/pets.m/_process?fn=_set&url=/p/pet/_search?fn=query&where=pet.ownerId.eq(<!/.m/id!>)")
-        @Grid(onLoad=true, pageSize = "7")
-        @Label("Pets")
+    	@Label("Pets")
+    	@Grid(onLoad = true, pageSize = "7")
+        @Path(linked = false)
+        @Config(url="<!#this!>/.m/_process?fn=_set&url=/p/pet/_search?fn=query&where=pet.ownerId.eq(<!/../.m/id!>)")
         private List<PetLineItem> pets;
  
     }

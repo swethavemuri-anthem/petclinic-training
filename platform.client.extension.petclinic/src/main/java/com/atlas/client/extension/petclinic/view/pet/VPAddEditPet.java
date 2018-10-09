@@ -21,7 +21,6 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
-import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
@@ -68,10 +67,11 @@ public class VPAddEditPet {
 		
 	    @Section
 	    private VSAddEditPet vsAddEditPet;
-	  
+	    
 	}
 	
-	@Model @Getter @Setter
+	@Model
+	@Getter @Setter
 	public static class VSAddEditPet {
 		
 		@Form(cssClass="twoColumn")
@@ -85,6 +85,13 @@ public class VPAddEditPet {
 		
 		@ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
 		private VBGAddPetButtonGrp vbgAddPetButtonGrp;
+		
+		// TODO id is not sent with UI payload using @ParamContext(enabled = false, visible = true)
+	    // Should we offer a way of supporting this in favor of deprecating readOnly?
+	    @Label("Pet ID")
+	    @TextBox(readOnly = true)
+	    @Path
+	    private Long id;
 		
 		@Label("Pet's Name")
 		@TextBox(postEventOnChange=true)
@@ -112,43 +119,33 @@ public class VPAddEditPet {
 		})
 		private String type;
 		
-		@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
 		@Label("Category")
+		@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
 		private PicklistType category; 
-		
-		private Name owner;
-		
-		@Type(Pet.class) @Getter @Setter
-		public static class Name {
-			@TextBox
-			@Path
-			private String ownerId;
-		}
 		
 		@TextArea
 		@Max(value=500)
 		private String notes;
-		
-	
-		@Model @Getter @Setter @Type(Pet.class)
-		public static class PicklistType {		
-			
-			@Values(value=AllCategory.class)
-			@Path("category")
-			@PickListSelected(postEventOnChange=true)
-			@NotNull
-			private String[] selected;
-		} 
 	}
 	
-	@Model @Getter @Setter
+	@Type(Pet.class)
+	@Getter @Setter
+	public static class PicklistType {		
+		
+		@Values(value=AllCategory.class)
+		@Path("category")
+		@PickListSelected(postEventOnChange=true)
+		@NotNull
+		private String[] selected;
+	}
+	
+	@Model
+	@Getter @Setter
 	public static class VBGAddPetButtonGrp {
 		
 		@Label("Submit")
 		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit, browserBack = true)
-		@Configs({
-			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
-		})	
+		@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
 		private String submit;
 	
 		@Label("Cancel")
