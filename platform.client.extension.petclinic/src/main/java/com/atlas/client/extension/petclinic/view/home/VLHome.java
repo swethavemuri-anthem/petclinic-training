@@ -9,6 +9,7 @@ import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Cache;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Database;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.MenuPanel;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section.Type;
@@ -34,7 +35,7 @@ public class VLHome {
 		@Section(Type.HEADER) 
 		private VSHomeHeader vsHomeHeader;
 		
-		@Section(Type.MENUPANEL) 
+		@MenuPanel
 		private VSHomeLeftBar vsHomeLeftBar;
 	}
 }
