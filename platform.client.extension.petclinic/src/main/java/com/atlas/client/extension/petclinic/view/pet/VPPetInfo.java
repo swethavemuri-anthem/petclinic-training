@@ -1,4 +1,4 @@
-package com.atlas.client.extension.petclinic.view;
+package com.atlas.client.extension.petclinic.view.pet;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,6 +17,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.atlas.client.extension.petclinic.core.Pet;
+import com.atlas.client.extension.petclinic.view.owner.VisitLineItem;
 
 import lombok.Getter;
 import lombok.Setter;

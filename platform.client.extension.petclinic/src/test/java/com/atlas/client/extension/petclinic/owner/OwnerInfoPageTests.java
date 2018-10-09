@@ -27,8 +27,8 @@ import org.junit.runners.MethodSorters;
 
 import com.atlas.client.extension.petclinic.pageobject.model.OwnerInfoUnitTestPage;
 import com.atlas.client.extension.petclinic.test.AbstractPetclinicSpringTest;
-import com.atlas.client.extension.petclinic.view.CallLineItem;
-import com.atlas.client.extension.petclinic.view.PetLineItem;
+import com.atlas.client.extension.petclinic.view.owner.CallLineItem;
+import com.atlas.client.extension.petclinic.view.pet.PetLineItem;
 
 /**
  * @author Tony Lopez

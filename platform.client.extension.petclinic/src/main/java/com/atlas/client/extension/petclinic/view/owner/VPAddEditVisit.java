@@ -1,4 +1,4 @@
-package com.atlas.client.extension.petclinic.view;
+package com.atlas.client.extension.petclinic.view.owner;
 
 import java.time.LocalDate;
 

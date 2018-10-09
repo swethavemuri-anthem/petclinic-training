@@ -13,41 +13,48 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.atlas.client.extension.petclinic.view;
+package com.atlas.client.extension.petclinic.view.home;
 
-import java.time.LocalDateTime;
-
-import com.antheminc.oss.nimbus.domain.defn.MapsTo;
+import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
+import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
+import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
 import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridColumn;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridColumn.FilterMode;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.LinkMenu;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
-import com.atlas.client.extension.petclinic.core.OwnerCall;
+import com.atlas.client.extension.petclinic.core.Note;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 /**
  * @author Tony Lopez
  *
  */
-@Model @Getter @Setter @ToString
-@MapsTo.Type(OwnerCall.class)
-public class CallLineItem {
+@Type(Note.class)
+@Model @Getter @Setter
+public class NoteLineItem {
 
-	@GridColumn(sortable = false, filterMode = FilterMode.contains)
-	@Label("Date of Call")
-	@MapsTo.Path
-	private LocalDateTime date;
+	@Label("Note Type")
+	@GridColumn
+	@Path
+	private String noteType;
 	
-	@GridColumn(sortable = false, filterMode = FilterMode.contains)
-	@Label("Was call received?")
-	@MapsTo.Path
-	private boolean received;
+	@Label("Note Description")
+	@GridColumn
+	@Path
+	private String noteDescription;
 	
-	@GridColumn(sortable = false, filterMode = FilterMode.contains)
-	@Label("Reason for Call")
-	@MapsTo.Path
-	private String reason;
+	@LinkMenu
+	private VLMDefault vlmDefault;
+	
+	@Model @Getter @Setter
+	public static class VLMDefault {
+		
+		@Label("Delete Note")
+		@Link
+		@Config(url = "<!#this!>/../../.m/_delete")
+		private String delete;
+	}
 }
