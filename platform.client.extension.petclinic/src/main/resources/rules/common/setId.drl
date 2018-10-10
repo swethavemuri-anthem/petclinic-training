@@ -1,0 +1,32 @@
+package com.atlas.client.extension.petclinic.view;
+
+import com.antheminc.oss.nimbus.domain.model.state.internal.DefaultParamState;
+import com.antheminc.oss.nimbus.domain.model.state.EntityState.Param;
+import com.antheminc.oss.nimbus.domain.model.state.EntityState.ListParam;
+import com.antheminc.oss.nimbus.entity.AbstractEntity.IdLong
+import java.util.List;
+
+rule "Set a transient line item id"
+no-loop true
+when
+		$param : DefaultParamState(null != $param) 
+then
+		ListParam<?> collectionParam = $param.getRootDomain().findParamByPath("/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/mealInstructions/.m").findIfCollection();
+		List<?> collectionParamState = (List<?>) collectionParam.getLeafState();
+		
+		Long nextId = 0L;
+		if (null != collectionParamState && !collectionParamState.isEmpty()) {
+		
+			Long maxId = ((IdLong) collectionParamState.get(0)).getId();
+			for(Object element : collectionParamState) {
+				Long tmp = ((IdLong) element).getId();
+				if (tmp > maxId) {
+					maxId = tmp;
+				}
+			}
+			
+			nextId = maxId + 1;
+		}
+		
+		$param.findParamByPath("/id").setState(nextId);
+end
