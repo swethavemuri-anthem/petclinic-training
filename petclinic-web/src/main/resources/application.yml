@@ -105,9 +105,8 @@ platform:
       regex: "^[a-zA-Z0-9<>()\\[\\]@/: &.=?,$#_-]{1,1000}" 
 server:
   port: 8082
-  session: 
-    timeout: 1800
-  context-path: /petclinic
+  servlet:
+    context-path: 
 #  context-path: /api
 auth-server: http://localhost:8891
 security:
