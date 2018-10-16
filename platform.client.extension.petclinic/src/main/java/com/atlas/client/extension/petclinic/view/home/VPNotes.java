@@ -26,8 +26,6 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Modal;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
-import com.atlas.client.extension.petclinic.view.NoteLineItem;
-import com.atlas.client.extension.petclinic.view.VMAddNote;
 
 import lombok.Getter;
 import lombok.Setter;
