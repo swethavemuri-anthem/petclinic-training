@@ -21,10 +21,14 @@ import org.springframework.mock.web.MockHttpServletRequest;
 
 import com.antheminc.oss.nimbus.context.BeanResolverStrategy;
 import com.antheminc.oss.nimbus.domain.cmd.Action;
+import com.antheminc.oss.nimbus.domain.cmd.exec.CommandExecution.MultiOutput;
 import com.antheminc.oss.nimbus.domain.model.state.EntityState.Param;
+import com.antheminc.oss.nimbus.support.Holder;
 import com.antheminc.oss.nimbus.test.domain.support.pageobject.UnitTestPage;
 import com.antheminc.oss.nimbus.test.domain.support.utils.MockHttpRequestBuilder;
 import com.atlas.client.extension.petclinic.view.owner.OwnerLineItem;
+
+import lombok.Getter;
 
 /**
  * @author Tony Lopez
@@ -32,14 +36,12 @@ import com.atlas.client.extension.petclinic.view.owner.OwnerLineItem;
  */
 public class OwnerLandingUnitTestPage extends UnitTestPage {
 
-	/**
-	 * @param beanResolver
-	 * @param clientId
-	 * @param clientApp
-	 * @param refId
-	 */
-	public OwnerLandingUnitTestPage(BeanResolverStrategy beanResolver, String clientId, String clientApp, Long refId) {
+	@Getter
+	private final Object fromResponse;
+	
+	public OwnerLandingUnitTestPage(BeanResolverStrategy beanResolver, String clientId, String clientApp, Long refId, Object fromResponse) {
 		super(beanResolver, clientId, clientApp, "owner", "ownerlandingview", "vpOwners", refId);
+		this.fromResponse = fromResponse;
 	}
 
 	public List<OwnerLineItem> getOwners() {
@@ -73,5 +75,18 @@ public class OwnerLandingUnitTestPage extends UnitTestPage {
 		this.controller.handlePost(request, null);
 
 		return new OwnerInfoUnitTestPage(this.beanResolver, this.getClientId(), this.getClientApp(), this.getRefId());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public AddEditOwnerUnitTestPage clickAddOwner() {
+		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
+				.addRefId(this.getRefId())
+				.addNested("/vpOwners/vtOwners/vsSearchOwnerCriteria/vfSearchOwnerCriteria/vbgSearchOwner/addOwner")
+				.addAction(Action._get)
+				.getMock();
+		
+		Object response = this.controller.handlePost(request, null);
+		Long refId = ((Holder<MultiOutput>) response).getState().getOutputs().get(0).getRootDomainId();
+		return new AddEditOwnerUnitTestPage(this, refId);
 	}
 }

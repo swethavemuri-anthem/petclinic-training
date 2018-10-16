@@ -23,7 +23,7 @@ import org.springframework.context.annotation.ComponentScan;
 import com.antheminc.oss.nimbus.app.extension.config.DefaultCoreConfiguration;
 import com.antheminc.oss.nimbus.context.BeanResolverStrategy;
 import com.antheminc.oss.nimbus.domain.session.SessionProvider;
-import com.atlas.client.extension.petclinic.test.TestSessionProvider;
+import com.atlas.client.extension.petclinic.scenariotests.TestSessionProvider;
 
 /**
  * @author Tony Lopez
