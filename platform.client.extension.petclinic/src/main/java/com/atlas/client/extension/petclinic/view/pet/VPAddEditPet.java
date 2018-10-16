@@ -1,90 +1,88 @@
-package com.atlas.client.extension.petclinic.view;
+/**
+ *  Copyright 2016-2018 the original author or authors.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+package com.atlas.client.extension.petclinic.view.pet;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
-import com.antheminc.oss.nimbus.domain.defn.Domain;
-import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
-import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
+import com.antheminc.oss.nimbus.domain.defn.MapsTo.Nature;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
 import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.Model.Param.Values;
-import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ButtonGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Calendar;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Modal;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PickList;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PickListSelected;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextArea;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
+import com.antheminc.oss.nimbus.domain.defn.extension.ActivateConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.antheminc.oss.nimbus.domain.defn.extension.EnableConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.LabelConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional;
-import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional.Condition;
-import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditionals;
 import com.antheminc.oss.nimbus.domain.defn.extension.VisibleConditional;
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.AllCategory;
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.CatCategory;
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.DogCategory;
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.petType;
+import com.atlas.client.extension.petclinic.core.MealInstruction;
 import com.atlas.client.extension.petclinic.core.Pet;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 /**
- * @author Swetha Vemuri
+ * @author Tony Lopez
  *
  */
-@Domain(value = "petview", includeListeners = { ListenerType.websocket })
 @MapsTo.Type(Pet.class)
-@Repo(value=Repo.Database.rep_none, cache=Repo.Cache.rep_device)
-@Getter @Setter @ToString(callSuper = true)
-@ViewRoot(layout = "home")
-public class VRPet {
+@Getter @Setter
+public class VPAddEditPet {
 	
-	@Label("Pets")
-	@Page(route="petview")
-	private VPAllPets vpAllPets;
-	
-	@Label("Add/Edit Pet")
-	@Page(route="petview")
-	private VPAddEditPet vpAddEditPet;
-	
-	@Label("Pet Info")
-	@Page(route="petview")
-	private VPPetInfo vpPetInfo;
-	
-	@MapsTo.Type(Pet.class)
+	 @Tile(size = Tile.Size.Large)
+	 private VTAddEditPet vtAddEditPet;
+
+	@Model
 	@Getter @Setter
-	public static class VPAddEditPet {
-		
-		 @Tile(size = Tile.Size.Large)
-		 private VTAddEditPet vtAddEditPet;
-	}
-	
-	@Model @Getter @Setter
 	public static class VTAddEditPet {
-    	
-        @Section
-        private VSAddEditPet vsAddEditPet;
-      
+		
+		@Label("Meal Instruction")
+		@Modal(closable = true)
+		private VMMealInstruction vmMealInstruction;
+	    
+		@Section
+	    private VSAddEditPet vsAddEditPet;
+	    
 	}
 	
-	@Model @Getter @Setter
+	@Model
+	@Getter @Setter
 	public static class VSAddEditPet {
 		
 		@Form(cssClass="twoColumn")
@@ -98,6 +96,13 @@ public class VRPet {
 		
 		@ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
 		private VBGAddPetButtonGrp vbgAddPetButtonGrp;
+		
+		// TODO id is not sent with UI payload using @ParamContext(enabled = false, visible = true)
+	    // Should we offer a way of supporting this in favor of deprecating readOnly?
+	    @Label("Pet ID")
+	    @TextBox(readOnly = true)
+	    @Path
+	    private Long id;
 		
 		@Label("Pet's Name")
 		@TextBox(postEventOnChange=true)
@@ -125,48 +130,49 @@ public class VRPet {
 		})
 		private String type;
 		
-		@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
 		@Label("Category")
+		@PickList(sourceHeader="Available Category", targetHeader="Selected Category")
 		private PicklistType category; 
-		
-		private Name owner;
-		
-		@Type(Pet.class) @Getter @Setter
-		public static class Name {
-			@TextBox
-			@Path
-			private String ownerId;
-		}
 		
 		@TextArea
 		@Max(value=500)
 		private String notes;
 		
-	
-		@Model @Getter @Setter @Type(Pet.class)
-		public static class PicklistType {		
-			
-			@Values(value=AllCategory.class)
-			@Path("category")
-			@PickListSelected(postEventOnChange=true)
-			@NotNull
-			private String[] selected;
-		} 
+		@Label("Add Meal Instruction")
+		@Button
+		@Config(url = "/vpAddEditPet/vtAddEditPet/vmMealInstruction/section/form/_get?fn=param&expr=unassignMapsTo()")
+		@Config(url = "/vpAddEditPet/vtAddEditPet/vmMealInstruction/section/form/_process?fn=_setByRule&rule=rules/common/setId")
+		@Config(url = "/vpAddEditPet/vtAddEditPet/vmMealInstruction/_process?fn=_setByRule&rule=togglemodal")
+		private String addMealInstruction;
+		
+		@Label("Meal Instructions")
+		@Grid(onLoad = true, expandableRows = true)
+		@Path
+		private List<MealInstructionLineItem> mealInstructions;
 	}
 	
-	@Model @Getter @Setter
+	@Type(Pet.class)
+	@Getter @Setter
+	public static class PicklistType {		
+		
+		@Values(value=AllCategory.class)
+		@Path("category")
+		@PickListSelected(postEventOnChange=true)
+		@NotNull
+		private String[] selected;
+	}
+	
+	@Model
+	@Getter @Setter
 	public static class VBGAddPetButtonGrp {
 		
 		@Label("Submit")
 		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit, browserBack = true)
-		@Configs({
-			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
-		})	
+		@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
 		private String submit;
 	
 		@Label("Cancel")
 		@Button(style = Button.Style.PLAIN, type = Button.Type.reset, browserBack = true)
 		private String cancel;
 	}
-	
 }

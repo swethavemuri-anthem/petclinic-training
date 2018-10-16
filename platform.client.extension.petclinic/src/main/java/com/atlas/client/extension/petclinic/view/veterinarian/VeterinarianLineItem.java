@@ -1,4 +1,4 @@
-package com.atlas.client.extension.petclinic.view;
+package com.atlas.client.extension.petclinic.view.veterinarian;
 
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;

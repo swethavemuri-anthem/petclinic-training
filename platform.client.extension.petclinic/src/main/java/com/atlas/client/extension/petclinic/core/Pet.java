@@ -1,14 +1,13 @@
 package com.atlas.client.extension.petclinic.core;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Cache;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Database;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Calendar;
-import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.antheminc.oss.nimbus.entity.AbstractEntity;
 
 import lombok.Getter;
@@ -39,5 +38,7 @@ public class Pet extends AbstractEntity.IdLong {
 	private String[] category;
 	
 	private String notes;
+
+	private List<MealInstruction> mealInstructions;
 
 }

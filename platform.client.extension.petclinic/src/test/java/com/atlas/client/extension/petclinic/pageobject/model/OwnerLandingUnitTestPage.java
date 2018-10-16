@@ -24,7 +24,7 @@ import com.antheminc.oss.nimbus.domain.cmd.Action;
 import com.antheminc.oss.nimbus.domain.model.state.EntityState.Param;
 import com.antheminc.oss.nimbus.test.domain.support.pageobject.UnitTestPage;
 import com.antheminc.oss.nimbus.test.domain.support.utils.MockHttpRequestBuilder;
-import com.atlas.client.extension.petclinic.view.OwnerLineItem;
+import com.atlas.client.extension.petclinic.view.owner.OwnerLineItem;
 
 /**
  * @author Tony Lopez
