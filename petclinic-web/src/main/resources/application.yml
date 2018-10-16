@@ -106,7 +106,7 @@ platform:
 server:
   port: 8082
   servlet:
-    context-path: 
+    context-path: /petclinic
 #  context-path: /api
 auth-server: http://localhost:8891
 security:
