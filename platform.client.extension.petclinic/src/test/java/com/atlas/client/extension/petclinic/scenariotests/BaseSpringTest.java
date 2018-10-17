@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.atlas.client.extension.petclinic.test;
+package com.atlas.client.extension.petclinic.scenariotests;
 
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -61,7 +61,7 @@ public abstract class BaseSpringTest {
 	protected BeanResolverStrategy beanResolver;
 	
 	@Before
-	public void t0_init() {
+	public void init() {
 		
 	}
 }

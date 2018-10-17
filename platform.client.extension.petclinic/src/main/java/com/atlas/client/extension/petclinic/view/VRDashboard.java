@@ -28,8 +28,8 @@ import lombok.Setter;
  *
  */
 
-@Domain(value = "petclinicdashboard", includeListeners = {ListenerType.websocket})
-@Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
+@Domain(value = "petclinicdashboard", includeListeners = { ListenerType.websocket })
+@Repo(value = Repo.Database.rep_none, cache = Repo.Cache.rep_device)
 @Getter @Setter
 @ViewRoot(layout = "home")
 public class VRDashboard {
@@ -69,10 +69,10 @@ public class VRDashboard {
 		@Config(url = "/p/ownerlandingview/_new")
 		private String goToOwners;
 		
-		@MapsTo.Path(linked=false)
-		@Config(url="/vpDashboard/vtMyVisits/vsMyVisits/myVisits.m/_process?fn=_set&url=/p/visit/_search?fn=example")       
-		@Grid(onLoad=true, pageSize = "7")
 		@Label("My Visits")
+		@MapsTo.Path(linked = false)       
+		@Grid(onLoad = true, pageSize = "7")
+		@Config(url = "/vpDashboard/vtMyVisits/vsMyVisits/myVisits.m/_process?fn=_set&url=/p/visit/_search?fn=example")
 		private List<VisitLineItem> myVisits;
 		
     }

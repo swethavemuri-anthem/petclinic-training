@@ -13,40 +13,79 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.atlas.client.extension.petclinic.owner;
+package com.atlas.client.extension.petclinic.scenariotests.owner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
+import com.antheminc.oss.nimbus.domain.model.state.EntityState.Param;
+import com.atlas.client.extension.petclinic.core.Owner;
+import com.atlas.client.extension.petclinic.core.OwnerCall;
+import com.atlas.client.extension.petclinic.core.Pet;
 import com.atlas.client.extension.petclinic.pageobject.model.OwnerInfoUnitTestPage;
-import com.atlas.client.extension.petclinic.test.AbstractPetclinicSpringTest;
+import com.atlas.client.extension.petclinic.scenariotests.AbstractPetclinicSpringTest;
 import com.atlas.client.extension.petclinic.view.owner.CallLineItem;
+import com.atlas.client.extension.petclinic.view.owner.VPOwnerInfo.VCDBOwner;
+import com.atlas.client.extension.petclinic.view.owner.VPOwnerInfo.VCDOwnerInfo;
 import com.atlas.client.extension.petclinic.view.pet.PetLineItem;
 
 /**
  * @author Tony Lopez
  *
  */
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OwnerInfoPageTests extends AbstractPetclinicSpringTest {
 	
 	private OwnerInfoUnitTestPage ownerInfoPage;
 	
 	@Before
-	public void t0_init() {
-		super.t0_init();
-		this.ownerInfoPage = new OwnerInfoUnitTestPage(this.beanResolver, CLIENT_ID, CLIENT_ORG, 1L);
+	public void init() {
+		super.init();
+		
+		// Insert a test owner into the db.
+		Owner owner1 = new Owner();
+		owner1.setId(1L);
+		owner1.setFirstName("Oscar");
+		owner1.setLastName("Grouch");
+		owner1.setAddress("123 Sesame Street");
+		owner1.setCity("New York City");
+		owner1.setState("NY");
+		owner1.setZip("10128");
+		owner1.setTelephone("1-234-567-8910");
+		owner1.setEmail("thelonelytrashcan@sesamest.com");
+		
+		// Insert a test pet into the db for the owner.
+		Pet expectedPet = new Pet();
+		expectedPet.setId(1L);
+		expectedPet.setName("Fido");
+		expectedPet.setType("Dog - Chihuahua");
+		expectedPet.setOwnerId(1L);
+		expectedPet.setOwnerName("Oscar Grouch");
+		expectedPet.setDob(LocalDate.of(2001, 01, 21));
+		this.mongo.insert(expectedPet, CollectionNames.PET);
+		
+		// Insert test calls into the db for the owner.
+		OwnerCall call1 = new OwnerCall();
+		call1.setReceived(true);
+		call1.setReason("Schedule pet haircut");
+		OwnerCall call2 = new OwnerCall();
+		call2.setReceived(false);
+		call2.setReason("N/A");
+		owner1.setCalls(Arrays.asList(call1, call2));
+		
+		this.mongo.insert(owner1, CollectionNames.OWNER);
+		
+		// Build the owner info page to work with in the test cases.
+		this.ownerInfoPage = this.homepage.clickGoToOwners().clickOwnerInfo(0);
 	}
 	
 	@Test
-	public void t01_callsGrid_dataValidation() {
+	public void testCallsGridDataValidation() {
 		
 		// Validate pets data
 		List<PetLineItem> pets = this.ownerInfoPage.getPets();
@@ -54,7 +93,7 @@ public class OwnerInfoPageTests extends AbstractPetclinicSpringTest {
 		assertThat(pets.size()).isEqualTo(1);
 		assertThat(pets.get(0).getName()).isEqualTo("Fido");
 		assertThat(pets.get(0).getPetType()).isEqualTo("Dog - Chihuahua");
-		assertThat(pets.get(0).getOwnerName()).isEqualTo("Jane Doe");
+		assertThat(pets.get(0).getOwnerName()).isEqualTo("Oscar Grouch");
 		assertThat(pets.get(0).getDob()).isEqualTo(LocalDate.of(2001, 01, 21));
 		
 		// Validate the call data
@@ -68,7 +107,7 @@ public class OwnerInfoPageTests extends AbstractPetclinicSpringTest {
 	}
 	
 	@Test
-	public void t02_callsGrid_toggleActive() {
+	public void testCallsGridToggleActive() {
 		
 		// invoke a get call on grid to initialize the data.
 		this.ownerInfoPage.getCalls();
@@ -89,5 +128,21 @@ public class OwnerInfoPageTests extends AbstractPetclinicSpringTest {
 		assertThat(this.ownerInfoPage.getParam_calls().isActive()).isFalse();
 		assertThat(this.ownerInfoPage.getParam_hideCallHistory().isActive()).isFalse();
 		assertThat(this.ownerInfoPage.getParam_showCallHistory().isActive()).isTrue();
+	}
+	
+	@Test
+	public void testOwnerInfoCardDisplay() {
+		Param<VCDOwnerInfo> vcdParam = this.ownerInfoPage.getOwnerCardDetailParam();
+		Param<VCDBOwner> vcdbParam = vcdParam.findParamByPath("/vcdbOwner");
+		assertThat(vcdbParam.findParamByPath("/firstName").getLeafState()).isEqualTo("Oscar");
+		assertThat(vcdbParam.findParamByPath("/lastName").getLeafState()).isEqualTo("Grouch");
+		assertThat(vcdbParam.findParamByPath("/address").getLeafState()).isEqualTo("123 Sesame Street");
+		assertThat(vcdbParam.findParamByPath("/city").getLeafState()).isEqualTo("New York City");
+		assertThat(vcdbParam.findParamByPath("/telephone").getLeafState()).isEqualTo("1-234-567-8910");
+	}
+	
+	@Test
+	public void testCallHistoryLabel() {
+		assertThat(this.ownerInfoPage.getCallHistoryLabelText()).isEqualTo("Hello Oscar Grouch !! Welcome to PugsAndPaws. Below is your call history.");
 	}
 }

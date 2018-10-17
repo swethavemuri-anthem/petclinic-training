@@ -21,10 +21,14 @@ import org.springframework.mock.web.MockHttpServletRequest;
 
 import com.antheminc.oss.nimbus.context.BeanResolverStrategy;
 import com.antheminc.oss.nimbus.domain.cmd.Action;
+import com.antheminc.oss.nimbus.domain.cmd.exec.CommandExecution.MultiOutput;
 import com.antheminc.oss.nimbus.domain.model.state.EntityState.Param;
+import com.antheminc.oss.nimbus.support.Holder;
 import com.antheminc.oss.nimbus.test.domain.support.pageobject.UnitTestPage;
 import com.antheminc.oss.nimbus.test.domain.support.utils.MockHttpRequestBuilder;
 import com.atlas.client.extension.petclinic.view.owner.OwnerLineItem;
+
+import lombok.Getter;
 
 /**
  * @author Tony Lopez
@@ -32,19 +36,19 @@ import com.atlas.client.extension.petclinic.view.owner.OwnerLineItem;
  */
 public class OwnerLandingUnitTestPage extends UnitTestPage {
 
-	/**
-	 * @param beanResolver
-	 * @param clientId
-	 * @param clientApp
-	 * @param refId
-	 */
-	public OwnerLandingUnitTestPage(BeanResolverStrategy beanResolver, String clientId, String clientApp, Long refId) {
-		super(beanResolver, clientId, clientApp, "owner", "ownerlandingview", "vpOwners", refId);
+	@Getter
+	private final Object fromResponse;
+	
+	public OwnerLandingUnitTestPage(BeanResolverStrategy beanResolver, String clientId, String clientApp, Object fromResponse) {
+		super(beanResolver, clientId, clientApp, "owner", "ownerlandingview", "vpOwners", null);
+		this.fromResponse = fromResponse;
+		
+		// invoke onload calls
+		this.getOwners();
 	}
 
 	public List<OwnerLineItem> getOwners() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
-				.addRefId(this.getRefId())
 				.addNested("/vpOwners/vtOwners/vsOwners/owners")
 				.addAction(Action._get)
 				.getMock();
@@ -55,7 +59,6 @@ public class OwnerLandingUnitTestPage extends UnitTestPage {
 	
 	public Param<List<OwnerLineItem>> invokeGet_owners() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
-				.addRefId(this.getRefId())
 				.addNested("/vpOwners/vtOwners/vsOwners/owners")
 				.addAction(Action._get)
 				.getMock();
@@ -63,15 +66,27 @@ public class OwnerLandingUnitTestPage extends UnitTestPage {
 		return extractResponse(request, null);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public OwnerInfoUnitTestPage clickOwnerInfo(int index) {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
-				.addRefId(this.getRefId())
 				.addNested("/vpOwners/vtOwners/vsOwners/owners/" + index + "/vlmCaseItemLinks/ownerInfo")
 				.addAction(Action._get)
 				.getMock();
 		
-		this.controller.handlePost(request, null);
-
-		return new OwnerInfoUnitTestPage(this.beanResolver, this.getClientId(), this.getClientApp(), this.getRefId());
+		Object response = this.controller.handlePost(request, null);
+		Long refId = ((Holder<MultiOutput>) response).getState().getOutputs().get(0).getRootDomainId();
+		return new OwnerInfoUnitTestPage(this.beanResolver, this.getClientId(), this.getClientApp(), refId);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public AddEditOwnerUnitTestPage clickAddOwner() {
+		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
+				.addNested("/vpOwners/vtOwners/vsSearchOwnerCriteria/vfSearchOwnerCriteria/vbgSearchOwner/addOwner")
+				.addAction(Action._get)
+				.getMock();
+		
+		Object response = this.controller.handlePost(request, null);
+		Long refId = ((Holder<MultiOutput>) response).getState().getOutputs().get(0).getRootDomainId();
+		return new AddEditOwnerUnitTestPage(this, refId);
 	}
 }

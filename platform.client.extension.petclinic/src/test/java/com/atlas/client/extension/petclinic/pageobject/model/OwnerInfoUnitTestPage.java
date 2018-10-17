@@ -24,7 +24,9 @@ import com.antheminc.oss.nimbus.domain.cmd.Action;
 import com.antheminc.oss.nimbus.domain.model.state.EntityState.Param;
 import com.antheminc.oss.nimbus.test.domain.support.pageobject.UnitTestPage;
 import com.antheminc.oss.nimbus.test.domain.support.utils.MockHttpRequestBuilder;
+import com.antheminc.oss.nimbus.test.domain.support.utils.ParamUtils;
 import com.atlas.client.extension.petclinic.view.owner.CallLineItem;
+import com.atlas.client.extension.petclinic.view.owner.VPOwnerInfo.VCDOwnerInfo;
 import com.atlas.client.extension.petclinic.view.pet.PetLineItem;
 
 /**
@@ -42,6 +44,10 @@ public class OwnerInfoUnitTestPage extends UnitTestPage {
 	public OwnerInfoUnitTestPage(BeanResolverStrategy beanResolver, String clientId, String clientApp,
 			Long refId) {
 		super(beanResolver, clientId, clientApp, "owner", "ownerview", "vpOwnerInfo", refId);
+		
+		// invoke on load calls
+		this.getPets();
+		this.getCalls();
 	}
 	
 	public List<CallLineItem> getCalls() {
@@ -51,7 +57,7 @@ public class OwnerInfoUnitTestPage extends UnitTestPage {
 				.addAction(Action._get)
 				.getMock();
 		
-		Param<List<CallLineItem>> response = extractResponse(request, null);
+		Param<List<CallLineItem>> response = ParamUtils.extractResponseByParamPath(this.controller.handlePost(request, null), "/calls");
 		return response.getLeafState();
 	}
 	
@@ -62,7 +68,7 @@ public class OwnerInfoUnitTestPage extends UnitTestPage {
 				.addAction(Action._get)
 				.getMock();
 		
-		Param<List<PetLineItem>> response = extractResponse(request, null);
+		Param<List<PetLineItem>> response = ParamUtils.extractResponseByParamPath(this.controller.handlePost(request, null), "/pets");
 		return response.getLeafState();
 	}
 	
@@ -98,5 +104,21 @@ public class OwnerInfoUnitTestPage extends UnitTestPage {
 		
 		this.controller.handlePost(request, null);
 		return this;
+	}
+
+	public Param<VCDOwnerInfo> getOwnerCardDetailParam() {
+		return this.getParam("/vpOwnerInfo/vtOwnerInfo/vsOwnerInfo/vcdOwnerInfo");
+	}
+
+	public String getCallHistoryLabelText() {
+		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
+				.addRefId(this.getRefId())
+				.addNested("/vpOwnerInfo/vtOwnerInfo/vsHistory/vfForm/headerCallSection")
+				.addAction(Action._get)
+				.getMock();
+		
+		Object response = this.controller.handlePost(request, null);
+		Param<String> pCallHistoryLabelText = ParamUtils.extractResponseByParamPath(response, "/headerCallSection");
+		return pCallHistoryLabelText.getDefaultLabel().getText();
 	}
 }
