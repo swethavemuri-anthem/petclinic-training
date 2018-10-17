@@ -5,10 +5,7 @@ import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
 
 import com.antheminc.oss.nimbus.domain.defn.Domain;
-import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
-import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
-import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.Repo.Cache;
