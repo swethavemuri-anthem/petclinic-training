@@ -51,13 +51,12 @@ public class HomeUnitTestPage extends UnitTestPage {
 
 	public OwnerLandingUnitTestPage clickGoToOwners() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
-				.addRefId(this.getRefId())
 				.addNested("/vpDashboard/vtMyVisits/vsMyVisits/goToOwners")
 				.addAction(Action._get)
 				.getMock();
 		
 		Object response = this.controller.handlePost(request, null);
-		return new OwnerLandingUnitTestPage(this.beanResolver, getClientId(), getClientApp(), getRefId(), response);
+		return new OwnerLandingUnitTestPage(this.beanResolver, getClientId(), getClientApp(), response);
 	}
 	
 	@RequiredArgsConstructor
@@ -66,7 +65,7 @@ public class HomeUnitTestPage extends UnitTestPage {
 		private final HomeUnitTestPage page;
 		
 		public OwnerLandingUnitTestPage clickOwners() {
-			return new OwnerLandingUnitTestPage(page.beanResolver, page.getClientId(), page.getClientApp(), page.getRefId(), null);
+			return new OwnerLandingUnitTestPage(page.beanResolver, page.getClientId(), page.getClientApp(), null);
 		}
 		
 		public OwnerLandingUnitTestPage clickHome() {

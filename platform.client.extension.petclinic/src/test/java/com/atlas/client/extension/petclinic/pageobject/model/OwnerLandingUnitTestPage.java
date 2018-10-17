@@ -39,14 +39,16 @@ public class OwnerLandingUnitTestPage extends UnitTestPage {
 	@Getter
 	private final Object fromResponse;
 	
-	public OwnerLandingUnitTestPage(BeanResolverStrategy beanResolver, String clientId, String clientApp, Long refId, Object fromResponse) {
-		super(beanResolver, clientId, clientApp, "owner", "ownerlandingview", "vpOwners", refId);
+	public OwnerLandingUnitTestPage(BeanResolverStrategy beanResolver, String clientId, String clientApp, Object fromResponse) {
+		super(beanResolver, clientId, clientApp, "owner", "ownerlandingview", "vpOwners", null);
 		this.fromResponse = fromResponse;
+		
+		// invoke onload calls
+		this.getOwners();
 	}
 
 	public List<OwnerLineItem> getOwners() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
-				.addRefId(this.getRefId())
 				.addNested("/vpOwners/vtOwners/vsOwners/owners")
 				.addAction(Action._get)
 				.getMock();
@@ -57,7 +59,6 @@ public class OwnerLandingUnitTestPage extends UnitTestPage {
 	
 	public Param<List<OwnerLineItem>> invokeGet_owners() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
-				.addRefId(this.getRefId())
 				.addNested("/vpOwners/vtOwners/vsOwners/owners")
 				.addAction(Action._get)
 				.getMock();
@@ -65,22 +66,21 @@ public class OwnerLandingUnitTestPage extends UnitTestPage {
 		return extractResponse(request, null);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public OwnerInfoUnitTestPage clickOwnerInfo(int index) {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
-				.addRefId(this.getRefId())
 				.addNested("/vpOwners/vtOwners/vsOwners/owners/" + index + "/vlmCaseItemLinks/ownerInfo")
 				.addAction(Action._get)
 				.getMock();
 		
-		this.controller.handlePost(request, null);
-
-		return new OwnerInfoUnitTestPage(this.beanResolver, this.getClientId(), this.getClientApp(), this.getRefId());
+		Object response = this.controller.handlePost(request, null);
+		Long refId = ((Holder<MultiOutput>) response).getState().getOutputs().get(0).getRootDomainId();
+		return new OwnerInfoUnitTestPage(this.beanResolver, this.getClientId(), this.getClientApp(), refId);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public AddEditOwnerUnitTestPage clickAddOwner() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
-				.addRefId(this.getRefId())
 				.addNested("/vpOwners/vtOwners/vsSearchOwnerCriteria/vfSearchOwnerCriteria/vbgSearchOwner/addOwner")
 				.addAction(Action._get)
 				.getMock();

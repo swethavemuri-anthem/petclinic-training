@@ -61,7 +61,7 @@ public abstract class BaseSpringTest {
 	protected BeanResolverStrategy beanResolver;
 	
 	@Before
-	public void t0_init() {
+	public void init() {
 		
 	}
 }

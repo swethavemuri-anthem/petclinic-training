@@ -19,15 +19,14 @@ import java.time.LocalDateTime;
 
 import com.antheminc.oss.nimbus.domain.defn.Model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  * @author Tony Lopez
  *
  */
-@Model @Getter @Setter @ToString
+@Model
+@Data
 public class OwnerCall {
 
 	private LocalDateTime date;
