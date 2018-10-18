@@ -61,11 +61,11 @@ public class PetCareAssessment extends IdLong {
 		
 		@AccordionTab
 		@Label("Section 2")
-		private Quetionnaire_Section1 quetionnaire_Section2;
+		private Quetionnaire_Section2 quetionnaire_Section2;
 		
 		@AccordionTab
 		@Label("Section 3")
-		private Quetionnaire_Section1 quetionnaire_Section3;
+		private Quetionnaire_Section3 quetionnaire_Section3;
 				
 	}
 	
