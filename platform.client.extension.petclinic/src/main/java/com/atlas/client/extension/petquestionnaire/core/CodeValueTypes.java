@@ -79,8 +79,8 @@ public class CodeValueTypes {
 		public List<ParamValue> getValues(String paramPath) {
 			List<ParamValue> values = new ArrayList<>();
 			values.add(new ParamValue("Yes", "Yes"));
-			values.add(new ParamValue("Yes", "Yes"));
-			values.add(new ParamValue("Yes", "Yes"));
+			values.add(new ParamValue("No", "No"));
+			values.add(new ParamValue("MayBe", "MayBe"));
 			return values;
 		}
 	}
