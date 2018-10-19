@@ -11,6 +11,8 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridColumn;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridRowBody;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.LinkMenu;
+import com.antheminc.oss.nimbus.domain.defn.extension.Style;
+import com.antheminc.oss.nimbus.domain.defn.extension.StyleConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.atlas.client.extension.petclinic.core.Owner;
 
@@ -35,6 +37,26 @@ public class OwnerLineItem {
     @Path
     private String lastName;
  
+    @Label("Nickname")
+    @GridColumn
+    @Path
+    private String nickname;
+
+    @GridColumn(hidden = true)
+    @Path
+    @StyleConditional(targetPath = "/../nickname", condition = {
+    	@StyleConditional.Condition(when = "state == true", then = @Style(cssClass = "highlight-nickname"))
+    })
+    private Boolean shouldUseNickname;
+    
+    @Label("Status")
+    @GridColumn
+    @Path
+    @StyleConditional(targetPath = "/../lastName", condition = {
+    	@StyleConditional.Condition(when = "state == 'Inactive'", then = @Style(cssClass = "inactiveUser"))
+    })
+    private String status;
+    
     @Label("Owner City")
     @GridColumn
     @Path("city")

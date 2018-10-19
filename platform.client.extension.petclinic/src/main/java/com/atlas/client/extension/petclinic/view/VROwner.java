@@ -24,7 +24,6 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
-import com.antheminc.oss.nimbus.domain.defn.extension.Style;
 import com.antheminc.oss.nimbus.domain.defn.extension.LabelConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional.GROUP_1;
@@ -33,7 +32,7 @@ import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional.Valida
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.OwnerNotificationPreferences;
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.OwnerStatus;
 import com.atlas.client.extension.petclinic.core.Owner;
-import com.antheminc.oss.nimbus.domain.defn.extension.Style;
+import com.atlas.client.extension.petclinic.view.owner.VPOwnerInfo;
 
 import lombok.Getter;
 import lombok.Setter;

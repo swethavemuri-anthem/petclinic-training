@@ -24,6 +24,7 @@ import org.junit.Before;
 import com.atlas.client.extension.petclinic.core.Owner;
 import com.atlas.client.extension.petclinic.core.OwnerCall;
 import com.atlas.client.extension.petclinic.core.Pet;
+import com.atlas.client.extension.petclinic.scenariotests.BaseSpringTest;
 
 /**
  * @author Tony Lopez
