@@ -103,9 +103,9 @@ public class CodeValueTypes {
 		public List<ParamValue> getValues(String paramPath) {
 			List<ParamValue> values = new ArrayList<>();
 			values.add(new ParamValue("do_not_send_notifications", "Do Not Send Notifications"));
-			values.add(new ParamValue("email", "Email"));
-			values.add(new ParamValue("physical_mail", "Mail"));
-			values.add(new ParamValue("text", "Text"));
+			values.add(new ParamValue("Email", "Email"));
+			values.add(new ParamValue("Physical_mail", "Mail"));
+			values.add(new ParamValue("Text", "Text"));
 			return values;
 		}
     }
@@ -117,6 +117,16 @@ public class CodeValueTypes {
 			values.add(new ParamValue("general", "General Note"));
 			values.add(new ParamValue("owner", "Note about Owner"));
 			values.add(new ParamValue("visit", "Note about Visit"));
+			return values;
+		}
+    }
+	
+	public static class OwnerStatus implements Source {
+    	@Override
+		public List<ParamValue> getValues(String paramPath) {
+			List<ParamValue> values = new ArrayList<>();
+			values.add(new ParamValue("Active", "Active"));
+			values.add(new ParamValue("Inactive", "Inactive"));
 			return values;
 		}
     }
