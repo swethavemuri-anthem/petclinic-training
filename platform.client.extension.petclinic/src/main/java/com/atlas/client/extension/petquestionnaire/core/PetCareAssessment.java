@@ -82,7 +82,7 @@ public class PetCareAssessment extends IdLong {
 				
 		@TextBox
 		@NotNull
-		@Label(value = "Question 1 \n newline </br> <script>alert('hi')</script>")
+		@Label(value = "Question 1")
 		private String question1;
 
 		@Calendar(timeOnly=true)
