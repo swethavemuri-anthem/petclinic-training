@@ -1,4 +1,5 @@
 
+
 .Active {
 	color:green;
 }
@@ -21,4 +22,12 @@
 .Email .fieldValue, 
 .Physical_mail .fieldValue {
 	opacity: 0;
+}
+.highlight-nickname {
+	text-decoration: underline;
+	font-weight: bold;
+	font-style: italic;
+}
+.inactiveUser {
+	text-decoration: line-through;
 }

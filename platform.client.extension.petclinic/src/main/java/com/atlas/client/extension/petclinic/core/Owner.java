@@ -42,6 +42,8 @@ public class Owner extends AbstractEntity.IdLong {
     
     private boolean shouldUseNickname;
     
+    private String nickname;
+    
 //    private String petName;
  
     List<OwnerCall> calls;
