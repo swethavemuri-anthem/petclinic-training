@@ -60,7 +60,7 @@ public class VRPetCareQuestionnaire {
 	@Setter
 	public static class VSPetGeneralAssessment{
 			
-		@Form 	
+		@Form(cssClass = "questionGroup")
 		private PetCareForm petCareForm;
 
 	}
