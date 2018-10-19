@@ -23,6 +23,10 @@ public class Owner extends AbstractEntity.IdLong {
     private String firstName;
  
     private String lastName;
+    
+    private String status;
+    
+    private String notificationPreference;
  
     private String address;
  
@@ -35,6 +39,12 @@ public class Owner extends AbstractEntity.IdLong {
     private String telephone;
     
     private String email;
+    
+    private boolean shouldUseNickname;
+    
+    private String nickname;
+    
+//    private String petName;
  
     List<OwnerCall> calls;
 }

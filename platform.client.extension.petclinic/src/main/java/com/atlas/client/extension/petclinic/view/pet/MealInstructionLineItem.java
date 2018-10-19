@@ -15,13 +15,9 @@
  */
 package com.atlas.client.extension.petclinic.view.pet;
 
-import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
-
 import java.time.ZonedDateTime;
 
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-
+import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.Model;
