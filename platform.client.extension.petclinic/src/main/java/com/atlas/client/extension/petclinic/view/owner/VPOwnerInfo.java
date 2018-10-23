@@ -1,4 +1,4 @@
-package com.atlas.client.extension.petclinic.view.owner;
+ package com.atlas.client.extension.petclinic.view.owner;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button.Style;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetail;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValueGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Hints;
@@ -29,7 +30,7 @@ public class VPOwnerInfo {
  
     @Tile(imgSrc="resources/icons/careplan.svg#Layer_1", size=Tile.Size.Large)
     private VTOwnerInfo vtOwnerInfo;
- 
+  
     @Model @Getter @Setter
     public static class VTOwnerInfo {
  
@@ -46,39 +47,39 @@ public class VPOwnerInfo {
     @Model @Getter @Setter
     public static class VSHistory {
 
-    	@Form
-    	private VFForm vfForm;
+	    	@Form
+	    	private VFForm vfForm;
     }
     
     @Model @Getter @Setter
     public static class VFForm {
     	
-    	@Label("Hello <!/.d/.m/firstName!> <!/.d/.m/lastName!> !! Welcome to <!#env.petclinic.clinicname!>. Below is your call history.")
-    	@Paragraph(cssClass="font-weight-bold")
-    	private String headerCallSection;
+	    	@Label("Hello <!/.d/.m/firstName!> <!/.d/.m/lastName!> !! Welcome to <!#env.petclinic.clinicname!>. Below is your call history.")
+	    	@Paragraph(cssClass="font-weight-bold")
+	    	private String headerCallSection;
     	
-    	private CallSection callSection;
+    		private CallSection callSection;
     }
 
     @Model @Getter @Setter
     public static class CallSection {
     	
-    	@ActivateConditional(when = "state == null || state == 'inactive'", targetPath = {
-    		"/../showHistory"
-    	})
-    	@ActivateConditional(when = "state == 'active'", targetPath = {
-    		"/../hideHistory",
-    		"/../gridWrapper"
-    	})
-    	private String gridVisibility;
+	    	@ActivateConditional(when = "state == null || state == 'inactive'", targetPath = {
+	    		"/../showHistory"
+	    	})
+	    	@ActivateConditional(when = "state == 'active'", targetPath = {
+	    		"/../hideHistory",
+	    		"/../gridWrapper"
+	    	})
+	    	private String gridVisibility;
     	
-    	@Label("Show Call History")
-    	@Button(cssClass = "text-sm-right")
-		@Hints(Hints.AlignOptions.Right)
-    	@Config(url = "<!#this!>/../gridVisibility/_replace?rawPayload=\"active\"")
+	    	@Label("Show Call History")
+	    	@Button(cssClass = "text-sm-right")
+			@Hints(Hints.AlignOptions.Right)
+	    	@Config(url = "<!#this!>/../gridVisibility/_replace?rawPayload=\"active\"")
 		private String showHistory;
 
-    	@Label("Hide Call History")
+	    	@Label("Hide Call History")
 		@Button(cssClass = "text-sm-right")
 		@Hints(Hints.AlignOptions.Right)
 		@Config(url = "<!#this!>/../gridVisibility/_replace?rawPayload=\"inactive\"")
@@ -91,7 +92,7 @@ public class VPOwnerInfo {
     @Model @Getter @Setter
     public static class CallHistoryGridWrapper {
     	
-    	@Label("Call History")
+    		@Label("Call History")
 		@Grid(onLoad = true, isTransient = true, pageSize = "5")
 		@Path
 		private List<CallLineItem> calls;
@@ -116,9 +117,9 @@ public class VPOwnerInfo {
     @Getter @Setter
     public static class VCDBOwner {
  
-    	@Label("First Name")
+    		@Label("First Name")
         @FieldValue(cols="2")
-    	@Path
+    		@Path
         private String firstName;
         
         @Label("Last Name")
@@ -128,34 +129,57 @@ public class VPOwnerInfo {
  
         @FieldValue(type=FieldValue.Type.Divider)
         private String divider2;
- 
-        @Label("Address")
-        @FieldValue
-        @Path
-        private String address;
-
-        @Label("City")
-        @FieldValue
-        @Path
-        private String city;
+        
+        @Label("Address Group")
+        @FieldValueGroup()
+        private AddressGroup addressGroup;
+        
         
         @Label("Telephone")
         @FieldValue
         @Path
         private String telephone;
     }
+    
+    @Type(Owner.class)
+    @Getter @Setter
+    public static class AddressGroup {
+    	
+    		@Label("Address")
+        @FieldValue(cols="1", showName=false)
+        @Path
+        private String address;
+
+        @Label("City")
+        @FieldValue(cols="1", showName=false)
+        @Path
+        private String city;
+        
+        @Label("State")
+        @FieldValue(cols="1", showName=false)
+        @Path
+        private String state;
+        
+        @Label("Zip")
+        @FieldValue(cols="1", showName=false)
+        @Path
+        private String zip;
+    	
+    }
+    
+    
  
     @Model @Getter @Setter
     public static class VSPets {
     	
-    	@Label("Add Pet")
-    	@Button(style=Style.SECONDARY)
+    		@Label("Add Pet")
+    		@Button(style=Style.SECONDARY)
         @Config(url="/p/petview/_new?fn=_initEntity&target=/.m/ownerId&json=\"<!/.m/id!>\"&target=/.m/ownerName&json=\"<!/.m/firstName!> <!/.m/lastName!>\"")
         @Config(url="/p/petview/_nav?pageId=vpAddEditPet")
         private String addPet;
  
-    	@Label("Pets")
-    	@Grid(onLoad = true, pageSize = "7")
+    		@Label("Pets")
+    		@Grid(onLoad = true, pageSize = "7")
         @Path(linked = false)
         @Config(url="<!#this!>/.m/_process?fn=_set&url=/p/pet/_search?fn=query&where=pet.ownerId.eq(<!/../.m/id!>)")
         private List<PetLineItem> pets;
