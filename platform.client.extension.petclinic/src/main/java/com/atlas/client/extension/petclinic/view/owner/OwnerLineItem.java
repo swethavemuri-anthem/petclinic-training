@@ -14,6 +14,8 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.LinkMenu;
 import com.antheminc.oss.nimbus.domain.defn.extension.Style;
 import com.antheminc.oss.nimbus.domain.defn.extension.StyleConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.antheminc.oss.nimbus.domain.defn.extension.Style;
+import com.antheminc.oss.nimbus.domain.defn.extension.StyleConditional;
 import com.atlas.client.extension.petclinic.core.Owner;
 
 import lombok.Getter;

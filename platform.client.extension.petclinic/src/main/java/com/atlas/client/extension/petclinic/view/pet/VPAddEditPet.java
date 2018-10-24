@@ -138,7 +138,6 @@ public class VPAddEditPet {
 		@Label("Add Meal Instruction")
 		@Button
 		@Config(url = "/vpAddEditPet/vtAddEditPet/vmMealInstruction/section/form/_get?fn=param&expr=unassignMapsTo()")
-		@Config(url = "/vpAddEditPet/vtAddEditPet/vmMealInstruction/section/form/_process?fn=_setByRule&rule=rules/common/setId")
 		@Config(url = "/vpAddEditPet/vtAddEditPet/vmMealInstruction/_process?fn=_setByRule&rule=togglemodal")
 		private String addMealInstruction;
 		

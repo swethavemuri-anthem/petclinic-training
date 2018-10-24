@@ -1,5 +1,3 @@
-
-
 .Active {
 	color:green;
 }
@@ -31,3 +29,15 @@
 .inactiveUser {
 	text-decoration: line-through;
 }
+.nickname.preferred {
+	font-weight: bold;
+}
+.ui-treetable td.dropdown, 
+.ui-treetable td.imageColumn, 
+.ui-treetable th.dropdown, 
+.ui-treetable th.imageColumn, 
+.ui-treetable td.dropdown, 
+.ui-treetable td.imageColumn, 
+.ui-treetable th.dropdown, 
+.ui-treetable th.imageColumn {
+    width: 40px;

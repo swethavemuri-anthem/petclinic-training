@@ -130,4 +130,14 @@ public class CodeValueTypes {
 			return values;
 		}
     }
+	
+	public static class Sex implements Source {
+    	@Override
+		public List<ParamValue> getValues(String paramPath) {
+			List<ParamValue> values = new ArrayList<>();
+			values.add(new ParamValue("male", "Male"));
+			values.add(new ParamValue("female", "Female"));
+			return values;
+		}
+    }
 }
