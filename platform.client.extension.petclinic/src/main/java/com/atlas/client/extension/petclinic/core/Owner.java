@@ -27,10 +27,6 @@ public class Owner extends AbstractEntity.IdLong {
     private String status;
     
     private String notificationPreference;
- 
-    private String nickname;
-    
-    private boolean shouldUseNickname;
     
     private String address;
  
