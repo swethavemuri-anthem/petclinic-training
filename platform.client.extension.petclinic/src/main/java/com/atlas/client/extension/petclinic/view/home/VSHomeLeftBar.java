@@ -37,4 +37,8 @@ public class VSHomeLeftBar {
 	@MenuLink(url="petclinicdashboard/vpNotes", imgSrc="notesIcon")
 	private String notes;
 	
+	@Label("Treegrid Demo")
+	@MenuLink(url="petclinicdashboard/vpTreegridDemo")
+	private String treegrid;
+	
 }

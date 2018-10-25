@@ -40,10 +40,6 @@ import lombok.ToString;
 @MapsTo.Type(MealInstruction.class)
 @Getter @Setter @ToString
 public class MealInstructionLineItem {
-
-	@GridColumn(hidden = true)
-	@Path
-	private Long id;
 	
 	@Label("Food Name")
 	@GridColumn(placeholder = "--")
