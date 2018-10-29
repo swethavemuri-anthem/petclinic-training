@@ -3,6 +3,8 @@ package com.atlas.client.extension.petquestionnaire.core;
 import java.time.LocalDate;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
@@ -99,6 +101,8 @@ public class PetCareAssessment extends IdLong {
 		private String question3;
 		
 		@ComboBox(cssClass= "questionGroup form-inline")
+		@NotNull
+		@Size(min=2)
 		@Model.Param.Values(value = YesTest.class)
 		@Label(value = "Question 19")
 		private String question19;
@@ -114,6 +118,12 @@ public class PetCareAssessment extends IdLong {
 		@Model.Param.Values(value = YesTest.class)
 		@Label(value = "Question 22")
 		private String question22;
+		
+		@TextBox
+		@NotNull
+		@Pattern(regexp = "^[2-9]\\d{2}-\\d{3}-\\d{4}$", message = "Please enter phone number in xxx-xxx-xxxx format")
+		@Label(value = "Question 23 with regex pattern")
+		private String question23;
 		
 		@FormElementGroup
 		@Label("Section 12")
