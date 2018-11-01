@@ -22,6 +22,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
+import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Nature;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
@@ -53,6 +54,7 @@ import com.atlas.client.extension.petclinic.core.CodeValueTypes.DogCategory;
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.petType;
 import com.atlas.client.extension.petclinic.core.MealInstruction;
 import com.atlas.client.extension.petclinic.core.Pet;
+import com.atlas.client.extension.petclinic.core.Veterinarian;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -67,6 +69,9 @@ public class VPAddEditPet {
 	
 	 @Tile(size = Tile.Size.Large)
 	 private VTAddEditPet vtAddEditPet;
+	 
+	 @Path(linked=false)
+	 private List<Veterinarian> vets;
 
 	@Model
 	@Getter @Setter
@@ -168,7 +173,11 @@ public class VPAddEditPet {
 		
 		@Label("Submit")
 		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit, browserBack = true)
-		@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
+		@Configs({
+			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update"),
+			@Config(url="/vpAddEditPet/vets/_process?fn=_set&url=/p/veterinarian/_search?fn=_example"),
+			@Config(url="/vpAddEditPet/.m/_process?fn=_setByRule&rule=assignpetovet&associatedParam=/vpAddEditPet/vets/_get")
+		})
 		private String submit;
 	
 		@Label("Cancel")

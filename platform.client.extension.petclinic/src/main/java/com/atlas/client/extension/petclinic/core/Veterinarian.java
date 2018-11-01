@@ -1,5 +1,7 @@
 package com.atlas.client.extension.petclinic.core;
 
+import java.util.List;
+
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
@@ -27,6 +29,10 @@ public class Veterinarian extends AbstractEntity.IdLong {
 	private String lastName;
 	
 	private String fullName;
+	
+	private String speciality;
+	
+	private List<Long> assignedPets;
 	
 	public String getFullName() {
 		return firstName + ' ' + lastName;		
