@@ -130,12 +130,12 @@ public class CodeValueTypes {
     	@Override
 		public List<ParamValue> getValues(String paramPath) {
 			List<ParamValue> values = new ArrayList<>();
-			values.add(new ParamValue("avian", "Avian"));
-			values.add(new ParamValue("equine", "Equine"));
-			values.add(new ParamValue("feline", "Feline"));
-			values.add(new ParamValue("canine", "Canine"));
-			values.add(new ParamValue("poultry", "Poultry"));
-			values.add(new ParamValue("reptile-amphibian", "Reptile & Amphibian"));
+			values.add(new ParamValue("Avian", "Avian"));
+			values.add(new ParamValue("Equine", "Equine"));
+			values.add(new ParamValue("Feline", "Feline"));
+			values.add(new ParamValue("Canine", "Canine"));
+			values.add(new ParamValue("Poultry", "Poultry"));
+			values.add(new ParamValue("Reptile & Amphibian", "Reptile & Amphibian"));
 			return values;
 		}
     }

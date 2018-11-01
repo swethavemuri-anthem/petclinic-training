@@ -51,9 +51,9 @@ logging:
   file: ${HOME}/Documents/nimbuslogs/${spring.application.name}.log
   level:
     reactor.io.net.impl.netty.tcp: DEBUG
-  pattern:
-    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } [%X{SESSIONID:- }] --- [%t] %-40.40logger{39} : %replace(%replace(%m){'\n', ''}){'\r', ''} %n${LOG_EXCEPTION_CONVERSION_WORD: %wEx}"  
-    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } [%X{SESSIONID:- }] --- [%t] %-40.40logger{39} : %replace(%replace(%m){'\n', ''}){'\r', ''} %n${LOG_EXCEPTION_CONVERSION_WORD: %wEx}"
+#  pattern:
+#    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } [%X{SESSIONID:- }] --- [%t] %-40.40logger{39} : %n${LOG_EXCEPTION_CONVERSION_WORD: %wEx}"  
+#    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } [%X{SESSIONID:- }] --- [%t] %-40.40logger{39} : %n${LOG_EXCEPTION_CONVERSION_WORD: %wEx}"
   
 #logging.level.org.springframework=DEBUG
 
