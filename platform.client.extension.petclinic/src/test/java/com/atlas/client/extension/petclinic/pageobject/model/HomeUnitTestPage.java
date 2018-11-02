@@ -95,4 +95,9 @@ public class HomeUnitTestPage extends UnitTestPage {
 		Param<List<VisitLineItem>> response = ParamUtils.extractResponseByParamPath(this.controller.handlePost(request, null), "/myVisits");
 		return response.getLeafState();
 	}
+
+	public PetsUnitTestPage clickGoToPets() {
+		// client side redirect
+		return new PetsUnitTestPage(this, this.getRefId());
+	}
 }

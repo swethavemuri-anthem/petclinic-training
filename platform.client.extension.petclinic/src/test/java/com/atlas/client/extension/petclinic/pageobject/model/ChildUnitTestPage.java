@@ -13,27 +13,24 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.atlas.client.extension.petclinic.core;
+package com.atlas.client.extension.petclinic.pageobject.model;
 
-import com.antheminc.oss.nimbus.domain.defn.Model;
-import com.antheminc.oss.nimbus.entity.AbstractEntity.IdLong;
+import com.antheminc.oss.nimbus.test.domain.support.pageobject.UnitTestPage;
 
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  * @author Tony Lopez
  *
  */
-@Model
-@Getter @Setter @ToString
-public class MealInstruction extends IdLong {
+@Getter
+public class ChildUnitTestPage<P extends UnitTestPage> extends UnitTestPage {
+
+	private P parent;
 	
-	private static final long serialVersionUID = 1L;
-	
-	private String name;
-	private String amount;
-	private String timeOfDay;
-	private String lengthOfTimeEaten;
+	public ChildUnitTestPage(P parent, String coreDomainAlias, String viewDomainAlias, String pageId, Long refId) {
+		super(parent.getBeanResolver(), parent.getClientId(), parent.getClientApp(), coreDomainAlias, viewDomainAlias, pageId, refId);
+		this.parent = parent;
+	}
+
 }

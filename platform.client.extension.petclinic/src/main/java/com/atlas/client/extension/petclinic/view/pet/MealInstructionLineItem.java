@@ -22,6 +22,7 @@ import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetail;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridColumn;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridRowBody;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
@@ -82,23 +83,28 @@ public class MealInstructionLineItem {
    	@Getter @Setter
    	public static class VCDBody {
  		
+ 		@Label("How long as pet eaten food?")
+ 		@FieldValue(placeholder = "--")
+ 		@Path
+ 		private String lengthOfTimeEaten;
+ 		
  		@Label("Created By")
- 		@GridColumn(placeholder = "--")
+ 		@FieldValue(placeholder = "--")
  		@Path
  		private String createdBy;
  		
  		@Label("Created Date")
- 		@GridColumn(placeholder = "--")
+ 		@FieldValue(placeholder = "--")
  		@Path
  		private ZonedDateTime createdDate;
  		
  		@Label("Last Modified By")
- 		@GridColumn(placeholder = "--")
+ 		@FieldValue(placeholder = "--")
  		@Path
  		private String lastModifiedBy;
  		
  		@Label("Last Modified Date")
- 		@GridColumn(placeholder = "--")
+ 		@FieldValue(placeholder = "--")
  		@Path
  		private ZonedDateTime lastModifiedDate;
  	}
