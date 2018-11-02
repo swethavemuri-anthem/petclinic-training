@@ -27,7 +27,12 @@ import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.antheminc.oss.nimbus.domain.defn.extension.MessageConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional.GROUP_1;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional.ValidationScope;
+import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional;
+import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditionals;
+import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional.Condition;
 import com.antheminc.oss.nimbus.entity.AbstractEntity.IdLong;
+import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.PositiveSatisfactionType;
+import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.SatisfactionType;
 import com.atlas.client.extension.petquestionnaire.core.CodeValueTypes.YesTest;
 
 import lombok.Getter;
@@ -100,9 +105,12 @@ public class PetCareAssessment extends IdLong {
 		@Label(value = "Question with activate conditional (activates Section 12)")
 		private String question3;
 		
-		@ComboBox(cssClass= "questionGroup form-inline")
+		@ComboBox(postEventOnChange=true, cssClass= "questionGroup form-inline")
 		@NotNull
-		@Size(min=2)
+		@ValuesConditionals({
+			@ValuesConditional(condition = { @Condition(when = "state=='Yes'", then = @Model.Param.Values(value = PositiveSatisfactionType.class)), }, targetPath = "/../question22"),
+			@ValuesConditional(condition = { @Condition(when = "state=='No'", then = @Model.Param.Values(value = SatisfactionType.class)), }, targetPath = "/../question22")
+		})
 		@Model.Param.Values(value = YesTest.class)
 		@Label(value = "Question 19")
 		private String question19;
@@ -115,7 +123,9 @@ public class PetCareAssessment extends IdLong {
 		
 		
 		@ComboBox(cssClass= "questionGroup form-inline")
-		@Model.Param.Values(value = YesTest.class)
+		@Size(min=2)
+		@NotNull
+		@Model.Param.Values(value = SatisfactionType.class)
 		@Label(value = "Question 22")
 		private String question22;
 		

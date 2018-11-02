@@ -74,6 +74,17 @@ public class CodeValueTypes {
 			return values;
 		}
 	}
+	
+	public static class PositiveSatisfactionType implements Source {
+		@Override
+		public List<ParamValue> getValues(String paramPath) {
+			List<ParamValue> values = new ArrayList<>();
+			values.add(new ParamValue("Excellent", "Excellent"));
+			values.add(new ParamValue("Good", "Good"));
+			return values;
+		}
+	}
+	
 	public static class YesTest implements Source {
 		@Override
 		public List<ParamValue> getValues(String paramPath) {
