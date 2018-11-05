@@ -31,13 +31,13 @@ import com.atlas.client.extension.petclinic.view.pet.PetLineItem;
  * @author Tony Lopez
  *
  */
-public class PetsUnitTestPage extends ChildUnitTestPage<HomeUnitTestPage> {
+public class PetsUnitTestPage extends ChildUnitTestPage<VisitLandingUnitTestPage> {
 	
-	public PetsUnitTestPage(HomeUnitTestPage parent, Long refId) {
+	public PetsUnitTestPage(VisitLandingUnitTestPage parent, Long refId) {
 		super(parent, "pet", "petview", "vpAllPets", refId);
 	}
 	
-	public HomeUnitTestPage clickCancel() {
+	public VisitLandingUnitTestPage clickCancel() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
 				.addRefId(this.getRefId())
 				.addNested("/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/vbgAddPetButtonGrp/cancel")
