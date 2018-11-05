@@ -35,13 +35,13 @@ import lombok.RequiredArgsConstructor;
  * @author Tony Lopez
  *
  */
-public class HomeUnitTestPage extends UnitTestPage {
+public class VisitLandingUnitTestPage extends UnitTestPage {
 
 	@Getter
 	private LeftNav leftNav = new LeftNav(this);
 	
-	public HomeUnitTestPage(BeanResolverStrategy beanResolver, String clientId, String clientApp, Long refId) {
-		super(beanResolver, clientId, clientApp, null, "petclinicdashboard", "vpDashboard", refId);
+	public VisitLandingUnitTestPage(BeanResolverStrategy beanResolver, String clientId, String clientApp, Long refId) {
+		super(beanResolver, clientId, clientApp, null, "visitlandingview", "vpVisits", refId);
 		
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
 				.addAction(Action._new)
@@ -51,7 +51,7 @@ public class HomeUnitTestPage extends UnitTestPage {
 
 	public OwnerLandingUnitTestPage clickGoToOwners() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
-				.addNested("/vpDashboard/vtMyVisits/vsMyVisits/goToOwners")
+				.addNested("/vpVisits/vtMyVisits/vsMyVisits/goToOwners")
 				.addAction(Action._get)
 				.getMock();
 		
@@ -62,7 +62,7 @@ public class HomeUnitTestPage extends UnitTestPage {
 	@RequiredArgsConstructor
 	public static class LeftNav {
 	
-		private final HomeUnitTestPage page;
+		private final VisitLandingUnitTestPage page;
 		
 		public OwnerLandingUnitTestPage clickOwners() {
 			return new OwnerLandingUnitTestPage(page.beanResolver, page.getClientId(), page.getClientApp(), null);
@@ -88,7 +88,7 @@ public class HomeUnitTestPage extends UnitTestPage {
 	public List<VisitLineItem> getVisits() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
 				.addRefId(this.getRefId())
-				.addNested("/vpDashboard/vtMyVisits/vsMyVisits/myVisits")
+				.addNested("/vpVisits/vtMyVisits/vsMyVisits/myVisits")
 				.addAction(Action._get)
 				.getMock();
 		

@@ -32,7 +32,7 @@ import lombok.ToString;
 @Repo(value=Repo.Database.rep_none,cache=Repo.Cache.rep_device)
 @Getter @Setter @ToString(callSuper=true)
 @MapsTo.Type(Veterinarian.class)
-@ViewRoot(layout = "home")
+@ViewRoot(layout = "")
 public class VRVeterinarianLanding {
 	
 	@Label("Add Veterinarian")

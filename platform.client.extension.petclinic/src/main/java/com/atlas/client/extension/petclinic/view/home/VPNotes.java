@@ -55,6 +55,7 @@ public class VPNotes {
 		
 		@Label(value = "Add a Note")
 		@Button(imgSrc = "fa-plus-circle")
+		@Config(url = "/vpNotes/vtNotes/vmAddNote/vsAddNote/vfAddNote/_replace?rawPayload=null")
 		@Config(url = "/vpNotes/vtNotes/vmAddNote/vsAddNote/vfAddNote/noteType/_process?fn=_set&value=general")
 		@Config(url = "/vpNotes/vtNotes/vmAddNote/_process?fn=_setByRule&rule=togglemodal")
 		private String addNote;

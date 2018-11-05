@@ -34,7 +34,7 @@ import com.atlas.client.extension.petclinic.view.owner.VisitLineItem;
  * @author Tony Lopez
  *
  */
-public class HomePageTests extends AbstractPetclinicSpringTest {
+public class VisitLandingPageTest extends AbstractPetclinicSpringTest {
 
 	@Test
 	public void testMyVisitsGridDisplay() {
