@@ -21,6 +21,10 @@ public class VSHomeLeftBar {
 	@MenuLink(url="petclinicdashboard/vpDashboard", imgSrc="tasksIcon") 
 	private String home;
 	
+	@Label("Visits")
+	@MenuLink(url="visitlandingview/vpVisits", imgSrc="caseHistoryIcon")
+	private String visits;
+	
 	@Label("Veterinarians")
 	@MenuLink(url="veterinarianview/vpVeterenarians", imgSrc="caseHistoryIcon")
 	private String vets;
