@@ -42,6 +42,8 @@ public class Pet extends AbstractEntity.IdLong {
 	//When a pet is added, it is automatically assigned to a vet based on pet category and vet speciality
 	private Long vetId;
 	
+	private String vetName;
+	
 	private List<MealInstruction> mealInstructions;
 
 }

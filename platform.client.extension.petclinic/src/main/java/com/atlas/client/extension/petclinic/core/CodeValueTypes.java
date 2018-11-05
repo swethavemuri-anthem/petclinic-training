@@ -19,7 +19,7 @@ public class CodeValueTypes {
             values.add(new ParamValue("Dog", "Dog"));
             values.add(new ParamValue("Parrot", "Parrot"));
 			values.add(new ParamValue("Horse", "Horse"));
-			values.add(new ParamValue("Turtle", "Turle"));
+			values.add(new ParamValue("Turtle", "Turtle"));
 			values.add(new ParamValue("Snake", "Snake"));
             values.add(new ParamValue("Lizard", "Lizard"));
             values.add(new ParamValue("Turtle", "Turtle"));

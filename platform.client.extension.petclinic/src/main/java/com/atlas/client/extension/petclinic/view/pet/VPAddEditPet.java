@@ -169,17 +169,19 @@ public class VPAddEditPet {
 	public static class VBGAddPetButtonGrp {
 		
 		@Label("Submit")
-		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit, browserBack = true)
+		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit)
 		@Configs({
 			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update"),
 			@Config(url="/vpAddEditPet/vets/_process?fn=_set&url=/p/veterinarian/_search?fn=query"),
 			@Config(url="/vpAddEditPet/.m/_process?fn=_setByRule&rule=assignpet&associatedParam=/vpAddEditPet/vets/_get"),
+		//	@Config(url="/p/veterinarian:<!/.m/vetId!>/assignedPets/_process?fn=_add&value=<!/.m/id!>"),
+			@Config( when="findStateByPath('/.m/vetId') != null", url="/p/veterinarian:<!/.m/vetId!>/assignedPets/_process?fn=_add&value=<!/.m/id!>"),
 			@Config(url="/p/ownerview:<!/.m/ownerId!>/_nav?pageId=vpOwnerInfo")
 		})
 		private String submit;
 	
 		@Label("Cancel")
-		@Button(style = Button.Style.PLAIN, type = Button.Type.reset, browserBack = true)
+		@Button(style = Button.Style.PRIMARY, type = Button.Type.reset, browserBack = true)
 		private String cancel;
 	}
 }
