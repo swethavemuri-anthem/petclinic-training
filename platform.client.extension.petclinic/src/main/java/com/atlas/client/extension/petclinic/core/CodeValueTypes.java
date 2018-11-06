@@ -19,7 +19,12 @@ public class CodeValueTypes {
             values.add(new ParamValue("Dog", "Dog"));
             values.add(new ParamValue("Parrot", "Parrot"));
 			values.add(new ParamValue("Horse", "Horse"));
-			values.add(new ParamValue("Turtle", "Turle"));
+			values.add(new ParamValue("Turtle", "Turtle"));
+			values.add(new ParamValue("Snake", "Snake"));
+            values.add(new ParamValue("Lizard", "Lizard"));
+            values.add(new ParamValue("Turtle", "Turtle"));
+			values.add(new ParamValue("Turkey", "Turkey"));
+			values.add(new ParamValue("Duck", "Duck"));
 			values.add(new ParamValue("Yeti", "Yeti"));
 			values.add(new ParamValue("Other", "Other"));
 			return values;
@@ -117,6 +122,20 @@ public class CodeValueTypes {
 			values.add(new ParamValue("general", "General Note"));
 			values.add(new ParamValue("owner", "Note about Owner"));
 			values.add(new ParamValue("visit", "Note about Visit"));
+			return values;
+		}
+    }
+	
+	public static class VetSpeciality implements Source {
+    	@Override
+		public List<ParamValue> getValues(String paramPath) {
+			List<ParamValue> values = new ArrayList<>();
+			values.add(new ParamValue("Avian", "Avian"));
+			values.add(new ParamValue("Equine", "Equine"));
+			values.add(new ParamValue("Feline", "Feline"));
+			values.add(new ParamValue("Canine", "Canine"));
+			values.add(new ParamValue("Poultry", "Poultry"));
+			values.add(new ParamValue("Reptile & Amphibian", "Reptile & Amphibian"));
 			return values;
 		}
     }

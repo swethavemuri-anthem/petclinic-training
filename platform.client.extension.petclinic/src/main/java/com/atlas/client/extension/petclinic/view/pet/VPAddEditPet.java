@@ -22,8 +22,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
+import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
-import com.antheminc.oss.nimbus.domain.defn.MapsTo.Nature;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
 import com.antheminc.oss.nimbus.domain.defn.Model;
@@ -41,7 +41,6 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextArea;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
-import com.antheminc.oss.nimbus.domain.defn.extension.ActivateConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.antheminc.oss.nimbus.domain.defn.extension.EnableConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.LabelConditional;
@@ -51,8 +50,8 @@ import com.atlas.client.extension.petclinic.core.CodeValueTypes.AllCategory;
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.CatCategory;
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.DogCategory;
 import com.atlas.client.extension.petclinic.core.CodeValueTypes.petType;
-import com.atlas.client.extension.petclinic.core.MealInstruction;
 import com.atlas.client.extension.petclinic.core.Pet;
+import com.atlas.client.extension.petclinic.core.Veterinarian;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -67,6 +66,9 @@ public class VPAddEditPet {
 	
 	 @Tile(size = Tile.Size.Large)
 	 private VTAddEditPet vtAddEditPet;
+	 
+	 @Path(linked=false)
+	 private List<Veterinarian> vets;
 
 	@Model
 	@Getter @Setter
@@ -167,12 +169,19 @@ public class VPAddEditPet {
 	public static class VBGAddPetButtonGrp {
 		
 		@Label("Submit")
-		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit, browserBack = true)
-		@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update")
+		@Button(style = Button.Style.PRIMARY,type=Button.Type.submit)
+		@Configs({
+			@Config(url="/vpAddEditPet/vtAddEditPet/vsAddEditPet/vfAddEditPet/_update"),
+			@Config(url="/vpAddEditPet/vets/_process?fn=_set&url=/p/veterinarian/_search?fn=query"),
+			@Config(url="/vpAddEditPet/.m/_process?fn=_setByRule&rule=assignpet&associatedParam=/vpAddEditPet/vets/_get"),
+		//	@Config(url="/p/veterinarian:<!/.m/vetId!>/assignedPets/_process?fn=_add&value=<!/.m/id!>"),
+			@Config( when="findStateByPath('/.m/vetId') != null", url="/p/veterinarian:<!/.m/vetId!>/assignedPets/_process?fn=_add&value=<!/.m/id!>"),
+			@Config(url="/p/ownerview:<!/.m/ownerId!>/_nav?pageId=vpOwnerInfo")
+		})
 		private String submit;
 	
 		@Label("Cancel")
-		@Button(style = Button.Style.PLAIN, type = Button.Type.reset, browserBack = true)
+		@Button(style = Button.Style.PRIMARY, type = Button.Type.reset, browserBack = true)
 		private String cancel;
 	}
 }
