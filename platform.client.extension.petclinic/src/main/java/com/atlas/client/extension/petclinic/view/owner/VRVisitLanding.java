@@ -92,7 +92,7 @@ public class VRVisitLanding {
 //		 @Config(url = "/.d/_nav?pageId=vpVisitsBulkAction")
 //		private String goToVisitsBulkAction;
 		
-		@ParamContext(enabled=true, visible=false) // NIM-19621, not showing on the UI
+		@ParamContext(enabled=false, visible=false)
 		@Label("Owners")
 		@Button(style = Style.SECONDARY)
 		@Config(url = "/p/ownerlandingview/_new")

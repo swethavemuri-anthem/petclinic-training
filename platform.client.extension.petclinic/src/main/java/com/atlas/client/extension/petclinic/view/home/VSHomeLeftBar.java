@@ -20,23 +20,23 @@ import lombok.Setter;
 public class VSHomeLeftBar {
 
 	@Label("Home")
-	@MenuLink(url="petclinicdashboard/vpDashboard", imgSrc="tasksIcon") 
+	@MenuLink(url="petclinicdashboard/vpDashboard", imgSrc="notesIcon") 
 	private String home;
 	
-	@MenuPanel(imgType= Image.Type.SVG, imgSrc="caseHistoryIcon")
+	@MenuPanel(imgType= Image.Type.SVG, imgSrc="notesIcon")
 	@Label("Visits")
 	private VMPVisits vmpVisits;
 	
 	@Label("Veterinarians")
-	@MenuLink(url="veterinarianview/vpVeterenarians", imgSrc="caseHistoryIcon")
+	@MenuLink(url="veterinarianview/vpVeterenarians", imgSrc="notesIcon")
 	private String vets;
 	
 	@Label("Owners")
-	@MenuLink(url="ownerlandingview/vpOwners", imgSrc="caseHistoryIcon")
+	@MenuLink(url="ownerlandingview/vpOwners", imgSrc="notesIcon")
 	private String owners;
 	
 	@Label("Pets")
-	@MenuLink(url="petview/vpAllPets", imgSrc="caseHistoryIcon")
+	@MenuLink(url="petview/vpAllPets", imgSrc="notesIcon")
 	private String pets;
 	
 	@Label("Notes")
@@ -55,11 +55,11 @@ public class VSHomeLeftBar {
 	public class VMPVisits {
 		
 		@Label("Visits")
-		@MenuLink(url="visitlandingview/vpVisits", imgSrc="caseHistoryIcon")
+		@MenuLink(url="visitlandingview/vpVisits", imgSrc="notesIcon")
 		private String visits;
 		
 		@Label("Visits - Bulk Action")
-		@MenuLink(url="visitlandingview/vpVisitsBulkAction", imgSrc="caseHistoryIcon")
+		@MenuLink(url="visitlandingview/vpVisitsBulkAction", imgSrc="notesIcon")
 		private String visitsBulkAction;
 
 	}
