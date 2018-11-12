@@ -86,15 +86,15 @@ public class VRVisitLanding {
 	@Getter @Setter
 	public static class VSMyVisits  {
 		
-		@Label("Visits - Bulk Action")
-		@Button(style = Style.SECONDARY)
-		 @Config(url = "/.d/_nav?pageId=vpVisitsBulkAction")
-		private String goToVisitsBulkAction;
+//		@Label("Visits - Bulk Action")
+//		@Button(style = Style.SECONDARY)
+//		 @Config(url = "/.d/_nav?pageId=vpVisitsBulkAction")
+//		private String goToVisitsBulkAction;
 		
-		@Label("Owners")
-		@Button(style = Style.SECONDARY)
-		@Config(url = "/p/ownerlandingview/_new")
-		private String goToOwners;
+//		@Label("Owners")
+//		@Button(style = Style.SECONDARY)
+//		@Config(url = "/p/ownerlandingview/_new")
+//		private String goToOwners;
 		
 		@Label("My Visits")
 		@MapsTo.Path(linked = false)       
