@@ -20,6 +20,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.antheminc.oss.nimbus.domain.defn.extension.ParamContext;
 import com.atlas.client.extension.petclinic.core.Visit;
 
 import lombok.Getter;
@@ -86,11 +87,12 @@ public class VRVisitLanding {
 	@Getter @Setter
 	public static class VSMyVisits  {
 		
-		@Label("Visits - Bulk Action")
-		@Button(style = Style.SECONDARY)
-		 @Config(url = "/.d/_nav?pageId=vpVisitsBulkAction")
-		private String goToVisitsBulkAction;
+//		@Label("Visits - Bulk Action")
+//		@Button(style = Style.SECONDARY)
+//		 @Config(url = "/.d/_nav?pageId=vpVisitsBulkAction")
+//		private String goToVisitsBulkAction;
 		
+		@ParamContext(enabled=false, visible=false)
 		@Label("Owners")
 		@Button(style = Style.SECONDARY)
 		@Config(url = "/p/ownerlandingview/_new")
