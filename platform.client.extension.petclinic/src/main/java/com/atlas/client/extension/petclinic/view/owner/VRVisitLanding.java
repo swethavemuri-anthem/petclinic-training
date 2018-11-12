@@ -20,6 +20,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
+import com.antheminc.oss.nimbus.domain.defn.extension.ParamContext;
 import com.atlas.client.extension.petclinic.core.Visit;
 
 import lombok.Getter;
@@ -91,10 +92,11 @@ public class VRVisitLanding {
 //		 @Config(url = "/.d/_nav?pageId=vpVisitsBulkAction")
 //		private String goToVisitsBulkAction;
 		
-//		@Label("Owners")
-//		@Button(style = Style.SECONDARY)
-//		@Config(url = "/p/ownerlandingview/_new")
-//		private String goToOwners;
+		@ParamContext(enabled=true, visible=false) // NIM-19621, not showing on the UI
+		@Label("Owners")
+		@Button(style = Style.SECONDARY)
+		@Config(url = "/p/ownerlandingview/_new")
+		private String goToOwners;
 		
 		@Label("My Visits")
 		@MapsTo.Path(linked = false)       
