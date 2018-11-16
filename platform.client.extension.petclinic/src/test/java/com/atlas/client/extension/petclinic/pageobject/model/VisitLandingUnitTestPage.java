@@ -44,6 +44,7 @@ public class VisitLandingUnitTestPage extends UnitTestPage {
 		super(beanResolver, clientId, clientApp, null, "visitlandingview", "vpVisits", refId);
 		
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
+				.addRefId(this.getRefId())
 				.addAction(Action._new)
 				.getMock();
 		this.controller.handlePost(request, null);
@@ -51,6 +52,7 @@ public class VisitLandingUnitTestPage extends UnitTestPage {
 
 	public OwnerLandingUnitTestPage clickGoToOwners() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
+				.addRefId(this.getRefId())
 				.addNested("/vpVisits/vtMyVisits/vsMyVisits/goToOwners")
 				.addAction(Action._get)
 				.getMock();

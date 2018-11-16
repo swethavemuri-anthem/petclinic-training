@@ -51,6 +51,7 @@ public class PetsUnitTestPage extends ChildUnitTestPage<VisitLandingUnitTestPage
 	@SuppressWarnings("unchecked")
 	public AddEditPetUnitTestPage clickEditPet(int index) {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
+				.addRefId(this.getRefId())
 				.addNested("/vpAllPets/vtMain/vsMain/pets/" + index + "/vlmCaseItemLinks/editPet")
 				.addAction(Action._get)
 				.getMock();
@@ -62,6 +63,7 @@ public class PetsUnitTestPage extends ChildUnitTestPage<VisitLandingUnitTestPage
 	
 	public List<PetLineItem> getPets() {
 		MockHttpServletRequest request = MockHttpRequestBuilder.withUri(this.getViewRootDomainURI())
+				.addRefId(this.getRefId())
 				.addNested("/vpAllPets/vtMain/vsMain/pets")
 				.addAction(Action._get)
 				.getMock();
