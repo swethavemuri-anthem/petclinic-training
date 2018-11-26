@@ -46,12 +46,12 @@ import com.antheminc.oss.nimbus.domain.defn.extension.EnableConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.LabelConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValuesConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.VisibleConditional;
-import com.atlas.client.extension.petclinic.core.CodeValueTypes.AllCategory;
-import com.atlas.client.extension.petclinic.core.CodeValueTypes.CatCategory;
-import com.atlas.client.extension.petclinic.core.CodeValueTypes.DogCategory;
-import com.atlas.client.extension.petclinic.core.CodeValueTypes.petType;
-import com.atlas.client.extension.petclinic.core.Pet;
-import com.atlas.client.extension.petclinic.core.Veterinarian;
+import com.atlas.client.extension.petclinic.core.home.CodeValueTypes.AllCategory;
+import com.atlas.client.extension.petclinic.core.home.CodeValueTypes.CatCategory;
+import com.atlas.client.extension.petclinic.core.home.CodeValueTypes.DogCategory;
+import com.atlas.client.extension.petclinic.core.home.CodeValueTypes.petType;
+import com.atlas.client.extension.petclinic.core.pet.Pet;
+import com.atlas.client.extension.petclinic.core.veterinarian.Veterinarian;
 
 import lombok.Getter;
 import lombok.Setter;

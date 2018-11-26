@@ -1,4 +1,4 @@
-package com.atlas.client.extension.petclinic.core;
+package com.atlas.client.extension.petclinic.core.veterinarian;
 
 import java.util.List;
 import java.util.Optional;

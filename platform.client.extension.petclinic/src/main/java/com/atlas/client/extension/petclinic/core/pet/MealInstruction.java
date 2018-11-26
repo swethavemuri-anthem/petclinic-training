@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.atlas.client.extension.petclinic.core;
+package com.atlas.client.extension.petclinic.core.pet;
 
 import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.entity.AbstractEntity.IdLong;

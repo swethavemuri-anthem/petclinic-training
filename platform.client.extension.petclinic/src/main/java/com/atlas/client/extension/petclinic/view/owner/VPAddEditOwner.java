@@ -37,8 +37,8 @@ import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional.GROUP_1;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional.GROUP_3;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional.ValidationScope;
-import com.atlas.client.extension.petclinic.core.CodeValueTypes.OwnerNotificationPreferences;
-import com.atlas.client.extension.petclinic.core.Owner;
+import com.atlas.client.extension.petclinic.core.home.CodeValueTypes.OwnerNotificationPreferences;
+import com.atlas.client.extension.petclinic.core.owner.Owner;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: petclinic
+    name: owner
   h2:
     console:
       enabled: true
@@ -108,21 +108,15 @@ server:
   servlet:
     context-path: /petclinic
 #  context-path: /api
-auth-server: http://localhost:8891
-security:
-  basic:
-    enabled: false
-  oauth2:
-    resource:
-      tokenInfoUri: ${auth-server}/auth-service/oauth/check_token
-    client:
-      clientId: nimbus
-      clientSecret: xfer498
-  
+#auth-server: http://localhost:8891
+
 eureka:
   client:
-    enabled: false
-
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+#    instance-id: localhost:8082
 ruleBasedRequestHandler:
                      - defaultRuleBasedRequestHandler
                      - defaultRuleBasedResponseHandler
@@ -141,11 +135,17 @@ domain:
   model:
     basePackages: 
       - com.antheminc.oss.nimbus.entity
-      - com.atlas.client.extension.petclinic.user
-      - com.atlas.client.extension.petclinic.core
-      - com.atlas.client.extension.petclinic.view
+      - com.atlas.client.extension.petclinic.core.home
+      - com.atlas.client.extension.petclinic.core.owner
+      - com.atlas.client.extension.petclinic.core.pet
+      - com.atlas.client.extension.petclinic.view.home
+      - com.atlas.client.extension.petclinic.view.owner
+      - com.atlas.client.extension.petclinic.view.pet
       - com.atlas.client.extension.petquestionnaire.core
       - com.atlas.client.extension.petquestionnaire.view
+#    basePackagesToExclude:
+#      - com.atlas.client.extension.petclinic.core.veterinarian
+#      - com.atlas.client.extension.petclinic.view.veterinarian
     typeClassMappings:
       java.lang.String : 
         string

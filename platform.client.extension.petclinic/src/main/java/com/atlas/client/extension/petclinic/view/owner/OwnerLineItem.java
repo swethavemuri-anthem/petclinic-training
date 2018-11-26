@@ -12,7 +12,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridRowBody;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.LinkMenu;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
-import com.atlas.client.extension.petclinic.core.Owner;
+import com.atlas.client.extension.petclinic.core.owner.Owner;
 
 import lombok.Getter;
 import lombok.Setter;

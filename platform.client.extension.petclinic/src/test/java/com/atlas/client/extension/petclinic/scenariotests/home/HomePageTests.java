@@ -24,7 +24,7 @@ import org.junit.Test;
 
 import com.antheminc.oss.nimbus.domain.model.state.EntityState.Param;
 import com.antheminc.oss.nimbus.test.domain.support.utils.ParamUtils;
-import com.atlas.client.extension.petclinic.core.Visit;
+import com.atlas.client.extension.petclinic.core.owner.Visit;
 import com.atlas.client.extension.petclinic.pageobject.model.OwnerLandingUnitTestPage;
 import com.atlas.client.extension.petclinic.scenariotests.AbstractPetclinicSpringTest;
 import com.atlas.client.extension.petclinic.view.owner.VROwnerLanding;

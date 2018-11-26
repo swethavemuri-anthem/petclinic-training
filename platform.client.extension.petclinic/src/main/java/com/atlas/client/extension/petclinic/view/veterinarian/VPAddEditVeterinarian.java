@@ -14,8 +14,8 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
-import com.atlas.client.extension.petclinic.core.Veterinarian;
-import com.atlas.client.extension.petclinic.core.CodeValueTypes.VetSpeciality;
+import com.atlas.client.extension.petclinic.core.home.CodeValueTypes.VetSpeciality;
+import com.atlas.client.extension.petclinic.core.veterinarian.Veterinarian;
 
 import lombok.Getter;
 import lombok.Setter;

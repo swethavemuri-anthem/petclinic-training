@@ -1,4 +1,4 @@
-package com.atlas.client.extension.petclinic.core;
+package com.atlas.client.extension.petclinic.core.pet;
 
 import java.util.Comparator;
 import java.util.List;
@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.antheminc.oss.nimbus.domain.model.state.internal.DefaultParamState;
 import com.antheminc.oss.nimbus.support.JustLogit;
+import com.atlas.client.extension.petclinic.core.veterinarian.Veterinarian;
 
 public class PetDecisionUtils {
 	

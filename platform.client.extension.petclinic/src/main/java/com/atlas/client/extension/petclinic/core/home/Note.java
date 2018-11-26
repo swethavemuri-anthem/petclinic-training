@@ -1,4 +1,4 @@
-package com.atlas.client.extension.petclinic.core;
+package com.atlas.client.extension.petclinic.core.home;
 
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;

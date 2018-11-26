@@ -3,25 +3,22 @@
  */
 package com.atlas.petclinic;
 
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
-//import com.anthem.cm.ltss.extension.model.clientuser.core.LtssClientUser;
-//import com.anthem.cm.ltss.extension.web.ClientUserDetails;
-import com.antheminc.oss.nimbus.entity.client.access.ClientUserRole;
+import com.antheminc.oss.nimbus.domain.cmd.exec.ExecuteOutput.GenericExecute;
 import com.antheminc.oss.nimbus.entity.client.user.ClientUser;
 import com.antheminc.oss.nimbus.support.JustLogit;
 
@@ -32,6 +29,9 @@ import com.antheminc.oss.nimbus.support.JustLogit;
  */
 @Controller
 public class LoginController {
+	
+	@Autowired
+	private RestTemplate restTemplate;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public void login(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -39,5 +39,20 @@ public class LoginController {
         
     }
     
+    @RequestMapping(value="/test", method= RequestMethod.GET)
+    public void test() {
+    	UriComponentsBuilder builder = UriComponentsBuilder
+			    .fromUriString("http://localhost:8082/petclinic/client/org/app/p/clientuser/_search")
+			    .queryParam("fn", "query")
+			    .queryParam("where", "clientuser.loginId.in('asnowball')");
+		
+		
+		ResponseEntity<GenericExecute<List<ClientUser>>> multiOutputResp = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, 
+				null, new ParameterizedTypeReference<GenericExecute<List<ClientUser>>>() {});
+		
+		GenericExecute<List<ClientUser>> multiOutputRespBody = multiOutputResp.getBody();
+		
+    }
+   
     private JustLogit _logger = new JustLogit(this.getClass());
 }

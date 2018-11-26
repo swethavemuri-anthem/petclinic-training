@@ -8,7 +8,7 @@ import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
-import com.atlas.client.extension.petclinic.core.Owner;
+import com.atlas.client.extension.petclinic.core.owner.Owner;
 
 import lombok.Getter;
 import lombok.Setter;
