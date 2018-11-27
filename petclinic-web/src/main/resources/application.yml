@@ -5,12 +5,6 @@ spring:
     console:
       enabled: true
       path: /console/
-  rabbitmq:
-    host: localhost
-    port: 5672
-  redis:
-    host: localhost
-    port: 6379
   data:
     mongodb:
       host: localhost
@@ -24,13 +18,8 @@ spring:
       suffix: .jsp
   sqldatasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
-        
-#    datasource:
-#      url: jdbc:mysql://localhost/test
-#      driver-class-name: com.mysql.jdbc.Driver
-packageName: com.example
+
 application:
-  mode: online
   error:
     genericMsg: System Error ERR.UNIQUEID
 #  exceptions:
@@ -40,9 +29,6 @@ application:
 ##Logging properties
 #logging.file=${LOG_DIR_PATH}/${spring.application.name}.log
 #logging.file=/var/tmp/nimbus/logs/${spring.application.name}.log
-
-serviceUserName: integration_service
-servicePassword: HashedPwd1234!!!!!!!!!!!!!****
 
 ## Petclinic Env properties
 petclinic:
@@ -57,10 +43,6 @@ logging:
   
 #logging.level.org.springframework=DEBUG
 
-jwt:
-  secret: nimbustest
-  algorithm: HS512
-  
 process:
   key:
     regex:
@@ -107,9 +89,6 @@ server:
   port: 8082
   servlet:
     context-path: /petclinic
-#  context-path: /api
-#auth-server: http://localhost:8891
-
 eureka:
   client:
     service-url:
@@ -117,19 +96,6 @@ eureka:
   instance:
     hostname: localhost
 #    instance-id: localhost:8082
-ruleBasedRequestHandler:
-                     - defaultRuleBasedRequestHandler
-                     - defaultRuleBasedResponseHandler
-
-scriptBasedRequestHandler: defaultScriptBasedRequestHandler
-scriptBasedResponseHandler: defaultScriptBasedResponseHandler
-
-scriptHandlerType: cript
-customHandlerType: Custom
-
-stomp:
-    hostName: localhost
-    port: 61613
 
 domain:
   model:
@@ -158,8 +124,6 @@ domain:
       javax.validation.Constraint
     markerInterfaces:
    
-#logging:
-#  file: ${HOME}/Documents/nimbuslogs/platform-core-web.log
 user:
   permissionToActions:
     ACCESS:
@@ -174,11 +138,7 @@ user:
       _delete,_nav,_process
   #authenticationStrategyBeans:
      #jwtAuthenticationStrategy, ldapAuthenticationStrategy
-template:
-  definitions:
-    - path: e_post/*/comm/icr/p/flow_umcase/_findPatient/_process/_execute
-      id: flow_umcase_findPatient
-      criteria:  
+
 model:
   persistence:
     strategy:
@@ -189,58 +149,6 @@ dsl:
     extensions:
       #$execute:
         #$save   
-quartz:
-  enabled: true
-  frequency: 1000
-
-org:
-  quartz:
-    scheduler:
-      instanceName:
-        spring-activiti-quartz
-      instanceId:
-        AUTO
-    threadPool:
-      threadCount: 2
-    jobStore:
-      class: org.quartz.impl.jdbcjobstore.JobStoreTX
-      driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
-      useProperties: true
-      misfireThreshold: 60000
-      tablePrefix: QRTZ_
-      isClustered: true
-      clusterCheckinInterval: 20000
-
-session:
-  userKey: client-user-key
-
-staticResourcesPath: ./target/webapp/
-
-app:
-  endpoints:
-    ltss-integration-services: http://localhost:8080/ltss-integration-services
-    cue: http://va10dwviss323.us.ad.wellpoint.com:81/CUEDEV_RESTServices
-
 search:
   threshold:
     50
-
-ext:
-  repository:
-    targetUrl: 
-      pharmacydrug: ${app.endpoints.ltss-integration-services}
-      memberauthorization: ${app.endpoints.ltss-integration-services}
-      memberauthorizations: ${app.endpoints.ltss-integration-services}
-      adhocmember: ${app.endpoints.ltss-integration-services}
-
-cueIntegration:
-  applicationId: 5666A5D6-3303-4E2A-BC45-05A3191286F0
-  cueServiceUrl: ${app.endpoints.cue}/api/documents
-  fileUploadUrl: ${app.endpoints.ltss-integration-services}/fileupload
-  cueDocViewUrl: ${app.endpoints.ltss-integration-services}
-  # templateServiceUrl: http://va10twviss352.us.ad.wellpoint.com:85/CUE_RESTServices_SIT/api/GenerateDocument
-  # assessmentServiceUrl: http://va10twviss352.us.ad.wellpoint.com:85/CUE_RESTServices_SIT/api/generateassessment
-#  applicationId: 58C02B8C-0FD6-4FBD-9AC3-90493B232F2D
-#  templateServiceUrl: http://va10twviss352.us.ad.wellpoint.com:85/CUE_RESTServices_SIT/api/GenerateDocument
-   
-#  assessmentServiceUrl: http://va10twviss352.us.ad.wellpoint.com:85/CUE_RESTServices_SIT/api/generateassessment
