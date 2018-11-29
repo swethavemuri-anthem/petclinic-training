@@ -104,14 +104,16 @@ domain:
       - com.atlas.client.extension.petclinic.core.home
       - com.atlas.client.extension.petclinic.core.owner
       - com.atlas.client.extension.petclinic.core.pet
+      - com.atlas.client.extension.petclinic.core.veterinarian
       - com.atlas.client.extension.petclinic.view.home
       - com.atlas.client.extension.petclinic.view.owner
       - com.atlas.client.extension.petclinic.view.pet
+      - com.atlas.client.extension.petclinic.view.veterinarian
       - com.atlas.client.extension.petquestionnaire.core
       - com.atlas.client.extension.petquestionnaire.view
-#    basePackagesToExclude:
-#      - com.atlas.client.extension.petclinic.core.veterinarian
-#      - com.atlas.client.extension.petclinic.view.veterinarian
+    basePackagesToExclude:
+      - com.atlas.client.extension.petclinic.core.veterinarian.*
+      - com.atlas.client.extension.petclinic.view.veterinarian.*
     typeClassMappings:
       java.lang.String : 
         string
