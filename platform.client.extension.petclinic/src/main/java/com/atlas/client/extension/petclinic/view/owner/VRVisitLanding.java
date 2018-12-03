@@ -76,21 +76,49 @@ public class VRVisitLanding {
 	@Getter @Setter
 	public static class VTVisitsBulkAction  {
 
-		@Label("To be implemented !!")
-    	@Paragraph(cssClass="font-weight-bold")
-    	private String headerCallSection;
+		@Section
+		private VSVisitsBulkAction vsMyVisits;
 		
 		
     }
 	
 	@Model
 	@Getter @Setter
+	public static class VSVisitsBulkAction  {
+		
+		@Label("My Visits")
+		@MapsTo.Path(linked = false)       
+		@Grid(onLoad = true, pageSize = "7", rowSelection = true, postButton = true, postButtonTargetPath = "ids",
+			postButtonUri = "/visitlandingview/vpVisitsBulkAction/vtMyVisits/vsMyVisits/actionCancelVisits", postButtonLabel="Cancel")
+		@Config(url = "/vpVisitsBulkAction/vtMyVisits/vsMyVisits/myVisits.m/_process?fn=_set&url=/p/visit/_search?fn=example")
+		private List<VisitLineItem> myVisits;
+		
+		
+		@Config(url = "/vpVisitsBulkAction/vtMyVisits/vsMyVisits/tempCancelVisitList/_replace")
+		@Config(url = "/p/visit:<!/../myVisits/<!col!>/id!>/status/_replace?rawPayload=\"Cancelled\"", col = "<!/../tempCancelVisitList/ids!>")
+		@Config(url = "/vpVisitsBulkAction/vtMyVisits/vsMyVisits/myVisits/_get")
+		private String actionCancelVisits;
+		
+		@MapsTo.Path(linked = false) 
+		private TempCancelVisitList tempCancelVisitList;
+		
+    }
+	
+	@MapsTo.Type(Visit.class)
+	@Getter @Setter
+	public static class TempCancelVisitList {
+
+		private String[] ids;
+	}
+	
+	@Model
+	@Getter @Setter
 	public static class VSMyVisits  {
 		
-//		@Label("Visits - Bulk Action")
-//		@Button(style = Style.SECONDARY)
-//		 @Config(url = "/.d/_nav?pageId=vpVisitsBulkAction")
-//		private String goToVisitsBulkAction;
+		@Label("Visits - Bulk Action")
+		@Button(style = Style.SECONDARY)
+		@Config(url = "/.d/_nav?pageId=vpVisitsBulkAction")
+		private String goToVisitsBulkAction;
 		
 		@ParamContext(enabled=false, visible=false)
 		@Label("Owners")
