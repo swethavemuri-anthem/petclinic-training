@@ -38,7 +38,7 @@ import lombok.Setter;
 public class VRVisitLanding {
 
 	@Label("Visits")
-	@Page(defaultPage = true)
+	@Page()
 	private VPVisits vpVisits;
 	
 	@Label("Visits - Bulk Actions")
@@ -59,7 +59,7 @@ public class VRVisitLanding {
 	public static class VPVisitsBulkAction  {
 
 		@Tile(imgSrc = "resources/icons/task.svg#Layer_1")
-        private VTVisitsBulkAction vtMyVisits;
+        private VTVisitsBulkAction vtVisitBulkAction;
 		
     }
 	
@@ -76,21 +76,49 @@ public class VRVisitLanding {
 	@Getter @Setter
 	public static class VTVisitsBulkAction  {
 
-		@Label("To be implemented !!")
-    	@Paragraph(cssClass="font-weight-bold")
-    	private String headerCallSection;
+		@Section
+		private VSVisitsBulkAction vsVisitsBulkAction;
 		
 		
     }
 	
 	@Model
 	@Getter @Setter
+	public static class VSVisitsBulkAction  {
+
+		@Label("Bulk Visits")
+		@MapsTo.Path(linked = false)       
+		@Grid(onLoad = true, pageSize = "7", rowSelection = true, postButton = true, postButtonTargetPath = "ids",
+			postButtonUri = "../actionCancelVisits", postButtonLabel="Cancel")
+		@Config(url = "/vpVisitsBulkAction/vtVisitBulkAction/vsVisitsBulkAction/visitBulkAction.m/_process?fn=_set&url=/p/visit/_search?fn=example")
+		private List<VisitLineItem> visitBulkAction;
+		
+		
+		@Config(url = "/vpVisitsBulkAction/vtVisitBulkAction/vsVisitsBulkAction/tempCancelVisitList/_replace")
+		@Config(url = "/p/visit:<!/../visitBulkAction/<!col!>/id!>/status/_replace?rawPayload=\"Cancelled\"", col = "<!/../tempCancelVisitList/ids!>")
+		@Config(url = "/vpVisitsBulkAction/vtVisitBulkAction/vsVisitsBulkAction/visitBulkAction/_get")
+		private String actionCancelVisits;
+		
+		@MapsTo.Path(linked = false) 
+		private TempCancelVisitList tempCancelVisitList;
+		
+    }
+	
+	@MapsTo.Type(Visit.class)
+	@Getter @Setter
+	public static class TempCancelVisitList {
+
+		private String[] ids;
+	}
+	
+	@Model
+	@Getter @Setter
 	public static class VSMyVisits  {
 		
-//		@Label("Visits - Bulk Action")
-//		@Button(style = Style.SECONDARY)
-//		 @Config(url = "/.d/_nav?pageId=vpVisitsBulkAction")
-//		private String goToVisitsBulkAction;
+		@Label("Visits - Bulk Action")
+		@Button(style = Style.SECONDARY)
+		@Config(url = "/.d/_nav?pageId=vpVisitsBulkAction")
+		private String goToVisitsBulkAction;
 		
 		@ParamContext(enabled=false, visible=false)
 		@Label("Owners")
