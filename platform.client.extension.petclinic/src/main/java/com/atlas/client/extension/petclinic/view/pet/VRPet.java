@@ -21,12 +21,8 @@ import lombok.ToString;
 @MapsTo.Type(Pet.class)
 @Repo(value=Repo.Database.rep_none, cache=Repo.Cache.rep_device)
 @Getter @Setter @ToString(callSuper = true)
-@ViewRoot(layout = "")
+@ViewRoot(layout = "petlayout")
 public class VRPet {
-	
-	@Label("Pets")
-	@Page(route="petview")
-	private VPAllPets vpAllPets;
 	
 	@Label("Add/Edit Pet")
 	@Page(route="petview")

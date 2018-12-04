@@ -21,6 +21,7 @@ import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.atlas.client.extension.petclinic.view.demos.VPTreegridDemo;
 import com.atlas.client.extension.petclinic.view.home.VPNotes;
 import com.atlas.client.extension.petclinic.view.owner.VisitLineItem;
+import com.atlas.client.extension.petclinic.view.pet.VPAllPets;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -48,6 +49,10 @@ public class VRDashboard {
 	@Label("TreeGrid Demo")
 	@Page
 	private VPTreegridDemo vpTreegridDemo;
+	
+	@Label("Pets")
+	@Page
+	private VPAllPets vpAllPets;
 
 	@Model
 	@Getter @Setter

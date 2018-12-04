@@ -36,7 +36,7 @@ public class VSHomeLeftBar {
 	private String owners;
 	
 	@Label("Pets")
-	@MenuLink(url="petview/vpAllPets", imgSrc="notesIcon")
+	@MenuLink(url="petclinicdashboard/vpAllPets", imgSrc="notesIcon")
 	private String pets;
 	
 	@Label("Notes")
