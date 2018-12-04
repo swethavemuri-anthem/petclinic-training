@@ -38,7 +38,7 @@ import lombok.Setter;
 public class VRVisitLanding {
 
 	@Label("Visits")
-	@Page(defaultPage = true)
+	@Page()
 	private VPVisits vpVisits;
 	
 	@Label("Visits - Bulk Actions")
@@ -59,7 +59,7 @@ public class VRVisitLanding {
 	public static class VPVisitsBulkAction  {
 
 		@Tile(imgSrc = "resources/icons/task.svg#Layer_1")
-        private VTVisitsBulkAction vtMyVisits;
+        private VTVisitsBulkAction vtVisitBulkAction;
 		
     }
 	
@@ -77,7 +77,7 @@ public class VRVisitLanding {
 	public static class VTVisitsBulkAction  {
 
 		@Section
-		private VSVisitsBulkAction vsMyVisits;
+		private VSVisitsBulkAction vsVisitsBulkAction;
 		
 		
     }
@@ -85,18 +85,18 @@ public class VRVisitLanding {
 	@Model
 	@Getter @Setter
 	public static class VSVisitsBulkAction  {
-		
-		@Label("My Visits")
+		// postButtonUri = "/visitlandingview/vpVisitsBulkAction/vtMyVisits/vsMyVisits/actionCancelVisits", postButtonLabel="Cancel")
+		@Label("Bulk Visits")
 		@MapsTo.Path(linked = false)       
 		@Grid(onLoad = true, pageSize = "7", rowSelection = true, postButton = true, postButtonTargetPath = "ids",
-			postButtonUri = "/visitlandingview/vpVisitsBulkAction/vtMyVisits/vsMyVisits/actionCancelVisits", postButtonLabel="Cancel")
-		@Config(url = "/vpVisitsBulkAction/vtMyVisits/vsMyVisits/myVisits.m/_process?fn=_set&url=/p/visit/_search?fn=example")
-		private List<VisitLineItem> myVisits;
+			postButtonUri = "../actionCancelVisits", postButtonLabel="Cancel")
+		@Config(url = "/vpVisitsBulkAction/vtVisitBulkAction/vsVisitsBulkAction/visitBulkAction.m/_process?fn=_set&url=/p/visit/_search?fn=example")
+		private List<VisitLineItem> visitBulkAction;
 		
 		
-		@Config(url = "/vpVisitsBulkAction/vtMyVisits/vsMyVisits/tempCancelVisitList/_replace")
-		@Config(url = "/p/visit:<!/../myVisits/<!col!>/id!>/status/_replace?rawPayload=\"Cancelled\"", col = "<!/../tempCancelVisitList/ids!>")
-		@Config(url = "/vpVisitsBulkAction/vtMyVisits/vsMyVisits/myVisits/_get")
+		@Config(url = "/vpVisitsBulkAction/vtVisitBulkAction/vsVisitsBulkAction/tempCancelVisitList/_replace")
+		@Config(url = "/p/visit:<!/../visitBulkAction/<!col!>/id!>/status/_replace?rawPayload=\"Cancelled\"", col = "<!/../tempCancelVisitList/ids!>")
+		@Config(url = "/vpVisitsBulkAction/vtVisitBulkAction/vsVisitsBulkAction/visitBulkAction/_get")
 		private String actionCancelVisits;
 		
 		@MapsTo.Path(linked = false) 
