@@ -85,7 +85,7 @@ public class VRVisitLanding {
 	@Model
 	@Getter @Setter
 	public static class VSVisitsBulkAction  {
-		// postButtonUri = "/visitlandingview/vpVisitsBulkAction/vtMyVisits/vsMyVisits/actionCancelVisits", postButtonLabel="Cancel")
+
 		@Label("Bulk Visits")
 		@MapsTo.Path(linked = false)       
 		@Grid(onLoad = true, pageSize = "7", rowSelection = true, postButton = true, postButtonTargetPath = "ids",
