@@ -81,6 +81,11 @@ public class VPPetInfo {
 		@Path @FieldValue 
 		@Label("Type")
 		private String type;
+		
+		@Path @FieldValue
+		@Label("Assigned Vet")
+		private String vetName;
+		
 	}
 	
 	@Model

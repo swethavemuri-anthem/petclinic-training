@@ -1,7 +1,0 @@
-version: '2'
-services:
-    haproxy:
-        build: platform.core.haproxy.image/
-        ports:
-            - "9090:9090"
-            - "1946:1946"
