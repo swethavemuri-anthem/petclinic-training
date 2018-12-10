@@ -3,19 +3,15 @@ package com.atlas.client.extension.petclinic.view.veterinarian;
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
 import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
-import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.Model;
-import com.antheminc.oss.nimbus.domain.defn.Model.Param.Values;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ButtonGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Radio;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.atlas.client.extension.petclinic.core.Veterinarian;
-import com.atlas.client.extension.petclinic.core.CodeValueTypes.VetSpeciality;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -64,12 +60,6 @@ public class VPAddEditVeterinarian {
 		@TextBox @MapsTo.Path
 		@Label("Last Name")
 		private String lastName;
-		
-		@Radio(postEventOnChange=true)
-		@Path
-		@Values(value = VetSpeciality.class)
-		@Label("Speciality")
-		private String speciality;
 		
 		@TextBox(hidden=true) @MapsTo.Path
 		private String fullName;

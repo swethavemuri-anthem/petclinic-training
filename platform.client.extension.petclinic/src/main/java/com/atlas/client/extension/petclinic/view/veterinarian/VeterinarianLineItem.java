@@ -35,11 +35,6 @@ public class VeterinarianLineItem {
 	@Path
 	private String lastName;
 	
-	@Label("Speciality")
-	@GridColumn
-	@Path
-	private String speciality;
-	
 	@Config(url="/p/veterinarianview:<!/id!>/_get")
 	@Link(imgSrc="edit.png")
 	private String edit;

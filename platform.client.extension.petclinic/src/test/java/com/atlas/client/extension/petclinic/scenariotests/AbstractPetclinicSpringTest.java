@@ -33,7 +33,6 @@ public abstract class AbstractPetclinicSpringTest extends BaseSpringTest {
 		public static final String OWNER = "owner";
 		public static final String PET = "pet";
 		public static final String VISIT = "visit";
-		public static final String VET = "veterinarian";
 	}
 	
 	protected VisitLandingUnitTestPage homepage;
@@ -46,7 +45,7 @@ public abstract class AbstractPetclinicSpringTest extends BaseSpringTest {
 	
 	@After
 	public void teardown() {
-		this.mongo.getDb().drop();
+		this.mongo.getDb().dropDatabase();
 		this.sessionProvider.clear();
 	}
 }
