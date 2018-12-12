@@ -34,7 +34,7 @@ import com.atlas.client.extension.petclinic.view.pet.PetLineItem;
 public class PetsUnitTestPage extends ChildUnitTestPage<VisitLandingUnitTestPage> {
 	
 	public PetsUnitTestPage(VisitLandingUnitTestPage parent, Long refId) {
-		super(parent, "pet", "petview", "vpAllPets", refId);
+		super(parent, "pet", "petclinicdashboard", "vpAllPets", refId);
 	}
 	
 	public VisitLandingUnitTestPage clickCancel() {

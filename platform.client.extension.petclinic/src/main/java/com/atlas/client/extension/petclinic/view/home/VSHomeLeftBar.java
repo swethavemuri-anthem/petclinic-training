@@ -36,7 +36,7 @@ public class VSHomeLeftBar {
 	private String owners;
 	
 	@Label("Pets")
-	@MenuLink(url="petview/vpAllPets", imgSrc="notesIcon")
+	@MenuLink(url="petclinicdashboard/vpAllPets", imgSrc="notesIcon")
 	private String pets;
 	
 	@Label("Notes")
@@ -58,13 +58,13 @@ public class VSHomeLeftBar {
 		@MenuLink(url="visitlandingview/vpVisits", imgSrc="notesIcon")
 		private String visits;
 		
-		@Label("Visits - Bulk Action")
-		@MenuLink(url="visitlandingview/vpVisitsBulkAction", imgSrc="notesIcon")
-		private String visitsBulkAction;
-		
 		@Label("Visits - Server Side")
 		@MenuLink(url="visitlandingview/vpVisitsServer", imgSrc="notesIcon")
 		private String visitsServer;
+		
+		@Label("Visits - Bulk Action")
+		@MenuLink(url="visitlandingview/vpVisitsBulkAction", imgSrc="notesIcon")
+		private String visitsBulkAction;
 
 	}
 	

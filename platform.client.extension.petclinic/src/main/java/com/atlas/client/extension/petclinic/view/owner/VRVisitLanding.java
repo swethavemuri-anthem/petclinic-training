@@ -84,7 +84,7 @@ public class VRVisitLanding {
 		
 		@Label("Visits - Client Side")
 		@MapsTo.Path(linked = false)       
-		@Grid(onLoad = true, pagination = false)
+		@Grid(onLoad = true, pageSize = "3")
 		@Config(url = "/vpVisits/vtMyVisits/vsMyVisits/myVisits.m/_process?fn=_set&url=/p/visit/_search?fn=example")
 		private List<VisitLineItem> myVisits;
 		
