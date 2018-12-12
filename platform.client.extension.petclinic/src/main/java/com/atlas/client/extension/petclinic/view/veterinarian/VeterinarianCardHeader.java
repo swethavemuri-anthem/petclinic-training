@@ -23,19 +23,15 @@ import lombok.Setter;
 
 @MapsTo.Type(Veterinarian.class)
 @Getter @Setter
-public class VeterinarianLineItem {
+public class VeterinarianCardHeader {
 	
-	
-	@Label("Speciality")
 	@FieldValue
 	@Path
-	private String speciality;
+	private String firstName;
 	
 	
-	@Label(" Number of pets")
 	@FieldValue
 	@Path
-	private String numberOfPets;
+	private String lastName;
 	
-
 }

@@ -37,12 +37,16 @@ import lombok.Setter;
 @ViewRoot(layout = "")
 public class VRVisitLanding {
 
-	@Label("Visits")
-	@Page()
+	@Label("Visits - Client Side")
+	@Page(defaultPage = true)
 	private VPVisits vpVisits;
 	
+	@Label("Visits - Server side")
+	@Page
+	private VPVisitsServer vpVisitsServer;
+	
 	@Label("Visits - Bulk Actions")
-	@Page()
+	@Page
 	private VPVisitsBulkAction vpVisitsBulkAction;
 	
 	@Model
@@ -51,15 +55,6 @@ public class VRVisitLanding {
 
 		@Tile(imgSrc = "resources/icons/task.svg#Layer_1")
         private VTMyVisits vtMyVisits;
-		
-    }
-	
-	@Model
-	@Getter @Setter
-	public static class VPVisitsBulkAction  {
-
-		@Tile(imgSrc = "resources/icons/task.svg#Layer_1")
-        private VTVisitsBulkAction vtVisitBulkAction;
 		
     }
 	
@@ -74,51 +69,12 @@ public class VRVisitLanding {
 	
 	@Model
 	@Getter @Setter
-	public static class VTVisitsBulkAction  {
-
-		@Section
-		private VSVisitsBulkAction vsVisitsBulkAction;
-		
-		
-    }
-	
-	@Model
-	@Getter @Setter
-	public static class VSVisitsBulkAction  {
-
-		@Label("Bulk Visits")
-		@MapsTo.Path(linked = false)       
-		@Grid(onLoad = true, pageSize = "7", rowSelection = true, postButton = true, postButtonTargetPath = "ids",
-			postButtonUri = "../actionCancelVisits", postButtonLabel="Cancel")
-		@Config(url = "/vpVisitsBulkAction/vtVisitBulkAction/vsVisitsBulkAction/visitBulkAction.m/_process?fn=_set&url=/p/visit/_search?fn=example")
-		private List<VisitLineItem> visitBulkAction;
-		
-		
-		@Config(url = "/vpVisitsBulkAction/vtVisitBulkAction/vsVisitsBulkAction/tempCancelVisitList/_replace")
-		@Config(url = "/p/visit:<!/../visitBulkAction/<!col!>/id!>/status/_replace?rawPayload=\"Cancelled\"", col = "<!/../tempCancelVisitList/ids!>")
-		@Config(url = "/vpVisitsBulkAction/vtVisitBulkAction/vsVisitsBulkAction/visitBulkAction/_get")
-		private String actionCancelVisits;
-		
-		@MapsTo.Path(linked = false) 
-		private TempCancelVisitList tempCancelVisitList;
-		
-    }
-	
-	@MapsTo.Type(Visit.class)
-	@Getter @Setter
-	public static class TempCancelVisitList {
-
-		private String[] ids;
-	}
-	
-	@Model
-	@Getter @Setter
 	public static class VSMyVisits  {
 		
-		@Label("Visits - Bulk Action")
-		@Button(style = Style.SECONDARY)
-		@Config(url = "/.d/_nav?pageId=vpVisitsBulkAction")
-		private String goToVisitsBulkAction;
+//		@Label("Visits - Bulk Action")
+//		@Button(style = Style.SECONDARY)
+//		@Config(url = "/.d/_nav?pageId=vpVisitsBulkAction")
+//		private String goToVisitsBulkAction;
 		
 		@ParamContext(enabled=false, visible=false)
 		@Label("Owners")
@@ -126,9 +82,9 @@ public class VRVisitLanding {
 		@Config(url = "/p/ownerlandingview/_new")
 		private String goToOwners;
 		
-		@Label("My Visits")
+		@Label("Visits - Client Side")
 		@MapsTo.Path(linked = false)       
-		@Grid(onLoad = true, pageSize = "7")
+		@Grid(onLoad = true, pagination = false)
 		@Config(url = "/vpVisits/vtMyVisits/vsMyVisits/myVisits.m/_process?fn=_set&url=/p/visit/_search?fn=example")
 		private List<VisitLineItem> myVisits;
 		

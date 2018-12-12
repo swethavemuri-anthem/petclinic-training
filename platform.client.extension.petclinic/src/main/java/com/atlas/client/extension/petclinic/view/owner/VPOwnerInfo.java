@@ -117,28 +117,27 @@ public class VPOwnerInfo {
     @Getter @Setter
     public static class VCDBOwner {
  
-    		@Label("First Name")
-        @FieldValue(cols="2")
-    		@Path
+		@Label("First Name")
+        @FieldValue(cols="3")
+		@Path
         private String firstName;
         
         @Label("Last Name")
         @FieldValue
         @Path
         private String lastName;
- 
-        @FieldValue(type=FieldValue.Type.Divider)
-        private String divider2;
-        
-        @Label("Address Group")
-        @FieldValueGroup()
-        private AddressGroup addressGroup;
-        
         
         @Label("Telephone")
         @FieldValue
         @Path
         private String telephone;
+ 
+        @FieldValue(type=FieldValue.Type.Divider)
+        private String divider2;
+        
+//        @Label("Address Group")
+//        @FieldValueGroup()
+//        private AddressGroup addressGroup;
     }
     
     @Type(Owner.class)
@@ -172,14 +171,14 @@ public class VPOwnerInfo {
     @Model @Getter @Setter
     public static class VSPets {
     	
-    		@Label("Add Pet")
-    		@Button(style=Style.SECONDARY)
+		@Label("Add Pet")
+		@Button(style=Style.SECONDARY)
         @Config(url="/p/petview/_new?fn=_initEntity&target=/.m/ownerId&json=\"<!/.m/id!>\"&target=/.m/ownerName&json=\"<!/.m/firstName!> <!/.m/lastName!>\"")
         @Config(url="/p/petview/_nav?pageId=vpAddEditPet")
         private String addPet;
  
-    		@Label("Pets")
-    		@Grid(onLoad = true, pageSize = "7")
+		@Label("Pets")
+		@Grid(onLoad = true, pageSize = "7")
         @Path(linked = false)
         @Config(url="<!#this!>/.m/_process?fn=_set&url=/p/pet/_search?fn=query&where=pet.ownerId.eq(<!/../.m/id!>)")
         private List<PetLineItem> pets;

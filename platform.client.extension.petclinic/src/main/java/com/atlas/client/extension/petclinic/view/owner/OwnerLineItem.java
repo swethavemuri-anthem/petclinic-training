@@ -6,6 +6,7 @@ import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.Model;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridColumn;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridRowBody;
@@ -69,11 +70,23 @@ public class OwnerLineItem {
     @Path
     private String telephone;   
     
-    @LinkMenu
-    private VLMCaseItemLinks vlmCaseItemLinks;
+//    @LinkMenu
+//    private VLMCaseItemLinks vlmCaseItemLinks;
    
     @GridRowBody
     private ExpandedRowContent expandedRowContent;
+    
+    @Button(imgSrc = "fa-edit", title = "Edit")
+	@Label(" ")
+	@Config(url = "/p/ownerview:<!/.m/id!>/_get")
+	private String edit;
+	
+    
+    @Button(imgSrc = "fa-tasks", title = "Owner Info")
+	@Label(" ")
+	@Config(url = "/p/ownerview:<!/.m/id!>/_get")
+    @Config(url = "/p/ownerview:<!/.m/id!>/_nav?pageId=vpOwnerInfo")
+    private String ownerInfo;
     
     @Model @Getter @Setter
     public static class ExpandedRowContent {
@@ -85,18 +98,18 @@ public class OwnerLineItem {
         private List<PetLineItemOwnerLanding> pets;
     }
     
-    @Model @Getter @Setter
-    public static class VLMCaseItemLinks {
-        
-    	@Label("Edit")
-        @Link(imgSrc = "edit.png")
-    	@Config(url = "/p/ownerview:<!/../id!>/_get")
-    	private String edit;
-     
-    	@Label("Owner Info")
-        @Link(imgSrc = "task.svg")
-    	@Config(url = "/p/ownerview:<!/../id!>/_get")
-        @Config(url = "/p/ownerview:<!/../id!>/_nav?pageId=vpOwnerInfo")
-        private String ownerInfo;
-    }
+//    @Model @Getter @Setter
+//    public static class VLMCaseItemLinks {
+//        
+//    	@Label("Edit")
+//        @Link(imgSrc = "edit.png")
+//    	@Config(url = "/p/ownerview:<!/../id!>/_get")
+//    	private String edit;
+//     
+//    	@Label("Owner Info")
+//    	@Link(imgSrc = "task.svg")
+//    	@Config(url = "/p/ownerview:<!/../id!>/_get")
+//        @Config(url = "/p/ownerview:<!/../id!>/_nav?pageId=vpOwnerInfo")
+//        private String ownerInfo;
+//    }
 }
