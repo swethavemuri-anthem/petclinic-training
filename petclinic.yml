@@ -144,6 +144,8 @@ domain:
       - com.atlas.client.extension.petclinic.user
       - com.atlas.client.extension.petclinic.core
       - com.atlas.client.extension.petclinic.view
+      - com.atlas.client.extension.petquestionnaire.core
+      - com.atlas.client.extension.petquestionnaire.view
     typeClassMappings:
       java.lang.String : 
         string
