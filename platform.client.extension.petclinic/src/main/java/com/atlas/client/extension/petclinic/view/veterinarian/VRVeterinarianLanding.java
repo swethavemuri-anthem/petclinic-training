@@ -37,7 +37,7 @@ public class VRVeterinarianLanding {
 	
 	@Label("Add Veterinarian")
 	@Page(defaultPage=true)
-	private VPAddEditVeterinarian vpAddEditVeterenarian;
+	private VPAddEditVeterinarian vpAddEditVeterinarian;
 	
 	@Model
 	@Getter @Setter

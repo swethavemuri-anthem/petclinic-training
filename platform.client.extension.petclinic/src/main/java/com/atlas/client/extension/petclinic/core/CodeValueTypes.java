@@ -26,6 +26,20 @@ public class CodeValueTypes {
 		}
     }
 	
+	public static class veterinarianSpecialityType implements Source {
+    	@Override
+		public List<ParamValue> getValues(String paramPath) {
+			List<ParamValue> values = new ArrayList<>();
+			values.add(new ParamValue("Avian", "Avian"));
+            values.add(new ParamValue("Equine", "Equine"));
+            values.add(new ParamValue("Feline", "Feline"));
+            values.add(new ParamValue("Canine", "Canine"));
+			values.add(new ParamValue("Poultry", "Poultry"));
+			values.add(new ParamValue("Reptile & Amphibian", "Reptile & Amphibian"));
+			return values;
+		}
+    }
+	
 	public static class DogCategory implements Source {
     	@Override
 		public List<ParamValue> getValues(String paramPath) {
