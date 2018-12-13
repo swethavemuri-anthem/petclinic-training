@@ -31,8 +31,8 @@ import com.atlas.client.extension.petclinic.core.Pet;
 import com.atlas.client.extension.petclinic.pageobject.model.OwnerInfoUnitTestPage;
 import com.atlas.client.extension.petclinic.scenariotests.AbstractPetclinicSpringTest;
 import com.atlas.client.extension.petclinic.view.owner.CallLineItem;
-import com.atlas.client.extension.petclinic.view.owner.VPOwnerInfo.VCDBOwner;
-import com.atlas.client.extension.petclinic.view.owner.VPOwnerInfo.VCDOwnerInfo;
+import com.atlas.client.extension.petclinic.view.owner.VPOwnerInfo.VSOwnerInfo.VCDBOwner;
+import com.atlas.client.extension.petclinic.view.owner.VPOwnerInfo.VSOwnerInfo.VCDOwnerInfo;
 import com.atlas.client.extension.petclinic.view.pet.PetLineItem;
 
 /**

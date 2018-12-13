@@ -106,16 +106,15 @@ public class VPOwnerInfo {
 	@Getter @Setter
 	public static class VSOwnerInfo {
 		
-		
 		@Accordion
-		private VABanner1 vaBanner1;
+		private VABanner vaBanner;
 		
 		@Model
 		@Getter @Setter
-		public static class VABanner1 {
+		public static class VABanner {
 			
 			@AccordionTab(selected = true)
-			private VATBannerTab vatBannerTab1;
+			private VATBannerTab vatBannerTab;
 		}
 		
 		@Model
