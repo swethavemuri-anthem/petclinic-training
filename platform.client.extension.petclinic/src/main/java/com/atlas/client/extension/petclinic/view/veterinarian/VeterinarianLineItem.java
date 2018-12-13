@@ -6,7 +6,7 @@ import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridColumn;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
-import com.atlas.client.extension.petclinic.core.Veterinarian;
+import com.atlas.client.extension.petclinic.core.veterinarian.Veterinarian;
 
 import lombok.Getter;
 import lombok.Setter;

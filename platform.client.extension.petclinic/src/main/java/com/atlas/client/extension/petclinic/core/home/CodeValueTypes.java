@@ -1,4 +1,4 @@
-package com.atlas.client.extension.petclinic.core;
+package com.atlas.client.extension.petclinic.core.home;
 
 import java.util.ArrayList;
 import java.util.List;

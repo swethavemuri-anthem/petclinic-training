@@ -25,9 +25,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.antheminc.oss.nimbus.domain.model.state.EntityState.Param;
-import com.atlas.client.extension.petclinic.core.Owner;
-import com.atlas.client.extension.petclinic.core.OwnerCall;
-import com.atlas.client.extension.petclinic.core.Pet;
+import com.atlas.client.extension.petclinic.core.owner.Owner;
+import com.atlas.client.extension.petclinic.core.owner.OwnerCall;
+import com.atlas.client.extension.petclinic.core.pet.Pet;
 import com.atlas.client.extension.petclinic.pageobject.model.OwnerInfoUnitTestPage;
 import com.atlas.client.extension.petclinic.scenariotests.AbstractPetclinicSpringTest;
 import com.atlas.client.extension.petclinic.view.owner.CallLineItem;

@@ -11,6 +11,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.antheminc.oss.nimbus.domain.session.HttpSessionProvider;
 import com.antheminc.oss.nimbus.domain.session.SessionProvider;
@@ -23,18 +25,24 @@ import com.antheminc.oss.nimbus.domain.session.SessionProvider;
 @SpringBootApplication(scanBasePackageClasses=LoginController.class)
 @ComponentScan
 @EnableAutoConfiguration
-public class Application extends SpringBootServletInitializer {
+public class PetclinicWebApplication extends SpringBootServletInitializer {
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application){ 
-		return application.sources(Application.class);
+		return application.sources(PetclinicWebApplication.class);
 	} 
+	
 	public static void main(String[] args) throws Exception { 
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(PetclinicWebApplication.class, args);
 	} 
 	
 	@Bean
 	public SessionProvider sessionProvider() { 
 		return new HttpSessionProvider();
 	} 
+	
+	@RequestMapping("/petclinicweb-test/{name}")
+	public String test(@PathVariable String name) {
+		return "Hello "+name;
+	}
 
 }
