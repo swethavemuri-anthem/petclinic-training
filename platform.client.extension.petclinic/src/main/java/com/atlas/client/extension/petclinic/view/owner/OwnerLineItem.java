@@ -70,8 +70,8 @@ public class OwnerLineItem {
     @Path
     private String telephone;   
     
-//    @LinkMenu
-//    private VLMCaseItemLinks vlmCaseItemLinks;
+    @LinkMenu
+    private VLMCaseItemLinks vlmCaseItemLinks;
    
     @GridRowBody
     private ExpandedRowContent expandedRowContent;
@@ -98,18 +98,18 @@ public class OwnerLineItem {
         private List<PetLineItemOwnerLanding> pets;
     }
     
-//    @Model @Getter @Setter
-//    public static class VLMCaseItemLinks {
-//        
-//    	@Label("Edit")
-//        @Link(imgSrc = "edit.png")
-//    	@Config(url = "/p/ownerview:<!/../id!>/_get")
-//    	private String edit;
-//     
-//    	@Label("Owner Info")
-//    	@Link(imgSrc = "task.svg")
-//    	@Config(url = "/p/ownerview:<!/../id!>/_get")
-//        @Config(url = "/p/ownerview:<!/../id!>/_nav?pageId=vpOwnerInfo")
-//        private String ownerInfo;
-//    }
+    @Model @Getter @Setter
+    public static class VLMCaseItemLinks {
+        
+    	@Label("Edit")
+        @Link(imgSrc = "edit.png")
+    	@Config(url = "/p/ownerview:<!/../id!>/_get")
+    	private String edit;
+     
+    	@Label("Owner Info")
+    	@Link(imgSrc = "task.svg")
+    	@Config(url = "/p/ownerview:<!/../id!>/_get")
+        @Config(url = "/p/ownerview:<!/../id!>/_nav?pageId=vpOwnerInfo")
+        private String ownerInfo;
+    }
 }
