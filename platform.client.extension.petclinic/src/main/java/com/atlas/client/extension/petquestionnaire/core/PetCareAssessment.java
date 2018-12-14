@@ -17,6 +17,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.AccordionTab;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ButtonGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Calendar;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CheckBoxGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FormElementGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Radio;
@@ -122,7 +123,7 @@ public class PetCareAssessment extends IdLong {
 		private String question21;
 		
 		
-		@ComboBox(cssClass= "questionGroup form-inline")
+		@CheckBoxGroup(cssClass= "questionGroup form-inline")
 		@Size(min=2)
 		@NotNull
 		@Model.Param.Values(value = SatisfactionType.class)
@@ -130,7 +131,6 @@ public class PetCareAssessment extends IdLong {
 		private String question22;
 		
 		@TextBox
-		@NotNull
 		@Pattern(regexp = "^[2-9]\\d{2}-\\d{3}-\\d{4}$", message = "Please enter phone number in xxx-xxx-xxxx format")
 		@Label(value = "Question 23 with regex pattern")
 		private String question23;
