@@ -161,31 +161,31 @@ public class VPOwnerInfo {
 
 
 
-	@Type(Owner.class)
-	@Getter @Setter
-	public static class AddressGroup {
-
-		@Label("Address")
-		@FieldValue(cols = "1", showName = false)
-		@Path
-		private String address;
-
-		@Label("City")
-		@FieldValue(cols = "1", showName = false)
-		@Path
-		private String city;
-
-		@Label("State")
-		@FieldValue(cols = "1", showName = false)
-		@Path
-		private String state;
-
-		@Label("Zip")
-		@FieldValue(cols = "1", showName = false)
-		@Path
-		private String zip;
-
-	}
+//	@Type(Owner.class)
+//	@Getter @Setter
+//	public static class AddressGroup {
+//
+//		@Label("Address")
+//		@FieldValue(cols = "1", showName = false)
+//		@Path
+//		private String address;
+//
+//		@Label("City")
+//		@FieldValue(cols = "1", showName = false)
+//		@Path
+//		private String city;
+//
+//		@Label("State")
+//		@FieldValue(cols = "1", showName = false)
+//		@Path
+//		private String state;
+//
+//		@Label("Zip")
+//		@FieldValue(cols = "1", showName = false)
+//		@Path
+//		private String zip;
+//
+//	}
 
 	@Model
 	@Getter @Setter
