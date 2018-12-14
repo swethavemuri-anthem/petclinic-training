@@ -135,6 +135,13 @@ public class PetCareAssessment extends IdLong {
 		@Label(value = "Question 23 with regex pattern")
 		private String question23;
 		
+		@TextBox
+		@NotNull
+		@Size(min=3)
+		@Pattern(regexp = "^[2-9]\\d{2}-\\d{3}-\\d{4}$", message = "Please enter phone number in xxx-xxx-xxxx format")
+		@Label(value = "Question 24 with regex pattern and mandatory")
+		private String question24;
+		
 		@FormElementGroup
 		@Label("Section 12")
 		private Section12 section12;
