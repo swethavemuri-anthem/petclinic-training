@@ -9,10 +9,19 @@ import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
+import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
+import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetail;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetailsGrid;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridColumn;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Initialize;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.StaticText;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
@@ -31,16 +40,16 @@ import lombok.ToString;
 @Domain(value = "veterinarianview", includeListeners = {ListenerType.websocket})
 @Repo(value = Repo.Database.rep_none,cache = Repo.Cache.rep_device)
 @Getter @Setter @ToString(callSuper = true)
-@MapsTo.Type(Veterinarian.class)
+//@MapsTo.Type(Veterinarian.class)
 @ViewRoot(layout = "")
 public class VRVeterinarian {
 	
 	@Label("Veterinarians")
 	@Page(defaultPage=true)
-	private VPVeterenarians vpVeterenarians;
+	private VPVeterinarians vpVeterinarians;
 
 	@Model @Getter @Setter
-	public static class VPVeterenarians  {
+	public static class VPVeterinarians  {
 
 		@Tile(imgSrc = "resources/icons/task.svg#Layer_1", size = Tile.Size.Medium)
         private VTVeterinarians vtVeterinarians;
@@ -52,6 +61,10 @@ public class VRVeterinarian {
 
 		@Section
 		private VSVeterinarians vsVeterinarians;
+		
+		//@Label("Card details grid section")
+		@Section
+		private VeterinarianLineItemDetailsSection veterinarianLineItemDetailsSection;
     }
 
 	@Model @Getter @Setter
@@ -62,11 +75,53 @@ public class VRVeterinarian {
 	    @Config(url="/p/veterinarianlandingview/_new")
 	    private String addVeterinarian;
 		
-		@Label("Veterinarians")       
+		
+		/*@Label("Veterinarians")
+		@Path(linked=false)
+		//@Config(url="/p/veterinarianlandingview/vpVeterinarians/vtVeterinarians/vsVeterinarians/veterinarians.m/_process?fn=_set&url=/p/veterinarian/_search?fn=example")  
+		//@Config(url="<!#this!>/.m/_process?fn=_set&url=/p/veterinarian/_search?fn=example")
 		@Grid(onLoad = true,pageSize = "7")
-		@Path(linked = false)
-		@Config(url = "/vpVeterenarians/vtVeterinarians/vsVeterinarians/veterinarians.m/_process?fn=_set&url=/p/veterinarian/_search?fn=example")
-		private List<VeterinarianLineItem> veterinarians;
+		private List<VeterinarianLineItem> veterinarians;*/
 		
     }
+	
+	@Model
+	//@MapsTo.Type(Veterinarian.class)
+	@Getter
+	@Setter
+	public static class VeterinarianLineItemDetailsSection {
+		
+		@Label("Veterinarians")
+		@CardDetailsGrid(onLoad = true)
+		@Path(linked = false)
+		@Config(url = "/vpVeterinarians/vtVeterinarians/veterinarianLineItemDetailsSection/veterinarianLineItemDetailsList.m/_process?fn=_set&url=/p/veterinarian/_search?fn=example")
+		private List<VeterinarianLineItemDetails> veterinarianLineItemDetailsList;
+
+	}
+
+	@Model
+	@MapsTo.Type(Veterinarian.class)
+	@Getter
+	@Setter
+	public static class VeterinarianLineItemDetails {
+		
+		@CardDetail(expandable = true)
+		private VeterinarianLineItemSummary veterinarianLineItemSummary;
+
+	}
+
+	@Model
+	@Getter
+	@Setter
+	@MapsTo.Type(Veterinarian.class)
+	public static class VeterinarianLineItemSummary {
+
+		@CardDetail.Header
+		private VeterinarianCardHeader veterinarianCardHeader;
+
+		@CardDetail.Body
+		private VeterinarianLineItem veterinarianLineItem;
+
+	}
+
 }

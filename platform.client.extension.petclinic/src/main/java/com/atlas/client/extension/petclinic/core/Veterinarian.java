@@ -32,5 +32,12 @@ public class Veterinarian extends AbstractEntity.IdLong {
 		return firstName + ' ' + lastName;		
 	}
 	
+	private String veterinarian;
+	
+	private String speciality;
+	
+	private String numberOfPets;
+	
+	
 	
 }

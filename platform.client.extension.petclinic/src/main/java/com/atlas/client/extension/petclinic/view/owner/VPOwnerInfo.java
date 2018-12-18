@@ -7,16 +7,18 @@ import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
 import com.antheminc.oss.nimbus.domain.defn.Model;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Accordion;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.AccordionTab;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button.Style;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetail;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValueGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Hints;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Paragraph;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TabInfo;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.extension.ActivateConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
@@ -103,72 +105,87 @@ public class VPOwnerInfo {
 	@Model
 	@Getter @Setter
 	public static class VSOwnerInfo {
+		
+		@Accordion
+		private VABanner vaBanner;
+		
+		@Model
+		@Getter @Setter
+		public static class VABanner {
+			
+			@AccordionTab(selected = true)
+			private VATBannerTab vatBannerTab;
+		}
+		
+		@Model
+		@Getter @Setter
+		public static class VATBannerTab {
+			
+			@TabInfo(cssClass = "infoBarHeader")
+			private String ownerName;
+			
+			@CardDetail(cssClass = "contentBox right-gutter bg-alternate mt-0")
+			private VCDOwnerInfo vcdOwnerInfo;
+		}
+		
+		@Model
+		@Getter @Setter
+		public static class VCDOwnerInfo {
 
-		@CardDetail(cssClass = "contentBox right-gutter bg-alternate mt-0")
-		private VCDOwnerInfo vcdOwnerInfo;
+			@CardDetail.Body
+			private VCDBOwner vcdbOwner;
+		}
+		
+		@Type(Owner.class)
+		@Getter @Setter
+		public static class VCDBOwner {
 
+			@Label("First Name")
+			@FieldValue(cols = "2")
+			@Path
+			private String firstName;
+
+			@Label("Last Name")
+			@FieldValue
+			@Path
+			private String lastName;
+
+			@Label("Telephone")
+			@FieldValue
+			@Path
+			private String telephone;
+		}
 	}
 
-	@Model
-	@Getter @Setter
-	public static class VCDOwnerInfo {
 
-		@CardDetail.Body
-		private VCDBOwner vcdbOwner;
-	}
 
-	@Type(Owner.class)
-	@Getter @Setter
-	public static class VCDBOwner {
 
-		@Label("First Name")
-		@FieldValue(cols = "2")
-		@Path
-		private String firstName;
 
-		@Label("Last Name")
-		@FieldValue
-		@Path
-		private String lastName;
-
-		@FieldValue(type = FieldValue.Type.Divider)
-		private String divider2;
-
-		@Label("Address Group")
-		@FieldValueGroup()
-		private AddressGroup addressGroup;
-
-		@Label("Telephone")
-		@FieldValue
-		@Path
-		private String telephone;
-	}
-
-	@Type(Owner.class)
-	@Getter @Setter
-	public static class AddressGroup {
-
-		@Label("Address")
-		@FieldValue(cols = "1", showName = false)
-		@Path
-		private String address;
-
-		@Label("City")
-		@FieldValue(cols = "1", showName = false)
-		@Path
-		private String city;
-
-		@Label("State")
-		@FieldValue(cols = "1", showName = false)
-		@Path
-		private String state;
-
-		@Label("Zip")
-		@FieldValue(cols = "1", showName = false)
-		@Path
-		private String zip;
-
-	}
+//	@Type(Owner.class)
+//	@Getter @Setter
+//	public static class AddressGroup {
+//
+//		@Label("Address")
+//		@FieldValue(cols = "1", showName = false)
+//		@Path
+//		private String address;
+//
+//		@Label("City")
+//		@FieldValue(cols = "1", showName = false)
+//		@Path
+//		private String city;
+//
+//		@Label("State")
+//		@FieldValue(cols = "1", showName = false)
+//		@Path
+//		private String state;
+//
+//		@Label("Zip")
+//		@FieldValue(cols = "1", showName = false)
+//		@Path
+//		private String zip;
+//
+//	}
 
 	@Model
 	@Getter @Setter
