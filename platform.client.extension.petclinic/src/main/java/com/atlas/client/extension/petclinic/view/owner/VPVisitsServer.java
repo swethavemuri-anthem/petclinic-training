@@ -38,8 +38,8 @@ public class VPVisitsServer {
 		
 		@Label("Visits - Server side")
 		@MapsTo.Path(linked = false)       
-		@Grid(onLoad = true, pagination = true, pageSize = "3")
-		@Config(url = "/vpVisitsServer/vtVisits/vsVisits/visits.m/_process?fn=_set&url=/p/visit/_search?fn=example")
+		@Grid(onLoad = true, pageSize = "3",lazyLoad=true)
+		@Config(url = "/vpVisitsServer/vtVisits/vsVisits/visits.m/_process?fn=_set&url=/p/visit/_search?fn=example&<!page=y!>")
 		private List<VisitLineItem> visits;
 		
     }
