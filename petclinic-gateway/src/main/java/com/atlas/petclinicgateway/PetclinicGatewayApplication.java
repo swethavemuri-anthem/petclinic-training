@@ -40,15 +40,22 @@ public class PetclinicGatewayApplication {
 				 * This has been tested through a local swarm cluster. 
 				 * 
 				 */
+					
+				
+				.route("content-server javascript", p -> p.path("/app_scripts.js")
+						.uri("http://localhost:4201"))
+				
+				.route("content-server css", p -> p.path("/styles/*.css")
+						.uri("http://localhost:4201"))
+				
+				.route("content-server images", p -> p.path("/petclinic/images/**")
+						.uri("http://localhost:4201"))
 				
 				.route("javascript", p -> p.path("/*.js")
 						.uri("http://localhost:4200"))
 				
 				.route("css", p -> p.path("/*.css")
 						.uri("http://localhost:4200"))	
-				
-				.route("images", p -> p.path("/petclinic/images/*")
-						.uri("http://localhost:4200"))
 				
 				.route("fontawesome", p -> p.path("/fontawesome**")
 						.uri("http://localhost:4200"))
