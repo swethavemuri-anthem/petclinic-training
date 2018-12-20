@@ -111,7 +111,7 @@ public class VPAddEditOwner {
 	    @NotNull
 	    @ComboBox(postEventOnChange = true)
 	    @Values(OwnerNotificationPreferences.class)
-	    @ValidateConditional(when = "state == 'physical_mail'", scope = ValidationScope.CHILDREN, targetGroup = GROUP_1.class, targetPath = { 
+	    @ValidateConditional(when = "state == 'Physical_mail'", scope = ValidationScope.CHILDREN, targetGroup = GROUP_1.class, targetPath = { 
 	    		"../address",
 	    		"../city",
 	    		"../state",
@@ -119,7 +119,7 @@ public class VPAddEditOwner {
 	    		"../telephone",
 	    		"../email"
 	    })
-	    @ValidateConditional(when = "state == 'email'", scope = ValidationScope.CHILDREN, targetGroup = GROUP_3.class, targetPath = {
+	    @ValidateConditional(when = "state == 'Email'", scope = ValidationScope.CHILDREN, targetGroup = GROUP_3.class, targetPath = {
 	    		"../address",
 	    		"../city",
 	    		"../state",
