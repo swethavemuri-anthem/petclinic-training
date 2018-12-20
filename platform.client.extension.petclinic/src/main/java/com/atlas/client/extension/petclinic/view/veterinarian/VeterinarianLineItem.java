@@ -25,10 +25,6 @@ import lombok.Setter;
 @Getter @Setter
 public class VeterinarianLineItem {
 	
-    @GridColumn(hidden = true)
-    @Path
-    private Long id;
-	
 	@Label("Speciality")
 	@FieldValue
 	@Path
@@ -47,5 +43,7 @@ public class VeterinarianLineItem {
 	@Config(url = "/p/veterinarianlandingview:<!../id!>/_nav?pageId=vpAddEditVeterinarian")
     private String editVet;
 	
-
+    @GridColumn(hidden = true)
+    @Path
+    private Long id;
 }

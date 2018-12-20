@@ -119,7 +119,7 @@ public class VRVeterinarian {
 		@CardDetail.Header
 		private VeterinarianCardHeader veterinarianCardHeader;
 
-		@CardDetail.Body
+		@CardDetail.Body(cssClass = "threeColumn")
 		private VeterinarianLineItem veterinarianLineItem;
 	}
 }
