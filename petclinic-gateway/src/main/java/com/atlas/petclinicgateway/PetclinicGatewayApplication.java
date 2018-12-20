@@ -45,8 +45,6 @@ public class PetclinicGatewayApplication {
 				.route("content-server javascript", p -> p.path("/app_scripts.js")
 						.uri("http://localhost:4201"))
 				
-				.route("content-server css", p -> p.path("/styles/*.css")
-						.uri("http://localhost:4201"))
 				
 				.route("content-server images", p -> p.path("/petclinic/images/**")
 						.uri("http://localhost:4201"))
@@ -77,6 +75,9 @@ public class PetclinicGatewayApplication {
 				
 				.route("petclinic3", p -> p.path("/petclinic/**")
 						.uri("http://localhost:4200"))
+				
+				.route("content-server css", p -> p.path("/styles/*.css")
+				.uri("http://localhost:4201"))
 				
 				
 				.route("eureka-client",p->p.path("/test/**")
