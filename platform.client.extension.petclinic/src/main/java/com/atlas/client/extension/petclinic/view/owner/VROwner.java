@@ -6,10 +6,7 @@ import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Paragraph;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
-import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader.Property;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.atlas.client.extension.petclinic.core.Owner;
 
