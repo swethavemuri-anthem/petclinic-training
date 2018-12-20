@@ -10,9 +10,12 @@ import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
 import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button.Style;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader.Property;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetail;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Paragraph;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
@@ -49,6 +52,11 @@ public class VPPetInfo {
 	@Getter @Setter
 	public static class VSPetInfo {
 		
+		@PageHeader(Property.TITLE)
+		@Paragraph
+		@Label(value = "Pets")
+		private String title;
+		
 		@CardDetail(cssClass="contentBox right-gutter bg-alternate mt-0")
 		private VCDPetInfo vcdPetInfo;
 		
@@ -66,19 +74,19 @@ public class VPPetInfo {
 	@Getter @Setter
 	public static class VCDBPet {
 		
-		@Path @FieldValue
+		@Path @FieldValue(cssClass = "label-left align-right")
 		@Label("Owner's name")
 		private String ownerName;
 		
-		@Path("name") @FieldValue(cols="2") 
+		@Path("name") @FieldValue(cols="2", cssClass = "label-left align-right") 
 		@Label("Pet's Name")
 		private String petName;	
 		
-		@Path @FieldValue 
+		@Path @FieldValue(cssClass = "label-left align-right")
 		@Label("Date Of Birth")
 		private LocalDate dob;
 		
-		@Path @FieldValue 
+		@Path @FieldValue(cssClass = "label-left align-right") 
 		@Label("Type")
 		private String type;
 	}

@@ -70,8 +70,8 @@ public class OwnerLineItem {
     @Path
     private String telephone;   
     
-    @LinkMenu
-    private VLMCaseItemLinks vlmCaseItemLinks;
+//    @LinkMenu
+//    private VLMCaseItemLinks vlmCaseItemLinks;
    
     @GridRowBody
     private ExpandedRowContent expandedRowContent;

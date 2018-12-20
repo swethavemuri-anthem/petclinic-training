@@ -55,9 +55,6 @@ public class VPAddEditVeterinarian {
 	@Getter @Setter
 	public static class VFAddEditVeterinarian {
 		
-		@ButtonGroup
-		private VBGAddEditVeterinarian buttonGroup;
-		
 		@TextBox @MapsTo.Path
 		@Label("First Name")
 		private String firstName;
@@ -79,6 +76,9 @@ public class VPAddEditVeterinarian {
 		@TextBox @MapsTo.Path
 		@Label("Number of Pets")
 		private String numberOfPets;
+		
+		@ButtonGroup
+		private VBGAddEditVeterinarian buttonGroup;
 		
 	}
 	

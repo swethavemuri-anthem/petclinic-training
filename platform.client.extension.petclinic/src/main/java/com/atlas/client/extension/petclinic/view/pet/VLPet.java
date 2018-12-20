@@ -93,16 +93,16 @@ public class VLPet {
 		public static class VCDBPetDetails {
 			
 			@Label("Owner Name")
-			@FieldValue(cols = "1")
+			@FieldValue(cols = "1", cssClass = "label-left align-right")
 			@PageHeader(Property.SUBHEADER)
 			@Path
 			private String ownerName;
 			
-			@FieldValueGroup(cols = "5")
+			@FieldValueGroup(cols = "5", cssClass = "label-left align-right")
 			@Path(linked = false)
 			private VFVGOwnerContact vfvgOwnerContact;
 			
-			@FieldValueGroup(cols = "5")
+			@FieldValueGroup(cols = "5", cssClass = "label-left align-right")
 			private VFVGTest vfvgSection2;
 		}
 		
@@ -111,7 +111,7 @@ public class VLPet {
 		public static class VFVGTest {
 			
 			@Label("Type")
-			@FieldValue(cols = "1")
+			@FieldValue(cols = "1", cssClass = "label-left align-right")
 			@Path
 			private String type;
 		}
@@ -121,27 +121,27 @@ public class VLPet {
 		public static class VFVGOwnerContact {
 			
 			@Label("Address")
-			@FieldValue(cols = "1")
+			@FieldValue(cols = "1", cssClass = "label-left align-right")
 			@Path
 			private String address;
 			
 			@Label("City")
-			@FieldValue(cols = "1")
+			@FieldValue(cols = "1", cssClass = "label-left align-right")
 			@Path
 			private String city;
 			
 			@Label("State")
-			@FieldValue(cols = "1")
+			@FieldValue(cols = "1", cssClass = "label-left align-right")
 			@Path
 			private String state;
 			
 			@Label("Zip")
-			@FieldValue(cols = "1")
+			@FieldValue(cols = "1", cssClass = "label-left align-right")
 			@Path
 			private String zip;
 			
 			@Label("Telephone")
-			@FieldValue(cols = "1")
+			@FieldValue(cols = "1", cssClass = "label-left align-right")
 			@Path
 			private String telephone;
 		}

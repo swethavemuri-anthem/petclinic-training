@@ -18,6 +18,7 @@ package com.atlas.client.extension.petclinic.view.owner;
 import javax.validation.constraints.NotNull;
 
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Path;
 import com.antheminc.oss.nimbus.domain.defn.MapsTo.Type;
@@ -27,11 +28,15 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ButtonGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CheckBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValueGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Header;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Paragraph;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader.Property;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.ValidateConditional.GROUP_1;
@@ -77,9 +82,6 @@ public class VPAddEditOwner {
 	@Type(Owner.class)
 	@Getter @Setter
 	public static class VFAddEditOwner {
-	
-	    @ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
-	    private VBGAddOwnerButtonGrp vbgAddOwnerButtonGrp;
 	    
 	    // TODO id is not sent with UI payload using @ParamContext(enabled = false, visible = true)
 	    // Should we offer a way of supporting this in favor of deprecating readOnly?
@@ -167,6 +169,9 @@ public class VPAddEditOwner {
 	    @NotNull(groups = { GROUP_3.class })
 	    @Label("Email Address") 
 	    private String email;
+	    
+	    @ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
+	    private VBGAddOwnerButtonGrp vbgAddOwnerButtonGrp;
 	}
 	
 	@Model @Getter @Setter

@@ -11,11 +11,14 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Accordion;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.AccordionTab;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button.Style;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader.Property;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetail;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValueGroup;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Hints;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Paragraph;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TabInfo;
@@ -141,25 +144,21 @@ public class VPOwnerInfo {
 		public static class VCDBOwner {
 
 			@Label("First Name")
-			@FieldValue(cols = "2")
+			@FieldValue(cols = "1", showName = true, cssClass = "label-left align-right")
 			@Path
 			private String firstName;
 
 			@Label("Last Name")
-			@FieldValue
+			@FieldValue(cols = "1", showName = true, cssClass = "label-left align-right")
 			@Path
 			private String lastName;
 
 			@Label("Telephone")
-			@FieldValue
+			@FieldValue(cols = "1", showName = true, cssClass = "label-left align-right")
 			@Path
 			private String telephone;
 		}
 	}
-
-
-
-
 
 //	@Type(Owner.class)
 //	@Getter @Setter
@@ -191,13 +190,10 @@ public class VPOwnerInfo {
 	@Getter @Setter
 	public static class VSPets {
 
-		private Pet newPet;
-
 		@Label("Add Pet")
 		@Button(style = Style.SECONDARY)
-		@Config(url = "<!#this!>/../newPet/_process?fn=_set&url=/p/petview/_new?fn=_initEntity&b=$state&target=/.m/ownerId&json=\"<!/.m/id!>\"&target=/.m/ownerName&json=\"<!/.m/firstName!> <!/.m/lastName!>\"")
-		@Config(url = "/p/petview:<!<!#this!>/../newPet/id!>/_nav?pageId=vpAddEditPet")
-		private String addPet;
+		@Config(url = "/p/petview/_new?fn=_initEntity&target=/.m/ownerId&json=\"<!/../.m/id!>\"&target=/.m/ownerName&json=\"<!/../.m/firstName!> <!/../.m/lastName!>\"")
+		private String addPet;		
 
 		@Label("Pets")
 		@Grid(onLoad = true, pageSize = "7")

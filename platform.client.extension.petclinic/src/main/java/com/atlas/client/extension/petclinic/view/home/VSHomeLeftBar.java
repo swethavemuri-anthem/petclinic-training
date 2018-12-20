@@ -28,7 +28,7 @@ public class VSHomeLeftBar {
 	private VMPVisits vmpVisits;
 	
 	@Label("Veterinarians")
-	@MenuLink(url="veterinarianview/vpVeterenarians", imgSrc="notesIcon")
+	@MenuLink(url="veterinarianview/vpVeterinarians", imgSrc="notesIcon")
 	private String vets;
 	
 	@Label("Owners")

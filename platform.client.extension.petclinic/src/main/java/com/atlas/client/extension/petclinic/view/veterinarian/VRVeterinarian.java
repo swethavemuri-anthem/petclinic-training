@@ -2,6 +2,8 @@ package com.atlas.client.extension.petclinic.view.veterinarian;
 
 import java.util.List;
 
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValue;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.FieldValueGroup;
 import com.antheminc.oss.nimbus.domain.defn.Domain;
 import com.antheminc.oss.nimbus.domain.defn.Domain.ListenerType;
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
@@ -20,10 +22,13 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.GridColumn;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Initialize;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Paragraph;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.StaticText;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader.Property;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.atlas.client.extension.petclinic.core.Veterinarian;
 
@@ -51,14 +56,14 @@ public class VRVeterinarian {
 	@Model @Getter @Setter
 	public static class VPVeterinarians  {
 
-		@Tile(imgSrc = "resources/icons/task.svg#Layer_1", size = Tile.Size.Medium)
+		@Tile(imgSrc = "resources/icons/task.svg#Layer_1", size = Tile.Size.Large)
         private VTVeterinarians vtVeterinarians;
 		
     }
 	
 	@Model @Getter @Setter
 	public static class VTVeterinarians  {
-
+		
 		@Section
 		private VSVeterinarians vsVeterinarians;
 		
@@ -121,7 +126,5 @@ public class VRVeterinarian {
 
 		@CardDetail.Body
 		private VeterinarianLineItem veterinarianLineItem;
-
 	}
-
 }

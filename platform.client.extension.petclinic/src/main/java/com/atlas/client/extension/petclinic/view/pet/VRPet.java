@@ -25,10 +25,10 @@ import lombok.ToString;
 public class VRPet {
 	
 	@Label("Add/Edit Pet")
-	@Page(route="petview")
+	@Page(defaultPage = true)
 	private VPAddEditPet vpAddEditPet;
 	
 	@Label("Pet Info")
-	@Page(route="petview")
+	@Page
 	private VPPetInfo vpPetInfo;	
 }

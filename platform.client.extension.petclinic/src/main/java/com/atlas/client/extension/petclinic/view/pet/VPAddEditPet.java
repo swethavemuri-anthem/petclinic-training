@@ -34,12 +34,15 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Modal;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Paragraph;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PickList;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PickListSelected;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextArea;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.PageHeader.Property;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.antheminc.oss.nimbus.domain.defn.extension.EnableConditional;
 import com.antheminc.oss.nimbus.domain.defn.extension.LabelConditional;
@@ -90,9 +93,6 @@ public class VPAddEditPet {
 	@Type(Pet.class)
 	@Getter @Setter
 	public static class VFAddEditPet {
-		
-		@ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
-		private VBGAddPetButtonGrp vbgAddPetButtonGrp;
 		
 		// TODO id is not sent with UI payload using @ParamContext(enabled = false, visible = true)
 	    // Should we offer a way of supporting this in favor of deprecating readOnly?
@@ -145,6 +145,9 @@ public class VPAddEditPet {
 		@Grid(onLoad = true, expandableRows = true)
 		@Path
 		private List<MealInstructionLineItem> mealInstructions;
+		
+		@ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
+		private VBGAddPetButtonGrp vbgAddPetButtonGrp;
 	}
 	
 	@Type(Pet.class)

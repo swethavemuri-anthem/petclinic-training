@@ -23,6 +23,7 @@ import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Grid;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Modal;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Paragraph;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
@@ -42,6 +43,10 @@ public class VPNotes {
 
 	@Model @Getter @Setter
 	public static class VTNotes {
+		
+		@Label("This is Notes section of Pet Clinic.")
+    	@Paragraph(cssClass="font-weight-bold")
+    	private String headerCallSection;
 		
 		@Modal
 		private VMAddNote vmAddNote;
