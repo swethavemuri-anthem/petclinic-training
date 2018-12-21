@@ -25,13 +25,8 @@ import lombok.Setter;
 @Getter @Setter
 public class VeterinarianCardHeader {
 	
-	@FieldValue(cols = "1")
+	@FieldValue
 	@Path
-	private String firstName;
-	
-	
-	@FieldValue(cols = "1")
-	@Path
-	private String lastName;
+	private String fullName;
 	
 }

@@ -58,7 +58,7 @@ public class VPPetInfo {
 	@Getter @Setter
 	public static class VCDPetInfo {
 		
-		@CardDetail.Body
+		@CardDetail.Body(cssClass = "threeColumn")
 		private VCDBPet vcdbPet;
 	}
 	
@@ -66,19 +66,19 @@ public class VPPetInfo {
 	@Getter @Setter
 	public static class VCDBPet {
 		
-		@Path @FieldValue(cssClass = "label-left align-right")
+		@Path @FieldValue
 		@Label("Owner's name")
 		private String ownerName;
 		
-		@Path("name") @FieldValue(cols="2", cssClass = "label-left align-right") 
+		@Path("name") @FieldValue(cols="2") 
 		@Label("Pet's Name")
 		private String petName;	
 		
-		@Path @FieldValue(cssClass = "label-left align-right")
+		@Path @FieldValue
 		@Label("Date Of Birth")
 		private LocalDate dob;
 		
-		@Path @FieldValue(cssClass = "label-left align-right") 
+		@Path @FieldValue 
 		@Label("Type")
 		private String type;
 	}

@@ -11,6 +11,8 @@ import com.antheminc.oss.nimbus.domain.defn.Model;
 import com.antheminc.oss.nimbus.domain.defn.Repo;
 import com.antheminc.oss.nimbus.domain.defn.Execution.Config;
 import com.antheminc.oss.nimbus.domain.defn.Executions.Configs;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Accordion;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.AccordionTab;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Button;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetail;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.CardDetailsGrid;
@@ -22,10 +24,14 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Link;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Page;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.StaticText;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TabInfo;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ViewRoot;
 import com.antheminc.oss.nimbus.domain.defn.extension.Content.Label;
 import com.atlas.client.extension.petclinic.core.Veterinarian;
+import com.atlas.client.extension.petclinic.view.pet.VLPet.VSHeader.VABanner;
+import com.atlas.client.extension.petclinic.view.pet.VLPet.VSHeader.VATBannerTab;
+import com.atlas.client.extension.petclinic.view.pet.VLPet.VSHeader.VCDPetDetails;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -62,9 +68,10 @@ public class VRVeterinarian {
 		@Section
 		private VSVeterinarians vsVeterinarians;
 		
-		//@Label("Card details grid section")
+		@Label("Card details grid section")
 		@Section
 		private VeterinarianLineItemDetailsSection veterinarianLineItemDetailsSection;
+
     }
 
 	@Model @Getter @Setter
@@ -105,7 +112,7 @@ public class VRVeterinarian {
 	@Setter
 	public static class VeterinarianLineItemDetails {
 		
-		@CardDetail(expandable = true)
+		@CardDetail(expandable=true)
 		private VeterinarianLineItemSummary veterinarianLineItemSummary;
 
 	}

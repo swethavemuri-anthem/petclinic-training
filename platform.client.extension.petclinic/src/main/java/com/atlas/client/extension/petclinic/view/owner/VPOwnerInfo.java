@@ -132,7 +132,7 @@ public class VPOwnerInfo {
 		@Getter @Setter
 		public static class VCDOwnerInfo {
 
-			@CardDetail.Body
+			@CardDetail.Body(cssClass = "threeColumn")
 			private VCDBOwner vcdbOwner;
 		}
 		
@@ -141,17 +141,17 @@ public class VPOwnerInfo {
 		public static class VCDBOwner {
 
 			@Label("First Name")
-			@FieldValue(cols = "1", showName = true, cssClass = "label-left align-right")
+			@FieldValue(cols = "1", showName = true)
 			@Path
 			private String firstName;
 
 			@Label("Last Name")
-			@FieldValue(cols = "1", showName = true, cssClass = "label-left align-right")
+			@FieldValue(cols = "1", showName = true)
 			@Path
 			private String lastName;
 
 			@Label("Telephone")
-			@FieldValue(cols = "1", showName = true, cssClass = "label-left align-right")
+			@FieldValue(cols = "1", showName = true)
 			@Path
 			private String telephone;
 		}

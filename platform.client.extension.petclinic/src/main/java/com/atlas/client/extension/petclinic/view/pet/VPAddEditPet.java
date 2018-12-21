@@ -154,7 +154,6 @@ public class VPAddEditPet {
 		@Values(value=AllCategory.class)
 		@Path("category")
 		@PickListSelected(postEventOnChange=true)
-		@NotNull
 		private String[] selected;
 	}
 	
