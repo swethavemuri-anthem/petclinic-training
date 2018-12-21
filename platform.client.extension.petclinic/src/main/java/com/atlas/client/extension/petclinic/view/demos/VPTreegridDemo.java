@@ -34,6 +34,7 @@ import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Calendar;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.ComboBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Form;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Modal;
+import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Paragraph;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Section;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.TextBox;
 import com.antheminc.oss.nimbus.domain.defn.ViewConfig.Tile;
@@ -62,6 +63,10 @@ public class VPTreegridDemo {
 	@Model
 	@Getter @Setter
 	public static class VT {
+		
+		@Label("This is Treegrid Demo section of Pet Clinic.")
+    	@Paragraph(cssClass="font-weight-bold")
+    	private String headerCallSection;
 
 		@Modal(closable = true)
 		private VMPetHistory vmPetHistory;

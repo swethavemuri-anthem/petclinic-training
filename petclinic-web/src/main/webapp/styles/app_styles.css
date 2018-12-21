@@ -41,3 +41,7 @@
 .ui-treetable th.dropdown, 
 .ui-treetable th.imageColumn {
     width: 40px;
+}
+.toggleCard {
+	height:45px;
+}

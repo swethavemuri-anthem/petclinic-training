@@ -19,6 +19,7 @@ import lombok.ToString;
 @Repo(value = Repo.Database.rep_none, cache = Repo.Cache.rep_device)
 @Getter @Setter @ToString(callSuper=true)
 @ViewRoot(layout = "home")
+
 public class VROwner {
  
 	@Label("Add Owner")

@@ -23,27 +23,10 @@ import lombok.Setter;
 
 @MapsTo.Type(Veterinarian.class)
 @Getter @Setter
-public class VeterinarianLineItem {
+public class VeterinarianCardHeader {
 	
-	@Label("Speciality")
 	@FieldValue
 	@Path
-	private String speciality;
+	private String fullName;
 	
-	
-	@Label("Number of pets")
-	@FieldValue
-	@Path
-	private String numberOfPets;
-	
-	@Label("Edit Vet")
-    @Link
-    @Config(url = "/p/veterinarianlandingview:<!/../id!>/_get?b=$execute")
-    @Config(url = "/p/veterinarianlandingview:<!/../id!>/_get")
-	@Config(url = "/p/veterinarianlandingview:<!../id!>/_nav?pageId=vpAddEditVeterinarian")
-    private String editVet;
-	
-    @GridColumn(hidden = true)
-    @Path
-    private Long id;
 }

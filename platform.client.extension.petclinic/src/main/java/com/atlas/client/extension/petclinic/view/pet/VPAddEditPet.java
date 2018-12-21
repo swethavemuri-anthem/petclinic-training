@@ -91,9 +91,6 @@ public class VPAddEditPet {
 	@Getter @Setter
 	public static class VFAddEditPet {
 		
-		@ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
-		private VBGAddPetButtonGrp vbgAddPetButtonGrp;
-		
 		// TODO id is not sent with UI payload using @ParamContext(enabled = false, visible = true)
 	    // Should we offer a way of supporting this in favor of deprecating readOnly?
 	    @Label("Pet ID")
@@ -145,6 +142,9 @@ public class VPAddEditPet {
 		@Grid(onLoad = true, expandableRows = true)
 		@Path
 		private List<MealInstructionLineItem> mealInstructions;
+		
+		@ButtonGroup(cssClass="text-sm-right pt-2 pb-2")
+		private VBGAddPetButtonGrp vbgAddPetButtonGrp;
 	}
 	
 	@Type(Pet.class)
@@ -154,7 +154,6 @@ public class VPAddEditPet {
 		@Values(value=AllCategory.class)
 		@Path("category")
 		@PickListSelected(postEventOnChange=true)
-		@NotNull
 		private String[] selected;
 	}
 	
