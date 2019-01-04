@@ -1,9 +1,0 @@
-docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.core.amqp.image:latest
-docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.authentication.web:latest
-docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.web:latest
-docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.core.mysql.image:latest
-docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.edgeapigateway:latest
-#docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/staticcontent:latest
-docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.core.cloud.config:latest
-#docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.core.mongo.image:latest
-#docker pull 961686557161.dkr.ecr.us-east-1.amazonaws.com/nimbus/com.anthem.nimbus.platform.core.consul.image:latest
