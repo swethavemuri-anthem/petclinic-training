@@ -3,15 +3,15 @@ Petclinic setup instructions
    
 
 ## Steps to follow
-* Pre-requisites: Please follow the link to get all docker images from AWS.
-    https://confluence.anthem.com/display/NIM/Connect+to+AWS+CLI+to+pull+nimbus+docker+images
-    Run : sh script-docker-pull-all-aws.yml (RUN THIS COMMAND OFF THE VPN)
-* cd into petclinic-training in the terminal
-* Run :: sh dev-script-p-dep-staticcontent-setup-petclinic.sh
-* The above command will clone the petclinic-static-content repo
-* Run :: sh dev-script-p-dep-all-start-petclinic.sh to create and run the dependent docker containers for running the petclinic application.
+* Pre-requisites: Install mongo and start. Alternately, you can use docker to run an instance of mongo.
 
+## To start the spring boot application
+* Run petclinic-web project as a spring-boot app. The port is configured in application.yml as 8082
+* Run in the browser : http://localhost:8082/petclinic/login
 
-## To restart the spring boot applications
-* Run :: sh dev-script-p-core-all-petclinic-start.sh (Please run this command whenever you make changes to the petclinic configuration project)
-* The above command will start 3 spring boot applications (platform.web, security-oauth, edgeapi-gateway)
+## Things to know
+* The petclinic extension project which contains all the sample implementations of the framework is hosted in github along with a web project to run the application.
+* Please follow the below link to know more.
+	https://github.com/openanthem/petclinic-training 
+* This repo's petclinic-web project is just a handle to deploy the petclinic sample application in a war deployment strategy for Anthem's servers.
+* The dependency of the extension project is provided in the current repository's petclinic-web project (dependent extension jars will be downloaded from oss nexus during build time.
