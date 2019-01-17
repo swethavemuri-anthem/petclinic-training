@@ -54,15 +54,15 @@ public class VSHomeLeftBar {
 	@Setter
 	public class VMPVisits {
 		
-		@Label("Visits - Client Side")
+		@Label("Visits - Client Side Link label")
 		@MenuLink(url="visitlandingview/vpVisits", imgSrc="notesIcon")
 		private String visits;
 		
-		@Label("Visits - Server Side")
+		@Label("Visits - Server Side Link label")
 		@MenuLink(url="visitlandingview/vpVisitsServer", imgSrc="notesIcon")
 		private String visitsServer;
 		
-		@Label("Visits - Bulk Action")
+		@Label("Visits - Bulk Action Link label")
 		@MenuLink(url="visitlandingview/vpVisitsBulkAction", imgSrc="notesIcon")
 		private String visitsBulkAction;
 
