@@ -8,8 +8,7 @@
 		<version>1.2.0.BUILD-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.anthem.client.extension</groupId>
-	<artifactId>com.anthem.client.extension.petclinic</artifactId>
+	<artifactId>petclinic-extension</artifactId>
 	<packaging>jar</packaging>
 
 	<name>platform.client.extension.petclinic</name>
