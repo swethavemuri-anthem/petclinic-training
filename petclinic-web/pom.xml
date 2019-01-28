@@ -36,8 +36,8 @@
 		<scope>test</scope>
 	</dependency>
 	<dependency>
-		<groupId>com.anthem.client.extension</groupId>
-		<artifactId>com.anthem.client.extension.petclinic</artifactId>
+		<groupId>com.antheminc.oss</groupId>
+		<artifactId>petclinic-extension</artifactId>
 		<version>${petclinic.version}</version>
 		<exclusions>
 			<exclusion>
